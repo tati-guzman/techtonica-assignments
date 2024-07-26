@@ -14,8 +14,11 @@ emailBtn.style.color = "white";
 const steps = document.getElementById("steps");
 steps.appendChild(emailBtn);
 
-//emailBtn.addEventListener("click", prompt("Please enter your email address."));
+function getEmail() {
+    return prompt("Please enter your email address.");
+}
 
+emailBtn.addEventListener("click", getEmail);
 
 //Feature 2: Header backgrounds change color when you hover over them
 
