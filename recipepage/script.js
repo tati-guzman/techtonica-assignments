@@ -47,10 +47,14 @@ for (let i = 0; i < allHeaders.length; i++) {
 //Feature 3: Hidden content - click on Recipe Prep and reveal box with message
 const hiddenElement = document.createElement("p");
 hiddenElement.innerHTML = "<strong>You can do it! Let me know how it goes!</strong>";
-//hiddenElement.style.display = "none";
 hiddenElement.style.backgroundColor = "orange";
 hiddenElement.style.color = "#00008B";
 hiddenElement.style.fontSize = "1rem";
 
-const linkSection = document.getElementById("links");
-linkSection.appendChild(hiddenElement);
+const instructSection = document.getElementById("steps");
+instructSection.appendChild(hiddenElement);
+
+hiddenElement.addEventListener("mouseover", () => {
+    console.log("Mouseover detected");
+    hiddenElement.style.visibility = "hidden";
+});
