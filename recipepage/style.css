@@ -31,3 +31,9 @@ h1, h2, h3 {
         background-color: #FDD6A9;
     }
 }
+
+@media screen and (max-width: 800px) {
+    body {
+        background-color: #FDA9EC;
+    }
+}
