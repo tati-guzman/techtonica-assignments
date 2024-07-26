@@ -44,17 +44,22 @@ for (let i = 0; i < allHeaders.length; i++) {
     });
 }
 
-//Feature 3: Hidden content - click on Recipe Prep and reveal box with message
+//Feature 3: Toggle encouraging message in and out with mouseover
 const hiddenElement = document.createElement("p");
 hiddenElement.innerHTML = "<strong>You can do it! Let me know how it goes!</strong>";
 hiddenElement.style.backgroundColor = "orange";
 hiddenElement.style.color = "#00008B";
 hiddenElement.style.fontSize = "1rem";
+hiddenElement.style.opacity = 0;
 
 const instructSection = document.getElementById("steps");
 instructSection.appendChild(hiddenElement);
 
 hiddenElement.addEventListener("mouseover", () => {
-    console.log("Mouseover detected");
-    hiddenElement.style.visibility = "hidden";
+    let currentOpacity = parseFloat(hiddenElement.style.opacity);
+    if (currentOpacity === 0) {
+        return hiddenElement.style.opacity = 1;
+    } else if (currentOpacity === 1) {
+        return hiddenElement.style.opacity = 0;
+    }
 });
