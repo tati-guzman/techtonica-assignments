@@ -15,7 +15,13 @@ const steps = document.getElementById("steps");
 steps.appendChild(emailBtn);
 
 function getEmail() {
-    return prompt("Please enter your email address.");
+    let userEmail = prompt("Please enter your email address.");
+    const validEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/; //Uses regex to make sure email is structured as expected
+    if (userEmail.match(validEmail)) {
+        return alert(`Thanks! This recipe will be sent to ${userEmail}.`);
+    } else {
+        return alert("That email address is invalid. Please try again.");
+    }
 }
 
 emailBtn.addEventListener("click", getEmail);
