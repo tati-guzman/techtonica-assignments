@@ -3,7 +3,7 @@ html {
     width: 100%;
 }
 
-ul {
+.nav, #listOfLinks {
     list-style-type: none;
     margin: 0;
     padding: 0;
