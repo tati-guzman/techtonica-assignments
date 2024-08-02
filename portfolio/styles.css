@@ -102,5 +102,18 @@ footer {
     font-style: normal;
 }
 
+#profile {
+    border-radius: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: solid;
+    border-color: #0B032D;
+    border-width: thick;
+}
+
+h2 {
+    text-align: center;
+}
 
 
