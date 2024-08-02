@@ -4,6 +4,24 @@ html {
 }
 /* Pacifico font?? */
 
+#container {
+    display: grid;
+    height: 100vh;
+    background-color: lightgrey;
+    column-gap: 10px;
+    row-gap: 10px;
+    grid-template-columns: auto auto auto auto;
+    /* grid-template-rows: 8% 30% 37% 25%; */
+    grid-template-rows: 0.2fr 1.2fr 1.5fr 0.8fr;
+    /* grid-template-areas:
+        "nav nav nav nav"
+        "figure description description description"
+        "#links #resume #resume #resume"
+        "footer footer footer footer"; */
+    /* grid-gap: 0.2rem; */
+
+}
+
 .nav, #listOfLinks {
     list-style-type: none;
     margin: 0;
@@ -16,11 +34,57 @@ html {
     width: 100%;
     display: inline;
     padding: 8px;
-    background-color: pink;
 }
-
+/* 
 #about, #experience, #contact {
     text-align: right;
+} */
+
+nav {
+    background-color: pink;
+    grid-column: 1 / 5;
+    grid-row: 1 / 2;
+
+    padding: .5em;
+    margin: 10px;
+}
+
+
+aside {
+    display: grid;
+    background-color: lightgoldenrodyellow;
+    grid-column: 1 / 2;
+    grid-row: 2 / 4;
+
+    padding: .5em;
+    margin: 10px;
+}
+
+#description {
+    background-color: turquoise;
+    grid-column: 2 / 5;
+    grid-row: 2 / 3;
+
+    padding: .5em;
+    margin: 10px;
+}
+
+#resume {
+    background-color: lavender;
+    grid-column: 2 / 5;
+    grid-row: 3 / 4;
+
+    padding: .5em;
+    margin: 10px;
+}
+
+footer {
+    background-color: green;
+    grid-column: 1 / 5;
+    grid-row: 4 / 5;
+
+    padding: .5em;
+    margin: 10px;
 }
 
 
