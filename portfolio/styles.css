@@ -11,7 +11,6 @@ html {
     column-gap: 10px;
     row-gap: 10px;
     grid-template-columns: auto auto auto auto;
-    /* grid-template-rows: 8% 30% 37% 25%; */
     grid-template-rows: 0.2fr 1.2fr 1.5fr 0.8fr;
     /* grid-template-areas:
         "nav nav nav nav"
@@ -29,14 +28,11 @@ html {
 }
 
 .nav, #navbar {
-    margin: 0;
-    padding: 0;
     width: 100%;
     display: inline;
-    padding: 8px;
 }
-/* 
-#about, #experience, #contact {
+
+/* #about, #experience, #contact {
     text-align: right;
 } */
 
@@ -46,7 +42,9 @@ nav {
     grid-row: 1 / 2;
 
     padding: .5em;
-    margin: 10px;
+    margin: 8px;
+    border-radius: 5px 5px 5px;
+    /* box-shadow: 5px 5px 5px black;  */
 }
 
 
@@ -58,6 +56,8 @@ aside {
 
     padding: .5em;
     margin: 10px;
+    border-radius: 5px 5px 5px;
+    /* box-shadow: 5px 5px 5px black;  */
 }
 
 #description {
@@ -67,6 +67,8 @@ aside {
 
     padding: .5em;
     margin: 10px;
+    border-radius: 5px 5px 5px;
+    box-shadow: 0px 0px 5px 5px black; 
 }
 
 #resume {
@@ -76,6 +78,8 @@ aside {
 
     padding: .5em;
     margin: 10px;
+    border-radius: 5px 5px 5px;
+    box-shadow: 0px 0px 5px 5px black; 
 }
 
 footer {
@@ -85,6 +89,8 @@ footer {
 
     padding: .5em;
     margin: 10px;
+    border-radius: 5px 5px 5px;
+    /* box-shadow: 5px 5px 5px black;  */
 }
 
 
