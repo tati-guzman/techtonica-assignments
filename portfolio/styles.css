@@ -17,15 +17,19 @@ html {
     grid-template-rows: 0.2fr 1.2fr 1.5fr 0.8fr;
 }
 
-.nav, #listOfLinks {
+#listOfLinks {
     list-style-type: none;
     margin: 0;
     padding: 0;
 }
 
-.nav, #navbar {
-    width: 100%;
+#navbar {
+    /* width: 100%; */
     display: inline;
+}
+
+.nav {
+    padding: 0px 200px 0px 200px;
 }
 
 nav {
@@ -100,6 +104,7 @@ footer {
     font-family: "Pacifico", cursive;
     font-weight: 400;
     font-style: normal;
+    padding: 0px 150px 0px 0px !important;
 }
 
 #profile {
