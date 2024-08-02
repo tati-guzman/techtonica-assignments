@@ -73,18 +73,20 @@
     <footer id="contactform">
         <h2>Contact Form</h2>
             <p>I would love to connect with you. Fill out my contact form below and I will get in touch soon!</p>
-                <form>
+                <form> <!--Need to figure out how to space it evenly across the page-->
                     <label for="name">Name:</label>
-                    <input type="text" name="name" id="name">
+                    <input type="text" name="name" id="name" required><!--Need to add asterisk or warning that this field is required-->
 
                     <label for="emailaddress">Email Address:</label>
-                    <input type="email" name="emailaddress" id="emailaddress">
+                    <input type="email" name="emailaddress" id="emailaddress" required><br><br><!--Better to add JS DOM Validation and add indication that the field is required-->
 
                     <label for="phonenumber">Phone Number:</label>
-                    <input type="tel" name="phonenumber" id="emailaddress">
+                    <input type="tel" name="phonenumber" id="phonenumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"> <!--Needs actual validation added-->
 
                     <label for="comments">Comments:</label>
-                    <textarea rows="5" name="comments" id="comments"></textarea>
+                    <textarea rows="5" name="comments" id="comments"></textarea><br><br>
+
+                    <input type="submit" id="submit" value="Talk to you soon!">
                 </form>
     </footer>
     </div>
