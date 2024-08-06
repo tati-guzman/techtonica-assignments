@@ -24,4 +24,15 @@ const eventObj3 = new Event(
     "Mathematics Tour: his version of the Eras Tour that really should not have been a stadium tour"
 )
 
+//STEP 6: Create an empty array
+const eventArray = new Array();
 
+//STEP 7: Push the objects into the array (single and multiple)
+
+//Pushing a single object:
+eventArray.push(eventObj1);
+//Pushing multiple objects at once:
+eventArray.push(eventObj2, eventObj3);
+
+//STEP 8: Check the array using console log
+console.log(eventArray);
