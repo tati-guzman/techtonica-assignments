@@ -45,3 +45,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     document.querySelector("#event").innerHTML = html;
 })
+
+//STEP 11: Create a class TicketType to store the name and price of a ticket
+
+class TicketType {
+    constructor(section, price) {
+        this.section = section;
+        this.price = price;
+    }
+}
