@@ -61,3 +61,17 @@ class TicketType {
         this.price = price;
     }
 }
+
+//STEP 13: Add different ticket types to each event
+
+//First Event Tickets:
+eventObj1.addAvailableTickets("Section 314", 75);
+eventObj1.addAvailableTickets("General Admission", 285);
+
+//Second Event Tickets:
+eventObj2.addAvailableTickets("VIP", 475);
+eventObj2.addAvailableTickets("Section 117", 150);
+
+//Third Event Tickets:
+eventObj3.addAvailableTickets("Section 252", 120);
+eventObj3.addAvailableTickets("Floor", 250);
