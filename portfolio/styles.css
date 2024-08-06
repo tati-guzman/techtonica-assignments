@@ -1,0 +1,129 @@
+html {
+    height: 100%;
+    width: 100%;
+    font-family: "Montserrat Alternates", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #0B032D;
+}
+
+#container {
+    display: grid;
+    height: 100vh;
+    background-color: #D98698;
+    column-gap: 10px;
+    row-gap: 10px;
+    grid-template-columns: auto auto auto auto;
+    grid-template-rows: 0.2fr 1.2fr 1.5fr 0.8fr;
+}
+
+.link {
+    display: inline;
+    text-align: center;
+    padding: 10px 50px 10px 60px;
+}
+
+#navbar {
+    display: inline;
+}
+
+.nav {
+    padding: 0px 200px 0px 200px;
+}
+
+nav {
+    background-color: #E8C2CA;
+    grid-column: 1 / 5;
+    grid-row: 1 / 2;
+
+    padding: .5em;
+    margin: 8px;
+    border-radius: 5px 5px 5px;
+    border: solid;
+    border-color: #0B032D;
+    border-width: thick;
+}
+
+
+aside {
+    display: grid;
+    background-color: #E8C2CA;
+    grid-column: 1 / 2;
+    grid-row: 2 / 4;
+
+    padding: .5em;
+    margin: 10px;
+    border-radius: 5px 5px 5px;
+    border: solid;
+    border-color: #0B032D;
+    border-width: thick;
+}
+
+#description {
+    background-color: #E8C2CA;
+    grid-column: 2 / 5;
+    grid-row: 2 / 3;
+
+    padding: .5em;
+    margin: 10px;
+    border-radius: 5px 5px 5px;
+    border: solid;
+    border-color: #0B032D;
+    border-width: thick;
+}
+
+#resume {
+    background-color: #E8C2CA;
+    grid-column: 2 / 5;
+    grid-row: 3 / 4;
+
+    padding: .5em;
+    margin: 10px;
+    border-radius: 5px 5px 5px;
+    border: solid;
+    border-color: #0B032D;
+    border-width: thick;
+}
+
+footer {
+    background-color: #E8C2CA;
+    grid-column: 1 / 5;
+    grid-row: 4 / 5;
+
+    padding: .5em;
+    margin: 10px;
+    border-radius: 5px 5px 5px;
+    border: solid;
+    border-color: #0B032D;
+    border-width: thick;
+}
+
+#myname {
+    font-size: large;
+    font-family: "Pacifico", cursive;
+    font-weight: 400;
+    font-style: normal;
+    padding: 0px 150px 0px 0px !important;
+}
+
+#profile {
+    border-radius: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: solid;
+    border-color: #0B032D;
+    border-width: thick;
+}
+
+h2 {
+    text-align: center;
+}
+
+#submit {
+    background-color: azure;
+}
+
+#contactform {
+    text-align: center;
+}

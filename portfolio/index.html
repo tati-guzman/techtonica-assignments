@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tati Guzman</title>
+    <link href="styles.css" rel="stylesheet" type="text/css" />
+    <!--Font Imports-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Corben:wght@400;700&family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Pacifico&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <div id="container">
+   <!---Navigation Bar-->
+    <nav>
+        <ul id="navbar">
+            <a class="nav" id="myname" href="#home"><strong>TATI GUZMAN</strong></a>
+            <a class="nav" id="about" href="#description">About Me</a>
+            <a class="nav" id="experience" href="#resume">Experience</a>
+            <a class="nav" id="contact" href="#contactform">Contact Form</a>
+        </ul>
+        
+    </nav>
+
+    <!---Picture and Contact Info-->
+    <aside>
+        <figure>
+            <img id="profile" src="https://lh3.googleusercontent.com/a/ACg8ocLujENgelwKqohrGyCLabZ1BCjrvwMDve5lvDlHcgfdT4jqcXtzIg=s576-c-no" alt="Picture of Tati, a Colombian woman in her late 20's. She has brown hair that lands just atop her shoulders. She is facing the camera and smiling with an open-lipped smile. There are dimples on either sides of her mouth. The black and floral print of her dress is slightly visible. Her background is an off-white wall." height="300">
+        </figure>
+
+        <section id="links">
+            <h2>Quick Links</h2>
+            <ul id="listOfLinks">
+                <a href="https://github.com/tati-guzman"><img class="link" src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png" alt="Black and white outline of a cat which is used as the GitHub logo" height="70"></a></li>
+                
+                <a href="https://www.linkedin.com/in/tati-guzman/"><img class="link" src="https://st4.depositphotos.com/1000417/41563/v/450/depositphotos_415634850-stock-illustration-linkedin-logo-vector-editorial-illustration.jpg" alt="Blue square with white letters i and n which serve as LinkedIn logo" height="70"></a></li>
+                
+                <a href="tati.guzman@outlook.com"><img class="link" src=https://static.vecteezy.com/system/resources/previews/002/206/154/non_2x/email-envelope-icon-free-vector.jpg alt="Black and white envelope with paper coming out. Paper has an @ symbol." height="70"></a></li>
+            </ul>
+        </section>
+    </aside>
+
+    <!--Quick Description of Myself-->
+    <section class="right" id="description">
+        <h2>About Me</h2>
+            <p>Welcome to my page! My name is Tati (she/her). I am a former clinical research assistant transitioning into software engineering through<a href="https://techtonica.org/"">Techtonica</a>'s coding bootcamp. I am so excited for this new journey as the blend of problem solving,logical thinking, and creativity that coding has to offer is an extremely good fit for me. My goal is contribute to projects aimed at improving education for students of all backgrounds.</p>
+    </section>
+
+    <!--Tech and Work Experience-->
+    <section class="right" id="resume">
+        <h2>Experience</h2>
+            <h3>Coding Experience</h3>
+                <p>
+                    <ul>
+                        <li>Techtonica</li>
+                            <ul><li>Techtonica helps women and non-binary adults overcome barriers into the tech industry and partner companies fulfill their diverse technical talent needs.</li></ul>
+                        <li>freeCodeCamp</li>
+                        <li>Doing lots of googling!</li>
+                    </ul>
+                </p>
+            <h3>Work Experience</h3>
+                <p>City of Hope</p>
+                    <ul>
+                        <li>Did all these cool things</li>
+                        <li>This was also relevant</li>
+                    </ul>
+    </section>
+
+    <!--Contact Form-->
+    <footer id="contactform">
+        <h2>Contact Form</h2>
+            <p>I would love to connect with you. Fill out my contact form below and I will get in touch soon!</p>
+                <form> <!--Need to figure out how to space it evenly across the page-->
+                    <label for="name">Name:</label>
+                    <input type="text" name="name" id="name" required><!--Need to add asterisk or warning that this field is required-->
+
+                    <label for="emailaddress">Email Address:</label>
+                    <input type="email" name="emailaddress" id="emailaddress" required><br><br><!--Better to add JS DOM Validation and add indication that the field is required-->
+
+                    <label for="phonenumber">Phone Number:</label>
+                    <input type="tel" name="phonenumber" id="phonenumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"> <!--Needs actual validation added-->
+
+                    <label for="comments">Comments:</label>
+                    <textarea rows="5" name="comments" id="comments"></textarea><br><br>
+
+                    <input type="submit" id="submit" value="Talk to you soon!">
+                </form>
+    </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
