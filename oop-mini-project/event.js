@@ -28,11 +28,11 @@ class Event {
     searchTickets(min, max) {
         let eligibleTickets = this.availableTickets.filter((ticket) => ticket.price >= min && ticket.price <= max);
         if (eligibleTickets.length === 0) {
-            return "No tickets available";
+            return "<br>No tickets available<br><br>";
         } else {
             //Create an array with eligible ticket info
             let eligibleTicketInfo = eligibleTickets.map(({section, price}, index) => (`${index + 1}. ${section} ($${price})`));
-            return `Eligible Tickets:<br>${eligibleTicketInfo.join("<br>")}<br><br>`;
+            return `<br>Eligible Tickets:<br>${eligibleTicketInfo.join("<br>")}<br><br>`;
         }
     }
 }
@@ -68,13 +68,14 @@ eventArray.push(eventObj2, eventObj3);
 console.log(eventArray);
 
 //STEPS 9 & 10: Iterate through the event array to add it to the page
-document.addEventListener("DOMContentLoaded", () => {
-    let html = "";
-    eventArray.forEach((event) => {
-        html += `<li>${event.name}:<br>${event.description}<br>${event.allTickets()}</li>`;//Added allTickets() for STEP 15
-    });
-    document.querySelector("#event").innerHTML = html;
-})
+//Commented out to allow for STEP 17 below
+// document.addEventListener("DOMContentLoaded", () => {
+//     let html = "";
+//     eventArray.forEach((event) => {
+//         html += `<li>${event.name}:<br>${event.description}<br>${event.allTickets()}</li>`;//Added allTickets() for STEP 15
+//     });
+//     document.querySelector("#event").innerHTML = html;
+// })
 
 //STEP 11: Create a class TicketType to store the name and price of a ticket
 
@@ -104,3 +105,12 @@ console.log(eventObj1.searchTickets(0, 200)); //Section 314 (75)
 console.log(eventObj2.searchTickets(0, 100)); //No tickets available
 console.log(eventObj3.searchTickets(100, 200)); //Section 252(120)
 console.log(eventObj3.searchTickets(120, 250)); //Both tickets
+
+//STEP 17: Modify the event listener to print out the eligible tickets within a defined range instead
+document.addEventListener("DOMContentLoaded", () => {
+    let html = "";
+    eventArray.forEach((event) => {
+        html += `<li>${event.name}:<br>${event.description}<br>${event.searchTickets(200, 300)}</li>`;
+    });
+    document.querySelector("#event").innerHTML = html;
+})
