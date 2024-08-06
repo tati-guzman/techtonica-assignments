@@ -21,7 +21,7 @@ const eventObj2 = new Event(
 
 const eventObj3 = new Event(
     "Ed Sheeran",
-    "Mathematics Tour: his version of the Eras Tour that really should not have been a stadium tour"
+    "Mathematics Tour: His version of the Eras Tour that really should not have been a stadium tour"
 )
 
 //STEP 6: Create an empty array
@@ -36,3 +36,12 @@ eventArray.push(eventObj2, eventObj3);
 
 //STEP 8: Check the array using console log
 console.log(eventArray);
+
+//STEPS 9 & 10: Iterate through the event array to add it to the page
+document.addEventListener("DOMContentLoaded", () => {
+    let html = "";
+    eventArray.forEach((event) => {
+        html += `<li>${event.name}:<br>${event.description}</li>`;
+    });
+    document.querySelector("#event").innerHTML = html;
+})
