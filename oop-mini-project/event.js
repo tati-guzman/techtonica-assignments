@@ -23,6 +23,18 @@ class Event {
         //Adding <br> throughout to arrange line breaks
         return `<br>All Tickets:<br> ${ticketInfo.join("<br>")}<br><br>`;
     }
+
+    //STEP 16: Add a function to return available ticket types within a price range
+    searchTickets(min, max) {
+        let eligibleTickets = this.availableTickets.filter((ticket) => ticket.price >= min && ticket.price <= max);
+        if (eligibleTickets.length === 0) {
+            return "No tickets available";
+        } else {
+            //Create an array with eligible ticket info
+            let eligibleTicketInfo = eligibleTickets.map(({section, price}, index) => (`${index + 1}. ${section} ($${price})`));
+            return `Eligible Tickets:<br>${eligibleTicketInfo.join("<br>")}<br><br>`;
+        }
+    }
 }
 
 //STEP 4: Create an object using the class
@@ -86,3 +98,9 @@ eventObj2.addAvailableTickets("Section 117", 150);
 //Third Event Tickets:
 eventObj3.addAvailableTickets("Section 252", 120);
 eventObj3.addAvailableTickets("Floor", 250);
+
+//Checking functionality of STEP 16
+console.log(eventObj1.searchTickets(0, 200)); //Section 314 (75)
+console.log(eventObj2.searchTickets(0, 100)); //No tickets available
+console.log(eventObj3.searchTickets(100, 200)); //Section 252(120)
+console.log(eventObj3.searchTickets(120, 250)); //Both tickets
