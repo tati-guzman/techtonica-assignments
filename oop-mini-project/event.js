@@ -12,6 +12,17 @@ class Event {
         this.availableTickets.push(newTicket);
     }
 
+    //STEP 14: Add a function to return a string representing all ticket types and prices
+    allTickets() {
+        //Create an array where each element will now be the full description needed per ticket
+        let ticketInfo = this.availableTickets.map(({section, price}, index) => (`${index + 1}. ${section} ($${price})`));
+       
+        console.log(ticketInfo); //Using console log to double check work
+
+        //Return the string to be added to the HTML element
+        //Adding <br> throughout to arrange line breaks
+        return `<br>All Tickets:<br> ${ticketInfo.join("<br>")}<br><br>`;
+    }
 }
 
 //STEP 4: Create an object using the class
@@ -48,7 +59,7 @@ console.log(eventArray);
 document.addEventListener("DOMContentLoaded", () => {
     let html = "";
     eventArray.forEach((event) => {
-        html += `<li>${event.name}:<br>${event.description}</li>`;
+        html += `<li>${event.name}:<br>${event.description}<br>${event.allTickets()}</li>`;//Added allTickets() for STEP 15
     });
     document.querySelector("#event").innerHTML = html;
 })
