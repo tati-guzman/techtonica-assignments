@@ -28,7 +28,7 @@ open index.html
 
 ### Demo
 
-
+(https://github.com/tati-guzman/techtonica-assignments/blob/game/game/Spirit%20Animal%20Demo.gif)
 
 
 ## Built With
