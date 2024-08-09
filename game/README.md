@@ -20,9 +20,13 @@ Clone this repository using the HTTPS URL
 git clone https://github.com/tati-guzman/techtonica-assignments.git
 ```
 
-PUT IN INFO FOR HOW TO RUN IT ON A LIVE SERVER
+Open the HTML file in a local web browser
 
-## Demo
+```
+open index.html
+```
+
+### Demo
 
 Add additional notes about how to deploy this on a live system
 PUT IN A GIF OF A DEMO
@@ -32,10 +36,6 @@ PUT IN A GIF OF A DEMO
 * [Visual Studio Code](https://code.visualstudio.com/) - Source code editor
 * [JavaScript](https://www.javascript.com/) - Primary language used
 * [HTML](https://html.com/) - Used to design web layout
-
-## Contact
-
-ADD CONTACT INFORMATION
 
 ## Acknowledgments
 
