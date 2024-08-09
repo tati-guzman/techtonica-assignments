@@ -31,15 +31,7 @@ Set each innerHTML to its respective counter.
 
 
 */
- /*
-OnClick (of button) **set an event listener to capture the click**
 
-Changing the picture shown:
-Generate a random number from 0-2 -> use math random and make it round down 
-Change a variable "winner" to select 0-2 in the array -> this points to the winner of the button
-Loop through the array of all the pets:
-Switch the visibility of the winner element to visible
-Switch the other two visibilities to hidden */
 //Manipulating the images via the button:
 
 //Make an array with all the pet images
@@ -55,3 +47,22 @@ daisy.style.visibility = "hidden";
 luke.style.visibility = "hidden";
 han.style.visibility = "hidden";
 
+//Create the function for the logic from the button click to show/hide random pictures
+function randomPicture(){
+    //Generate a random number from 0-2
+    let winningIndex = Math.floor(Math.random() * 3);
+     
+    //Loop through array of pet images and change winning image to visible
+    for (let i = 0; i < petImages.length; i++) {
+        if (i === winningIndex) {
+            petImages[winningIndex].style.visibility = "visible";
+        } else {
+            //Change other image visibility to hidden
+            petImages[i].style.visibility = "hidden";
+        }
+    }
+}
+
+//Set an event listener to capture the click and the resulting logic
+const button = document.getElementById("button");
+button.addEventListener("click", randomPicture);
