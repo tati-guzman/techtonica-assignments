@@ -1,26 +1,5 @@
 /* 
-//Spirit Animal Game - Random generator to answer the question: "Which pet is your spirit animal?"
 
-Refresh the page:
-Header (always there)
-Blank space (all set to hidden via JS)
-Button at the bottom
-Stats below button
-
-JS:
-
-Make an array that consists of all the pet images (getElementsByClassName - pet) [Daisy, Luke, Han]
-Define each component using the array (Daisy = array[0])
-Set all three visibilities to hidden
-
-OnClick (of button) **set an event listener to capture the click**
-
-Changing the picture shown:
-Generate a random number from 0-2 -> use math random and make it round down 
-Change a variable "winner" to select 0-2 in the array -> this points to the winner of the button
-Loop through the array of all the pets:
-Switch the visibility of the winner element to visible
-Switch the other two visibilities to hidden
 
 Keeping Track of Stats:
 
@@ -52,4 +31,27 @@ Set each innerHTML to its respective counter.
 
 
 */
+ /*
+OnClick (of button) **set an event listener to capture the click**
+
+Changing the picture shown:
+Generate a random number from 0-2 -> use math random and make it round down 
+Change a variable "winner" to select 0-2 in the array -> this points to the winner of the button
+Loop through the array of all the pets:
+Switch the visibility of the winner element to visible
+Switch the other two visibilities to hidden */
+//Manipulating the images via the button:
+
+//Make an array with all the pet images
+const petImages = document.getElementsByClassName("pet");
+
+//Define each pet image using the array
+const daisy = petImages[0];
+const luke = petImages[1];
+const han = petImages[2];
+
+//Set all three visibilities to hidden
+daisy.style.visibility = "hidden";
+luke.style.visibility = "hidden";
+han.style.visibility = "hidden";
 
