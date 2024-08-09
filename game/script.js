@@ -1,25 +1,5 @@
-/* Spirit Animal Game
-
-Idea: Random generator to answer the question: "Which pet is your spirit animal?"
-
-HTML:
-<Usual HTML meta info>
-
-<body>
-<header> Which pet is your spirit animal?
-<smaller announcement> *No animal was hurt in the making of these pictures, except for their pride perhaps*
-
-[Daisy] Daisy Picture: img tag linking to picture of Daisy, class name pet, id name is Daisy
-[Luke] Luke Picture: img tag linking to picture of Daisy, class name pet, id name is Luke
-[Han ]Han Picture: img tag linking to picture of Daisy, class name pet, id name is Han
-
-Button: This is the button that when clicked, picks a random pet and shows their image
-
-Stats: Amount of Clicks: X | Daisy: X | Luke: X | Han: X 
-Note - each X should be its own element to be updated via JS
-Each counter element will have the class "counter"
-
-<embed the script>
+/* 
+//Spirit Animal Game - Random generator to answer the question: "Which pet is your spirit animal?"
 
 Refresh the page:
 Header (always there)
