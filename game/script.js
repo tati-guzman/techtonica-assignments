@@ -1,37 +1,3 @@
-/* 
-
-
-Keeping Track of Stats:
-
-Make an array with all elements with class name counter (Amount of Clicks, Daisy, Luke, Han)
-
-Total Count (outside onClick):
-
-Make a counter variable (totalCount)
-
-Within the onclick:
-
-Function to increase the counter (totalCount++)
-Change the innerHTML of total count to counter
-
-Winner Count (outside onClick): 
-
-Make Daisy count variable (set to 0)
-Make Luke count variable
-Make Han count variable
-
-Within the onclick:
-
-Write a switch statement with the winner:
-If it's 0, update Daisy's counter
-If it's 1, update Luke's counter
-If it's 2, update Han's counter
-
-Set each innerHTML to its respective counter.
-
-
-*/
-
 //Manipulating the images via the button:
 
 //Make an array with all the pet images
@@ -47,8 +13,27 @@ daisy.style.visibility = "hidden";
 luke.style.visibility = "hidden";
 han.style.visibility = "hidden";
 
-//Create the function for the logic from the button click to show/hide random pictures
-function randomPicture(){
+//Increasing the Stats Counter
+
+//Assign variable names to each counter element using their ID's
+let totalCountElement = document.getElementById("totalcount");
+let daisyCountElement = document.getElementById("daisycount");
+let lukeCountElement = document.getElementById("lukecount");
+let hanCountElement = document.getElementById("hancount");
+
+//Create and set each count variable to 0;
+let totalCount = 0;
+let daisyCount = 0;
+let lukeCount = 0;
+let hanCount = 0;
+
+//Create the function for the logic from the button click to show/hide random pictures and update stats
+function randomWinner(){
+    
+    //Update total number of clicks
+    totalCount++;
+    totalCountElement.innerHTML = totalCount;
+
     //Generate a random number from 0-2
     let winningIndex = Math.floor(Math.random() * 3);
      
@@ -61,8 +46,29 @@ function randomPicture(){
             petImages[i].style.visibility = "hidden";
         }
     }
+
+    //Update winning counter
+    switch (winningIndex) {
+        case 0:
+            daisyCount++;
+            break;
+        case 1:
+            lukeCount++;
+            break;
+        case 2:
+            hanCount++;
+            break;
+    }
+
+    //Set innerHTML equal to current counters
+    daisyCountElement.innerHTML = daisyCount;
+    lukeCountElement.innerHTML = lukeCount;
+    hanCountElement.innerHTML = hanCount;
 }
 
 //Set an event listener to capture the click and the resulting logic
 const button = document.getElementById("button");
-button.addEventListener("click", randomPicture);
+button.addEventListener("click", randomWinner);
+
+
+
