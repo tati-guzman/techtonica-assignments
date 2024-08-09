@@ -1,14 +1,3 @@
-<!--
-
-Button: This is the button that when clicked, picks a random pet and shows their image
-
-Stats: Amount of Clicks: X | Daisy: X | Luke: X | Han: X 
-Note - each X should be its own element to be updated via JS
-Each counter element will have the class "counter"
-
-<embed the script>
--->
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,14 +5,19 @@ Each counter element will have the class "counter"
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Margarine&display=swap" rel="stylesheet">
     <title>Spirit Animal</title>
 </head>
 
 <body>
     <!--Header and Description-->
-    <h1>Which pet is your spirit animal?</h1>
-        <p>** No animal was hurt in the making of these pictures, except for their pride perhaps **</p>
-        
+    <header>
+        <h1>Which pet is your spirit animal?</h1>
+            <p>** No animal was hurt in the making of these pictures, except for their pride perhaps **</p>
+    </header>
+
     <!--Pet Images-->
     <figure>
         <img class="pet" id="daisy" src="daisy.jpg" alt="Small tan puppy is sitting on a light blue blanket on a grey couch. Her legs stick all the way out in front of her putting her in an L-position. Her eyes are squinting and ears are pulled back." height="600">
@@ -36,6 +30,10 @@ Each counter element will have the class "counter"
     <!--Randomizer Button-->
     <button type="button" id="button">Click here to discover your spirit animal!</button>
 
+    <!--Stats Section-->
+    <section class="stats">
+        <p>Amount of Clicks: <span class="counter" id="totalcount">0</span> | Daisy: <span class="counter" id="daisycount">0</span> | Luke: <span class="counter" id="lukecount">0</span> | Han: <span class="counter" id="hancount">0</span></p>
+    </section>
 </body>
 
 <script src="script.js"></script>
