@@ -1,14 +1,4 @@
 <!--
-HTML:
-<Usual HTML meta info>
-
-<body>
-<header> Which pet is your spirit animal?
-<smaller announcement> *No animal was hurt in the making of these pictures, except for their pride perhaps*
-
-[Daisy] Daisy Picture: img tag linking to picture of Daisy, class name pet, id name is Daisy
-[Luke] Luke Picture: img tag linking to picture of Daisy, class name pet, id name is Luke
-[Han ]Han Picture: img tag linking to picture of Daisy, class name pet, id name is Han
 
 Button: This is the button that when clicked, picks a random pet and shows their image
 
@@ -36,12 +26,15 @@ Each counter element will have the class "counter"
         
     <!--Pet Images-->
     <figure>
-        <img id="daisy" src="daisy.jpg" alt="Small tan puppy is sitting on a light blue blanket on a grey couch. Her legs stick all the way out in front of her putting her in an L-position. Her eyes are squinting and ears are pulled back." height="600">
+        <img class="pet" id="daisy" src="daisy.jpg" alt="Small tan puppy is sitting on a light blue blanket on a grey couch. Her legs stick all the way out in front of her putting her in an L-position. Her eyes are squinting and ears are pulled back." height="600">
         
-        <img id="luke" src="luke.jpg" alt="Fat tabby cat sitting with his legs sticking out in front of him. He is on a gray bath mat. He has white fur on his belly and gray stripes on his arms and head." height="600">
+        <img class="pet" id="luke" src="luke.jpg" alt="Fat tabby cat sitting with his legs sticking out in front of him. He is on a gray bath mat. He has white fur on his belly and gray stripes on his arms and head." height="600">
 
-        <img id="han" src="han.jpg" alt="A gray tabby cat is looking out the clear rounded dome of a cat carrier. His green eyes are wide and he looks panicked." height="600">
+        <img class="pet" id="han" src="han.jpg" alt="A gray tabby cat is looking out the clear rounded dome of a cat carrier. His green eyes are wide and he looks panicked." height="600">
     </figure>
+
+    <!--Randomizer Button-->
+    <button type="button" id="button">Click here to discover your spirit animal!</button>
 
 </body>
 
