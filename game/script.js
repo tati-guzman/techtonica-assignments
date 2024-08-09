@@ -45,12 +45,30 @@ Switch the other two visibilities to hidden
 Keeping Track of Stats:
 
 Make an array with all elements with class name counter (Amount of Clicks, Daisy, Luke, Han)
-Make variables for each count (totalCount, daisyCount, lukeCount, hanCount) and set them to 0
 
-Using the array, create variables for each counter (daisyCounter, lukeCounter, hanCounter)
-Create an array with the count for each ()
-Using the winner variable, add one to a counter assigned to each pet?
+Total Count (outside onClick):
 
+Make a counter variable (totalCount)
+
+Within the onclick:
+
+Function to increase the counter (totalCount++)
+Change the innerHTML of total count to counter
+
+Winner Count (outside onClick): 
+
+Make Daisy count variable (set to 0)
+Make Luke count variable
+Make Han count variable
+
+Within the onclick:
+
+Write a switch statement with the winner:
+If it's 0, update Daisy's counter
+If it's 1, update Luke's counter
+If it's 2, update Han's counter
+
+Set each innerHTML to its respective counter.
 
 
 */
