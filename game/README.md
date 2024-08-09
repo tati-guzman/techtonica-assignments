@@ -28,7 +28,7 @@ open index.html
 
 ### Demo
 
-(https://github.com/user-attachments/assets/1f9f30a5-d68e-4bac-a9a9-65c0382ef2f5)
+
 
 
 ## Built With
