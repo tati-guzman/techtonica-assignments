@@ -9,6 +9,15 @@ function App() {
           count is {count}
         </button> */}
 
+  //Function: Keep track of the selected buttons (maintain a state of selected buttons that gets modified when you click). This gets activated using onClick via Word.
+  //Couple rules for that: If selected, unselect. If not, select. If more than 4, cannot select.
+
+  //Function: getColor -> if selected, do this color. If matched, this color. If not selected, this color. Then pass getColor as a "color = {getColor}" on each Word below.
+
+  //Function: Create array with answer key [[group1], [group2]..] Function needs to check if the words that are submitted (THIS IS THE ONSUBMIT function) match the words in the arrays. If it matches one of the arrays, have it change the state of isMatched. If it doesn't, update the Lives counter. Show try again message
+
+  //To Add Below: Submit Button (new component?), Message Board to be updated (new component)
+
   return (
     <>
       <h1>🧠 Connections 🧠</h1>
