@@ -1,7 +1,17 @@
 #root {
-  /* max-width: 1280px; */
-  /* margin: 0 auto; */
-  /* padding: 2rem; */
+  max-width: 1280px;
+  margin: 0 auto;
   text-align: center;
   background-color: lavender;
+}
+
+Button {
+  font-size: 20px;
+  padding: 0.5rem;
+  background-color: lightskyblue;
+  margin: 5px;
+}
+
+Button:hover {
+  background-color: cyan;
 }
