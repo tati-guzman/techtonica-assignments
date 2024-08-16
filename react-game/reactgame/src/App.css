@@ -1,0 +1,20 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  text-align: center;
+  background-color: lavender;
+}
+
+Button {
+  font-size: 20px;
+  padding: 0.5rem;
+  background-color: lightskyblue;
+  margin: 5px;
+  width: 150px;
+  border-radius: 10px;
+}
+
+/* Need to figure out how to keep the hover effect without making ALL buttons hover (with important) */
+Button:not(.disabled):hover {
+  background-color: cyan;
+}
