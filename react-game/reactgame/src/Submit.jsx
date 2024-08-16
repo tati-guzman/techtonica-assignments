@@ -6,7 +6,7 @@ const answerKey = [["1", "4", "11", "16"], ["5", "8", "10", "13"], ["3", "6", "9
 const colors = ["red", "purple", "green", "blue"]
 
 
-const Submit = ({setSelected, setMatched, selected}) => {
+const Submit = ({setCount, setSelected, setMatched, selected}) => {
     //Creates a variable to add styling within the component rather than in a stylesheet
     const style = {
         backgroundColor: "#f7fc81",
@@ -34,19 +34,19 @@ const Submit = ({setSelected, setMatched, selected}) => {
     }
 
     //Create a function to check matches when users submit guesses
-    const handleSubmit = (event) => {
+    const handleSubmit = () => {
         // If there aren't enough words selected, do not submit
         if (selected.length < 4) {
             return
         }
+        
+        setCount((count) => count + 1)
         //Check to see if the words submitted by the user match any groups in the answer key
         const {answerMatches, colorIndex} = checkAnswer()
         if (answerMatches) {
             console.log("This worked!")
             //If it matches, update the state tracking matches
             setMatched ((currentMatched) => {
-                //NEED TO DO: set button to know it's matched (so we can update color)
-                //NEED TO DO: make it so it's not clickable? Or does that happen once we tell it it's matched and change the color?
                 const newMatched = {...currentMatched};
                 selected.forEach((item) => {
                     newMatched[item] = colors[colorIndex];

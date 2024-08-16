@@ -5,12 +5,9 @@ import Message from './Message.jsx'
 import Submit from './Submit.jsx'
 
 function App() {
-  // const [count, setCount] = useState(0) - DELETE THIS LATER
-  //Example of changing count using button - DELETE THIS LATER
- {/* <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button> */}
-
+  
+  const [count, setCount] = useState(0)
+ 
   //Maintain a state of selected buttons (using the text attribute, this is updated in the Word component)
   const [selected, setSelected] = useState([])
   console.log(selected)
@@ -41,8 +38,9 @@ function App() {
       <Word matched={matched} selected={selected} setSelected={setSelected} text="Word 14" id="14"/>
       <Word matched={matched} selected={selected} setSelected={setSelected} text="Word 15" id="15"/>
       <Word matched={matched} selected={selected} setSelected={setSelected} text="Word 16" id="16"/>
-      <Submit setMatched={setMatched} selected={selected} setSelected={setSelected}/>
+      <Submit setCount={setCount} setMatched={setMatched} selected={selected} setSelected={setSelected}/>
       <Message selected={selected}/>
+      <h4>Tries: {count}</h4>
       {/* Update message after onSubmit with new state for potential errors */}
     </>
   )
