@@ -11,29 +11,24 @@ import './App.jsx'
 //     selected = newSelected
 // }
 
-
 const Word = ({setSelected, text}) => {
 
     //Create a function to keep track of the selected buttons
   const onClick = () => {
-    
     setSelected((prevSelected) => {
-     //If the button was previously selected, remove from the select state
+     //If the button was previously selected, remove from the "select" state
         if (prevSelected.includes(text)) {
-            console.log("This one is working!")
-            return prevSelected.filter((buttonText) => buttonText !== text)
+            return prevSelected.filter((buttonText) => buttonText !== text);
         } else if (!prevSelected.includes(text)) {
             //Select state can only take up to 4. If clicking 5th button, do not allow.
             if (prevSelected.length >= 4) {
-                error = true
-                return prevSelected
+                return prevSelected;
             } else {
-                //If the button was not selected, add to select state
-                console.log("You did it!")
-                return [...prevSelected, text]
+                //If the button was not already selected, add to "select" state
+                return [...prevSelected, text];
             }
         }
-    }
+      }
     )
 }
 
