@@ -11,7 +11,7 @@ import './App.jsx'
 //     selected = newSelected
 // }
 
-const Word = ({setSelected, text, id, matched}) => {
+const Word = ({selected, setSelected, text, id, matched}) => {
 
     //Create a function to keep track of the selected buttons
   const onClick = () => {
@@ -31,7 +31,7 @@ const Word = ({setSelected, text, id, matched}) => {
       }
     )
 }
-    const color = id in matched ? matched[id] : "lightskyblue"
+    const color = id in matched ? matched[id] : selected.includes(id) ? "pink" : "lightskyblue"
 
     return (
         <div>
