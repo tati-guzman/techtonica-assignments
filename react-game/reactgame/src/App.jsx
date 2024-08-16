@@ -5,23 +5,21 @@ import Message from './Message.jsx'
 import Submit from './Submit.jsx'
 
 function App() {
-  
+
+  //Maintain a state to count the number of attempts (each successful submit should increase the count by 1, updated by handleSubmit)
   const [count, setCount] = useState(0)
  
-  //Maintain a state of selected buttons (using the text attribute, this is updated in the Word component)
+  //Maintain a state of selected buttons (using the id attribute, this is updated in the Word component)
   const [selected, setSelected] = useState([])
   console.log(selected)
   
   //Maintain a state of buttons who have been successfully matched with their group
   const [matched, setMatched] = useState({})
 
-  //Function: getColor -> if selected, do this color. If matched, this color. If not selected, this color. Then pass getColor as a "color = {getColor}" on each Word below.
-
-
   return (
     <>
       <h1>🧠 Connections 🧠</h1>
-      <h3>Can you group these words into four categories before running out of tries?</h3>
+      <h3>How many tries will it take <i>you</i> to group these words into <b>four</b> categories?</h3>
       <Word matched={matched} selected={selected} setSelected={setSelected} text="Word 1" id="1"/>
       <Word matched={matched} selected={selected} setSelected={setSelected} text="Word 2" id="2"/>
       <Word matched={matched} selected={selected} setSelected={setSelected} text="Word 3" id="3"/>
@@ -41,7 +39,6 @@ function App() {
       <Submit setCount={setCount} setMatched={setMatched} selected={selected} setSelected={setSelected}/>
       <Message selected={selected}/>
       <h4>Tries: {count}</h4>
-      {/* Update message after onSubmit with new state for potential errors */}
     </>
   )
 }
