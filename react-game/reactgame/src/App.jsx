@@ -13,9 +13,10 @@ function App() {
 
   //Maintain a state of selected buttons (using the text attribute, this is updated in the Word component)
   const [selected, setSelected] = useState([])
+  console.log(selected)
   
-  //Function: Create array with answer key [[group1], [group2]..] Function needs to check if the words that are submitted (THIS IS THE ONSUBMIT function) match the words in the arrays. If it matches one of the arrays, have it change the state of isMatched. If it doesn't, update the Lives counter. Show try again message
-  const answerKey = [["1", "4", "11", "16"], ["5", "8", "10", "13"], ["3", "6", "9", "14"], ["2", "7", "12", "15"]]
+  //Maintain a state of buttons who have been successfully matched with their group
+  const [matched, setMatched] = useState([])
 
   //Function: getColor -> if selected, do this color. If matched, this color. If not selected, this color. Then pass getColor as a "color = {getColor}" on each Word below.
 
@@ -40,7 +41,7 @@ function App() {
       <Word setSelected={setSelected} text="Word 14" id="14"/>
       <Word setSelected={setSelected} text="Word 15" id="15"/>
       <Word setSelected={setSelected} text="Word 16" id="16"/>
-      <Submit />
+      <Submit matchStatus={matched} setMatched={setMatched} selected={selected}/>
       <Message selected={selected}/>
       {/* Update message after onSubmit with new state for potential errors */}
     </>
