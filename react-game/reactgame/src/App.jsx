@@ -20,22 +20,22 @@ function App() {
     <>
       <h1>🧠 Connections 🧠</h1>
       <h3>How many tries will it take <i>you</i> to group these words into <b>four</b> categories?</h3>
-      <Word matched={matched} selected={selected} setSelected={setSelected} text="Word 1" id="1"/>
-      <Word matched={matched} selected={selected} setSelected={setSelected} text="Word 2" id="2"/>
-      <Word matched={matched} selected={selected} setSelected={setSelected} text="Word 3" id="3"/>
-      <Word matched={matched} selected={selected} setSelected={setSelected} text="Word 4" id="4"/>
-      <Word matched={matched} selected={selected} setSelected={setSelected} text="Word 5" id="5"/>
-      <Word matched={matched} selected={selected} setSelected={setSelected} text="Word 6" id="6"/>
-      <Word matched={matched} selected={selected} setSelected={setSelected} text="Word 7" id="7"/>
-      <Word matched={matched} selected={selected} setSelected={setSelected} text="Word 8" id="8"/>
-      <Word matched={matched} selected={selected} setSelected={setSelected} text="Word 9" id="9"/>
-      <Word matched={matched} selected={selected} setSelected={setSelected} text="Word 10" id="10"/>
-      <Word matched={matched} selected={selected} setSelected={setSelected} text="Word 11" id="11"/>
-      <Word matched={matched} selected={selected} setSelected={setSelected} text="Word 12" id="12"/>
-      <Word matched={matched} selected={selected} setSelected={setSelected} text="Word 13" id="13"/>
-      <Word matched={matched} selected={selected} setSelected={setSelected} text="Word 14" id="14"/>
-      <Word matched={matched} selected={selected} setSelected={setSelected} text="Word 15" id="15"/>
-      <Word matched={matched} selected={selected} setSelected={setSelected} text="Word 16" id="16"/>
+      <Word matched={matched} selected={selected} setSelected={setSelected} text="turtle" id="1"/>
+      <Word matched={matched} selected={selected} setSelected={setSelected} text="sunshine" id="2"/>
+      <Word matched={matched} selected={selected} setSelected={setSelected} text="state" id="3"/>
+      <Word matched={matched} selected={selected} setSelected={setSelected} text="bird" id="4"/>
+      <Word matched={matched} selected={selected} setSelected={setSelected} text="parrot" id="5"/>
+      <Word matched={matched} selected={selected} setSelected={setSelected} text="component" id="6"/>
+      <Word matched={matched} selected={selected} setSelected={setSelected} text="rest" id="7"/>
+      <Word matched={matched} selected={selected} setSelected={setSelected} text="copy" id="8"/>
+      <Word matched={matched} selected={selected} setSelected={setSelected} text="render" id="9"/>
+      <Word matched={matched} selected={selected} setSelected={setSelected} text="repeat" id="10"/>
+      <Word matched={matched} selected={selected} setSelected={setSelected} text="dog" id="11"/>
+      <Word matched={matched} selected={selected} setSelected={setSelected} text="water" id="12"/>
+      <Word matched={matched} selected={selected} setSelected={setSelected} text="match" id="13"/>
+      <Word matched={matched} selected={selected} setSelected={setSelected} text="root" id="14"/>
+      <Word matched={matched} selected={selected} setSelected={setSelected} text="nutrients" id="15"/>
+      <Word matched={matched} selected={selected} setSelected={setSelected} text="cat" id="16"/>
       <Submit setCount={setCount} setMatched={setMatched} selected={selected} setSelected={setSelected}/>
       <Message selected={selected}/>
       <h4>Tries: {count}</h4>
