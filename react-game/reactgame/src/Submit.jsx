@@ -3,9 +3,10 @@ import './App.jsx'
 
 //Create an array with the answer key. Each matched group is an array within this array.
 const answerKey = [["1", "4", "11", "16"], ["5", "8", "10", "13"], ["3", "6", "9", "14"], ["2", "7", "12", "15"]]
+const colors = ["red", "purple", "green", "blue"]
 
 
-const Submit = ({matched, setMatched, selected}) => {
+const Submit = ({setSelected, setMatched, selected}) => {
     //Creates a variable to add styling within the component rather than in a stylesheet
     const style = {
         backgroundColor: "#f7fc81",
@@ -26,10 +27,10 @@ const Submit = ({matched, setMatched, selected}) => {
                 }
             } 
             if (matches) {
-                return true;
+                return {answerMatches: true, colorIndex: j};
             }
         }
-        return false;
+        return {answerMatches: false};
     }
 
     //Create a function to check matches when users submit guesses
@@ -37,24 +38,23 @@ const Submit = ({matched, setMatched, selected}) => {
         // If there aren't enough words selected, do not submit
         if (selected.length < 4) {
             return
-        } else {
-            console.log(`What is being submitted: ${selected}`); //DELETE after it works
-            // let guess = selected.sort((a, b) => (a - b));
-            // console.log(guess) //DELETE after it works
-            //Check to see if the words submitted by the user match any groups in the answer key
-            if (checkAnswer()) {
-                console.log("This worked!")
-                //If it matches, update the state tracking matches
-                setMatched ((currentMatched) => {
-                    //NEED TO DO: set button to know it's matched (so we can update color)
-                    //NEED TO DO: make it so it's not clickable? Or does that happen once we tell it it's matched and change the color?
-                    return [...currentMatched];
-                })
-            } else {
-                console.log("Need to change the message");
-                //Do nothing?? Change message to Try Again? and clear the selections!
-            }
         }
+        //Check to see if the words submitted by the user match any groups in the answer key
+        const {answerMatches, colorIndex} = checkAnswer()
+        if (answerMatches) {
+            console.log("This worked!")
+            //If it matches, update the state tracking matches
+            setMatched ((currentMatched) => {
+                //NEED TO DO: set button to know it's matched (so we can update color)
+                //NEED TO DO: make it so it's not clickable? Or does that happen once we tell it it's matched and change the color?
+                const newMatched = {...currentMatched};
+                selected.forEach((item) => {
+                    newMatched[item] = colors[colorIndex];
+                })
+                return newMatched;
+            })
+        }
+        setSelected([]);
     }
 
     return (

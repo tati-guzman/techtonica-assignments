@@ -11,7 +11,7 @@ import './App.jsx'
 //     selected = newSelected
 // }
 
-const Word = ({setSelected, text, id}) => {
+const Word = ({setSelected, text, id, matched}) => {
 
     //Create a function to keep track of the selected buttons
   const onClick = () => {
@@ -31,10 +31,11 @@ const Word = ({setSelected, text, id}) => {
       }
     )
 }
+    const color = id in matched ? matched[id] : "lightskyblue"
 
     return (
         <div>
-            <button onClick={onClick}>{text}</button>
+            <button style={{backgroundColor: color}} onClick={onClick} disabled={id in matched}>{text}</button>
         </div>
     )
 }
