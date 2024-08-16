@@ -6,7 +6,7 @@ import './App.jsx'
 const answerKey = [["1", "4", "11", "16"], ["5", "8", "10", "13"], ["3", "6", "9", "14"], ["2", "7", "12", "15"]]
 
 //Create an array with the button colors when successfully matched
-const colors = ["red", "purple", "green", "blue"]
+const colors = ["lightcyan", "lightgoldenrodyellow", "peachpuff", "powderblue"]
 
 //Pass in various props for the submit button to update states as necessary
 const Submit = ({setCount, setSelected, setMatched, selected}) => {
