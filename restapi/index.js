@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors'; //I don't know what this does!
-// import webkinz from './webkinz.js';
+import webkinz from './webkinz.js';
 
 const app = express();
 const PORT = 5000;
@@ -13,6 +13,7 @@ app.use(cors());
 
 //Create route for GET
 app.get('/', (req, res) => {
+    res.json(webkinz)
     console.log("This worked!");
 })
 
