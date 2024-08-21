@@ -11,10 +11,16 @@ app.use(cors());
 
 //Need to practice the four CRUD operations: POST, GET, PUT, DELETE
 
-//Create route for GET
+//Create Welcome Message for Root Directory
 app.get('/', (req, res) => {
+    res.json("Welcome to my Webkinz Page! Navigate to '/webkinz' to see the list of Webkinz!")
+    console.log("Made it to the main page");
+})
+
+//Create route for GET
+app.get('/webkinz', (req, res) => {
     res.json(webkinz)
-    console.log("This worked!");
+    console.log("In the Webkinz page!");
 })
 
 
