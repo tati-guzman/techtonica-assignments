@@ -1,4 +1,11 @@
-//Array with Objects of Webkinz 
+//Array with Objects of 10 Webkinz 
+
+//ID: Unique number to classify each one
+//Name: The name of the stuffed animal
+//Type: The species of the animal
+//Color: Fur color
+//Release Year: Year the stuffie was first released to the public
+//Description: Information on each stuffed animal 
 
 const webkinz = [
       {
