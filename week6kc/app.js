@@ -5,7 +5,7 @@ import fetch from 'node-fetch';
 const app = express();
 const PORT = 5683;
 
-// Replaced 'YOUR_OAUTH_TOKEN' with my actual OAuth token - need to set in env file
+// Replaced 'YOUR_OAUTH_TOKEN' with my actual OAuth token - In actual projects, would need to save in an env file!
 const oauthToken = 'OB4Z4ZD2SDIQQJK4H2DN';
 
 //Dummy Event Information
