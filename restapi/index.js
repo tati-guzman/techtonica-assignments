@@ -67,31 +67,30 @@ app.get('/webkinz', async (req, res) => {
     data.query('SELECT * FROM animals ORDER BY id ASC', (err, results) => {
         if (err) {
             console.error(err);
-            return;
+            return; 
         }
         console.log("GET Route worked! Woohoo!");
         res.json(results.rows);
     });
-})
+});
 
 
 //Create POST Route to submit new Webkinz data
-app.post('/make-new-entry', async function (req, res) {
+app.post('/webkinz', async (req, res) => {
     console.log("Making a new animal...");
-
-    let newAnimal = {
-        id: req.body.id,
-        name: req.body.name,
-        type: req.body.type,
-        color: req.body.color,
-        release_year: req.body.release_year,
-        description: req.body.description
-    }
-
-    console.log(newAnimal);
     
-    res.send(newAnimal);
-})
+    try {
+        console.info(req.body)
+        const { id, name, type, color, release_year, description } = req.body;
+        console.info("name", name)
+        const query = 'INSERT INTO animals (id, name, type, color, release_year, description) VALUES ($1, $2, $3, $4, $5, $6)';
+        await data.query(query, [id, name, type, color, release_year, description]);
+        res.json({ message: 'Animal created successfully'});
+        return;
+    } catch (error) {
+        res.status(500).json({ error: 'Error creating item', details: error });
+    }
+    });
 
 //Create PUT Route
 
