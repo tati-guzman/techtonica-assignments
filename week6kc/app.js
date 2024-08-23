@@ -1,12 +1,11 @@
 //Updated import statements
 import express from 'express';
 import fetch from 'node-fetch';
-// import axios from 'axios';
 
 const app = express();
 const PORT = 5683;
 
-// Replaced 'YOUR_OAUTH_TOKEN' with my actual OAuth token
+// Replaced 'YOUR_OAUTH_TOKEN' with my actual OAuth token - need to set in env file
 const oauthToken = 'OB4Z4ZD2SDIQQJK4H2DN';
 
 //Dummy Event Information
@@ -14,9 +13,6 @@ const dummyEventId = '1001499059647';
 
 //URL for fetching the dummy event details
 const url = `https://www.eventbriteapi.com/v3/events/${dummyEventId}/?expand=`;
-       
-// 'Grant_Type': 'authorization_code',
-        // 'Client_Id': 'I4G2CHKPEBK2HGZ2QJ',
 
 //Parameters for the fetch request
 const params = {
@@ -46,6 +42,20 @@ app.get('/ticketavailability', async (req, res) => {
 
 //2 - Example route for fetching ticket class details
 const ticketClasses = url + 'ticket_classes';
+
+app.get('/ticketclass', async (req, res) => {
+    console.log("Getting ticket class information!");
+
+    try {
+        console.info(params);
+        const response = await fetch(ticketClasses, params);
+        const data = await response.json();
+        res.json(data.ticket_classes);
+    } catch (error) {
+        res.status(500).json({ error: 'Error fetching details', details: error });
+    }
+
+});
 
 //3 - Example route for fetching event format
 const order = url + 'format';
