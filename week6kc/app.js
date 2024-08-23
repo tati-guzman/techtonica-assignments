@@ -75,6 +75,19 @@ app.get('/eventType', async (req, res) => {
 //4 - Example route for fetching venue details
 const venue = url + 'venue';
 
+app.get('/venue', async (req, res) => {
+    console.log("Getting venue details!");
+
+    try {
+        const response = await fetch(venue, params);
+        const data = await response.json();
+        res.json(data.venue);
+    } catch (error) {
+        res.status(500).json({ error: 'Error fetching details', details: error });
+    }
+
+});
+
 //5 - Example route for fetching organizer details
 const organizer = url + 'organizer';
 
