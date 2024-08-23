@@ -14,12 +14,15 @@ const dummyEventId = '1001499059647';
 
 //URL for fetching the dummy event details
 const url = `https://www.eventbriteapi.com/v3/events/${dummyEventId}/?expand=`;
+       
+// 'Grant_Type': 'authorization_code',
+        // 'Client_Id': 'I4G2CHKPEBK2HGZ2QJ',
 
 //Parameters for the fetch request
 const params = {
     method: 'GET',
     headers: {
-        'Authorization': `Bearer: ${oauthToken}`,
+        'Authorization': `Bearer ${oauthToken}`,
         'Content-Type': 'application/json'
     }
 };
@@ -31,9 +34,10 @@ app.get('/ticketavailability', async (req, res) => {
     console.log("Getting ticket availability!");
 
     try {
+        console.info(params);
         const response = await fetch(availability, params);
         const data = await response.json();
-        res.json(data);
+        res.json(data.ticket_availability);
     } catch (error) {
         res.status(500).json({ error: 'Error fetching details', details: error });
     }
