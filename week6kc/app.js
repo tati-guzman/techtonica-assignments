@@ -47,7 +47,6 @@ app.get('/ticketclass', async (req, res) => {
     console.log("Getting ticket class information!");
 
     try {
-        console.info(params);
         const response = await fetch(ticketClasses, params);
         const data = await response.json();
         res.json(data.ticket_classes);
@@ -57,8 +56,21 @@ app.get('/ticketclass', async (req, res) => {
 
 });
 
-//3 - Example route for fetching event format
-const order = url + 'format';
+//3 - Example route for fetching event type
+const eventType = url + 'format';
+
+app.get('/eventType', async (req, res) => {
+    console.log("Getting event type!");
+
+    try {
+        const response = await fetch(eventType, params);
+        const data = await response.json();
+        res.json(data.format);
+    } catch (error) {
+        res.status(500).json({ error: 'Error fetching details', details: error });
+    }
+
+});
 
 //4 - Example route for fetching venue details
 const venue = url + 'venue';
