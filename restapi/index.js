@@ -1,19 +1,19 @@
 import express from 'express';
-import cors from 'cors'; //I don't know what this does!
+import cors from 'cors';
 // import webkinz from './webkinz.js';
 import pkg from 'pg';
 
 const app = express();
 const PORT = 5001;
-// const bodyParser = require("body-parser");
 
-//Configuring cors middleware - WHAT DOES THAT MEAN
+//Configuring cors middleware
 app.use(cors());
 
-//Make it use the express middleware??
+//Make it use the express parser
 app.use(express.json());
 
 //Configure bodyparser to know how to read the data more clearly
+// const bodyParser = require("body-parser");
 // app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({extended: true}));
 // var urlencodedParser = bodyParser.urlencoded({extended: false});
@@ -29,18 +29,7 @@ const data = new Pool({
     port: 5432
 })
 
-//Example of a data query:
-// data.query('SELECT * FROM animals', (err, res) => {
-//     if (err) {
-//         console.error(err);
-//         return;
-//     }
-//     console.log(res.rows[0]);
-// });
-// data.release;
-
-
-//Use these instead to keep these secret and store the stuff in env files
+//In the future, use these instead to keep these secret and store the stuff in env files
 // const secretPool = new Pool({
 //     user: process.env.DB_USER,          
 //     host: process.env.DB_HOST,          
@@ -48,7 +37,6 @@ const data = new Pool({
 //     password: process.env.DB_PASSWORD,  
 //     port: process.env.DB_PORT,    
 // });
-
 
 //Create Welcome Message for Root Directory
 app.get('/', (req, res) => {
@@ -91,7 +79,7 @@ app.post('/webkinz', async (req, res) => {
     }
     });
 
-//Create PUT Route
+//Create PUT Route to update a specific animal via their id
 
 app.put('/webkinz/:id', async (req, res) => {
     console.log("PUT Request: Updating one of the current animals!");
@@ -117,7 +105,7 @@ app.put('/webkinz/:id', async (req, res) => {
     }
     });
 
-//Create DELETE Route
+//Create DELETE Route to remove a whole row from the table via the id
 app.delete('/webkinz/:id', async (req, res) => {
     console.log("We'll be deleting this animal soon! Good riddance!");
     const id = req.params.id;
