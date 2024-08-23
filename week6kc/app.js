@@ -23,7 +23,7 @@ const params = {
     }
 };
 
-// Example route for fetching ticket availability
+//1 - Example route for fetching ticket availability
 const availability = url + 'ticket_availability';
 
 app.get('/ticketavailability', async (req, res) => {
@@ -88,10 +88,21 @@ app.get('/venue', async (req, res) => {
 
 });
 
-//5 - Example route for fetching organizer details
-const organizer = url + 'organizer';
+//5 - Example route for fetching event description
+const description = url + 'description';
 
+app.get('/description', async (req, res) => {
+    console.log("Getting event description!");
 
+    try {
+        const response = await fetch(description, params);
+        const data = await response.json();
+        res.json(data.description.text);
+    } catch (error) {
+        res.status(500).json({ error: 'Error fetching details', details: error });
+    }
+
+});
 
 //Print server information when port detects active server
 app.listen(PORT, () => {
