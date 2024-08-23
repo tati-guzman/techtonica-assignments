@@ -37,7 +37,6 @@ const data = new Pool({
 //     }
 //     console.log(res.rows[0]);
 // });
-
 // data.release;
 
 
@@ -57,7 +56,7 @@ app.get('/', (req, res) => {
     console.log("Made it to the main page");
 })
 
-//Need to practice the four CRUD operations: POST, GET, PUT, DELETE
+//Need to practice the four CRUD operations: GET, POST, PUT, DELETE
 
 //Create GET route to show all Webkinz
 app.get('/webkinz', async (req, res) => {
@@ -78,7 +77,7 @@ app.get('/webkinz', async (req, res) => {
 //Create POST Route to submit new Webkinz data
 app.post('/webkinz', async (req, res) => {
     console.log("Making a new animal...");
-    
+        
     try {
         console.info(req.body)
         const { id, name, type, color, release_year, description } = req.body;
@@ -94,30 +93,44 @@ app.post('/webkinz', async (req, res) => {
 
 //Create PUT Route
 
-//     data.query('UPDATE animals SET name = \'Angry Dawg\' WHERE id = 1', (err, results) => {
-//         if (err) {
-//             console.error(err);
-//             return;
-//         }
-//         console.log("Updating is working!");
-//         // res.json(results.rows[0]);
-//     });
+app.put('/webkinz/:id', async (req, res) => {
+    console.log("PUT Request: Updating one of the current animals!");
+    const id = req.params.id;
 
-//     data.query('SELECT * FROM animals ORDER BY id', (err, results) => {
-//         if (err) {
-//             console.error(err);
-//             return;
-//         }
-//         console.log("Second query worked!");
-//         console.log(results.rows);
-//     });
+    try {
+        const fields = Object.keys(req.body);
+        const values = Object.values(req.body);
 
-//     data.release;
-    
-// })
+        if (fields.length === 0) {
+            res.status(400).json({ error: 'No fields to update'});
+            return;
+        }
+
+        const queryInsert = fields.map((field, index) => `"${field}" = $${index + 1}`).join(', ');
+        const query = `UPDATE animals SET ${queryInsert} WHERE id = ${id}`;
+        
+        await data.query(query, values);
+        res.json({ message: 'Update was successful'});
+        return;
+    } catch (error) {
+        res.status(500).json({ error: 'Error updating item', details: error });
+    }
+    });
 
 //Create DELETE Route
+app.delete('/webkinz/:id', async (req, res) => {
+    console.log("We'll be deleting this animal soon! Good riddance!");
+    const id = req.params.id;
 
+    try {
+        const deletionStatement = `DELETE FROM animals WHERE id = ${id}`;
+        await data.query(deletionStatement);
+        res.json({message: 'Bye bye animal! It\'s been deleted!'});
+        return;
+    } catch (error) {
+        res.status(500).json({ error: 'Could not delete animal', details: error });
+    }
+});
 
 //Print welcome message when active PORT is detected
 app.listen(PORT, () => console.log(`Welcome to a blast from the past! This server is running on http://localhost:${PORT}`));
