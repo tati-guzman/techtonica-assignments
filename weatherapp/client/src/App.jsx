@@ -2,9 +2,10 @@ import { useEffect, useState } from 'react'
 import './App.css'
 
 function App() {
+  
   const [message, setMessage] = useState(0)
 
-  //fetch details
+  //Fetch Details
   useEffect(() => {
     fetch('/')
       .then((res) => res.text())
