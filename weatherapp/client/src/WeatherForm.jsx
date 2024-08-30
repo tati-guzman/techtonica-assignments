@@ -27,7 +27,7 @@ const WeatherForm = ({setCity}) => {
     
 
     return (
-        <div>
+        <div className="search">
            <form onSubmit={handleSubmit}>
                 <input 
                     type="text"

@@ -1,7 +1,48 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
+.weather-container {
+  width: 35rem;
+  height: 65rem;
+  background-image: linear-gradient(to right, #f3b07c, #fcd283);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 3rem;
   padding: 2rem;
-  text-align: center;
+  box-shadow: -3rem 1rem 6rem rgba(0, 0, 0, 0.1);
 }
 
+.details img{
+  display: none;
+}
+
+.search {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+}
+
+.search input {
+  width: 25rem;
+  height: 3.5rem;
+  border-radius: 3rem;
+  padding: 1rem 3rem 1rem 1rem;
+  font-size: 1.6rem;
+}
+
+.search input::placeholder {
+  font-size: 1.4rem;
+  letter-spacing: 0.1rem;
+}
+
+.location {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  font-size: 1.6rem;
+  letter-spacing: 0.1rem;
+}
+
+.location i{
+  font-size: 2rem;
+  color: #2f2e57;
+}
