@@ -9,8 +9,8 @@ function App() {
   //Fetch Details
   useEffect(() => {
     fetch('/api')
-      .then((res) => res.text())
-      .then((data) => setWeather(data))
+      .then((res) => res.json())
+      .then((data) => setWeather(data.data))
       .catch((err) => console.log(err));
   }, [])
 
