@@ -48,7 +48,7 @@ function App() {
 
       <h1>Weather data:</h1>
 
-      <Weather data={weather}/>
+      <Weather weatherData={weather}/>
     </>
 )}
 
