@@ -3,11 +3,12 @@ import './App.css'
 
 function App() {
   
-  const [message, setMessage] = useState(0)
+  const [message, setMessage] = useState(null)
 
   //Fetch Details
   useEffect(() => {
-    fetch('/')
+
+    fetch('/api')
       .then((res) => res.text())
       .then((data) => setMessage(data))
       .catch((err) => console.log(err));
@@ -17,6 +18,8 @@ function App() {
   return (
     <>
       <h1>{message}</h1>
+
+      <h2>This is working on the front end!</h2>
     </>
   )
 }
