@@ -1,5 +1,5 @@
 //Import React functionality from react package
-import React from 'react'
+import React, { useState } from 'react'
 //Import info from App
 import './App.jsx'
 //Import weather icons from assets folder
@@ -19,9 +19,20 @@ const Weather = ({weatherData}) => {
     //     snowy: "two gray clouds with several blue snowflakes"
     // }
 
+    // const [forecast, setForecast] = useState(null);
+
     //Log weather data passed into this component for debugging
     console.info(weatherData)
     
+    // const [icon, setIcon] = useState("");
+    
+
+    //Update icon with setIcon //NEED TO FIGURE THIS OUT
+    // const iconId = weatherData.weather[0].icon; 
+    // setIcon(weatherData.weather[0].icon);
+    //  console.log(iconId);
+    //  const iconURL = `http://openweathermap.org/img/w/${icon}.png`
+
     return (
         <div className="info">
             {weatherData ? (
@@ -32,7 +43,7 @@ const Weather = ({weatherData}) => {
                     </div>
                     
                     <div className="details">
-                        <img src={`${forecastOptions[`${forecast}`]}`} alt={`${alt`${forecastOptions[`${forecast}`]}`}`} />
+                        {/* <img src={iconURL}/> */}
 
                         <p className="weather-type">Forecast: {weatherData.weather[0].main}</p>
                         
@@ -40,13 +51,13 @@ const Weather = ({weatherData}) => {
                         
                         <div className="weather-specifics">
                             <div className="humidity">
-                                <i className="fa-solid fa-droplet"></i>
-                                <p>Humidity: {weatherData.weather[0].description}</p>
+                                <p>Humidity: {weatherData.main.humidity}</p>
+                                {/* <i className="fa-solid fa-droplet"></i> */}
                             </div>
 
                             <div className="wind">
-                                <i className="fa-solid fa-wind"></i>
                                 <p className="wind">Wind: {weatherData.wind.speed}mph</p>
+                                {/* <i className="fa-solid fa-wind"></i> */}
                             </div>
                         </div>
                     </div>
