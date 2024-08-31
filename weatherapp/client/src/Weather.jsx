@@ -22,15 +22,19 @@ const Weather = ({weatherData}) => {
     // const [forecast, setForecast] = useState(null);
 
     //Log weather data passed into this component for debugging
-    console.info(weatherData)
+    // console.info(weatherData)
     
     // const [icon, setIcon] = useState("");
     
 
     //Update icon with setIcon //NEED TO FIGURE THIS OUT
-    // const iconId = weatherData.weather[0].icon; 
-    // setIcon(weatherData.weather[0].icon);
-    //  console.log(iconId);
+    console.info('weatherData', weatherData)
+    // if (weatherData && weatherData.weather.length > 0) {
+    //     const iconId = weatherData.weather[0].icon; 
+    //     setIcon(weatherData.weather[0].icon);
+    //     console.log(iconId);
+    // }
+
     //  const iconURL = `http://openweathermap.org/img/w/${icon}.png`
 
     return (
@@ -43,7 +47,7 @@ const Weather = ({weatherData}) => {
                     </div>
                     
                     <div className="details">
-                        {/* <img src={iconURL}/> */}
+                        <img src={`http://openweathermap.org/img/w/${weatherData.weather[0].icon}.png`}/>
 
                         <p className="weather-type">Forecast: {weatherData.weather[0].main}</p>
                         
