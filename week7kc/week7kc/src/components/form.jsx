@@ -10,13 +10,17 @@ const RegisterYourApplicationForm = ({onSubmit}) => {
     const userOrderNum = useRef(null);
     const reasonForReturn = useRef(null);
 
+    //When the input on any of the fields changes, the appropriate ref is updated to hold its new value (and does not re-render anything since it's a ref)
     const handleChange = (event, ref) => {
         ref.current = event.target.value;
     };
 
-
+    //Function for when the form is submitted
     const handleSubmit = (event) => {
+        //Prevents page from being re-loaded
         event.preventDefault();
+
+        //Set the object allUserInfo to hold the values of the submitted data by plugging in the current ref values
         const allUserInfo = {
             name: userName.current,
             email: userEmail.current,
@@ -24,6 +28,7 @@ const RegisterYourApplicationForm = ({onSubmit}) => {
             reason: reasonForReturn.current
         };
 
+        //Send this data to the parent component to run onSubmit function with user values
         onSubmit(allUserInfo);
   };
 
