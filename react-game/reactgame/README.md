@@ -34,7 +34,7 @@ npm run dev
 
 ### Demo
 
-![weather app gif](reactgame/react-game.gif)
+![react game demo](reactgame/react-game.gif)
 
 
 ## Built With
