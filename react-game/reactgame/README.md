@@ -34,7 +34,7 @@ npm run dev
 
 ### Demo
 
-Add picture!
+![weather app gif](reactgame/react-game.gif)
 
 
 ## Built With
