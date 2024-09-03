@@ -6,7 +6,7 @@ import './App.jsx'
 const Weather = ({weatherData}) => {
 
     return (
-        <div className="info">
+        <>
             {weatherData ? (
                 <div className="weather-container">
                     <div className="location">
@@ -37,7 +37,7 @@ const Weather = ({weatherData}) => {
                 ) : (
                     <p> Weather Data coming soon! </p>
                 )}
-        </div>
+        </>
     )
 }
 

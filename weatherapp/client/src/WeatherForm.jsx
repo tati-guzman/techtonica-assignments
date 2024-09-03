@@ -27,7 +27,7 @@ const WeatherForm = ({setCity}) => {
     
 
     return (
-        <div className="search">
+        <>
            <form onSubmit={handleSubmit}>
                 <input 
                     type="text"
@@ -38,8 +38,7 @@ const WeatherForm = ({setCity}) => {
                 />
                 <button type="submit">Get Weather</button>
             </form>
-        
-        </div>
+        </>
     )
 }
 
