@@ -11,27 +11,27 @@ const Weather = ({weatherData}) => {
                 <div className="weather-container">
                     <div className="location">
                         <i className="fa-solid fa-location-dot"></i>
-                        <p>City Name: {weatherData.name}</p>
+                        <p>{weatherData.name}</p>
                     </div>
                     
                     <div className="details">
-                        <img src={`http://openweathermap.org/img/w/${weatherData.weather[0].icon}.png`}/>
-
                         <p className="weather-type">Forecast: {weatherData.weather[0].main}</p>
                         
+                        <img src={`http://openweathermap.org/img/w/${weatherData.weather[0].icon}.png`}/>
+
                         <p className="temp">Temperature: {weatherData.main.temp}°F</p>
                         
-                        <div className="weather-specifics">
+                        {/* <div className="weather-specifics"> */}
                             <div className="humidity">
+                                <i className="fa-solid fa-droplet"></i>
                                 <p>Humidity: {weatherData.main.humidity}</p>
-                                {/* <i className="fa-solid fa-droplet"></i> */}
                             </div>
 
                             <div className="wind">
-                                <p className="wind">Wind: {weatherData.wind.speed}mph</p>
-                                {/* <i className="fa-solid fa-wind"></i> */}
+                                <i className="fa-solid fa-wind"></i>
+                                <p className="wind">Wind: {weatherData.wind.speed}mph</p>                
                             </div>
-                        </div>
+                        {/* </div> */}
                     </div>
                 </div>
                 ) : (
