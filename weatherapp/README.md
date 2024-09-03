@@ -62,17 +62,17 @@ Start the front end - it should run on PORT 5173
 npm run dev
 ```
 
-Navigate to ![http://localhost:5173] to interact with the front end of the app.
+Navigate to [http://localhost:5173](http://localhost:5173) to interact with the front end of the app.
 
 ### Demo
 
 Landing Page:
 
-!(Add Picture)[]
+![Screenshot 2024-09-03 at 3 28 39 AM](https://github.com/user-attachments/assets/df3abc18-5529-4a47-9756-79f7613a5a02)
 
 Weather Data View:
 
-!(Add Picture)[]
+![Screenshot 2024-09-03 at 2 24 32 AM](https://github.com/user-attachments/assets/2d393b8e-2a4c-426c-9637-5abe9c75c7d6)
 
 ## Built With
 
