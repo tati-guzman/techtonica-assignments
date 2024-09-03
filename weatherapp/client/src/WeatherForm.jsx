@@ -8,7 +8,7 @@ const WeatherForm = ({setCity}) => {
     
     //Create a state for the text inputted into the search field
     const [inputText, setInputText] = useState("")
-    
+
     //When the user submits data, change the city value and clear the input field
     const handleSubmit = (event) => {
         //Prevent the page from re-loading
@@ -27,7 +27,7 @@ const WeatherForm = ({setCity}) => {
     
 
     return (
-        <div>
+        <>
            <form onSubmit={handleSubmit}>
                 <input 
                     type="text"
@@ -38,8 +38,7 @@ const WeatherForm = ({setCity}) => {
                 />
                 <button type="submit">Get Weather</button>
             </form>
-        
-        </div>
+        </>
     )
 }
 
