@@ -1,33 +1,38 @@
+body {
+  font-family: "Lilita One", sans-serif;
+  font-style: normal;
+  font-size: 2rem;
+  letter-spacing: 0.1rem;
+  padding: 1rem 1rem 1rem 1rem;
+  color: #355467;
+  background-color: #f5fbf3;
+  text-align: center;
+}
+
 form {
-  /* display: flex;
-  flex-direction: row;
-  row-gap: 1rem;
-  justify-content: center;
-  align-items: stretch; */
   margin-bottom: auto;
 }
 
 form input {
-  width: 25rem;
+  width: 20rem;
   height: 3.5rem;
   border-radius: 1.5rem;
-  font-size: 2rem;
-  /* position: absolute; */
-  /* margin: 1rem 1rem 1rem 1rem; */
+  font-size: 1.5rem;
+  text-align: center;
+  color: #355467;
+  background-color: aliceblue;
 }
 
 
 form button {
-  /* position: relative; */
-  /* top: 50%; */
-  /* transform: translateY(-50%); */
   font-size: 2rem;
   border-radius: 1.5rem;
   width: 15rem;
   height: 3.5rem;
   padding: 0;
-  /* margin: 1rem 1rem 1rem 1rem; */
+  margin: 1rem 1rem 1rem 1rem;
   background-color: azure;
+  color: #355467;
 }
 
 form button:hover {
@@ -35,7 +40,7 @@ form button:hover {
   cursor: pointer;
 }
 
-.details {
+.details-wrapper {
   background-image: linear-gradient(to right, #f3b07c, #fcd283);
   background-color: rgba(255, 255, 255, 0.7);
   justify-content: center;
@@ -43,14 +48,16 @@ form button:hover {
   flex-direction: column;
   align-items: center;
   border-radius: 3rem;
-  margin: 0% 25%;
+  margin: 0% auto;
+  width: 50%;
   box-shadow: -3rem 1rem 6rem rgba(0, 0, 0, 0.1);
 }
 
-.details > * {
+.details-wrapper > * {
   background-color: rgba(255, 255, 255, 0.5);
   border: solid;
   border-radius: 2rem;
+  padding: 0.5rem 1rem;
 }
 
 img {
@@ -65,29 +72,31 @@ img {
   justify-content: center;
 }
 
-.humidity {
+.details {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  margin: 1rem 0;
 }
 
-.humidity i {
-  font-size: 2rem;
-  /* text-shadow: -0.3rem 0.3rem 0.5rem white; */
+.fa-droplet {
+  font-size: 2.5rem;
   background-clip: text;
   color: lightskyblue;
+  padding: 0 1rem;
 }
 
-.wind {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-}
-
-.wind i {
+.fa-wind {
   font-size: 3rem;
   background-clip: text;
   color: gray;
+  padding: 0 1rem;
+}
+
+@media screen and (max-width: 768px) {
+  .details-wrapper {
+    margin: 0% auto;
+    width: auto;
+  }
 }
