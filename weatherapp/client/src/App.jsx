@@ -43,7 +43,7 @@ function App() {
 
   return (
     <>
-      <h1>Need a Rain Check?</h1>
+      <h2>Need a Rain Check?</h2>
       
       <WeatherForm setCity={setCity}/>
 
