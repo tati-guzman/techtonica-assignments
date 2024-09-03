@@ -32,6 +32,20 @@ Install all relevant dependencies
 npm install
 ```
 
+Create an account and retrieve an API Key at [OpenWeather API](https://openweathermap.org/api)
+
+Create a .env file to store an API Key
+
+```
+touch .env
+```
+
+In the file, insert your API Key as such:
+
+```
+API_KEY='YOUR_API_KEY'
+```
+
 Start the server - it should run on PORT 5002
 
 ```
