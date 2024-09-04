@@ -34,7 +34,7 @@ npm run dev
 
 ### Demo
 
-Add picture!
+![react game demo](./react-game.gif)
 
 
 ## Built With
