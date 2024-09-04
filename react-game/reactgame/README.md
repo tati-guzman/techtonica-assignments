@@ -34,7 +34,7 @@ npm run dev
 
 ### Demo
 
-![react game demo](reactgame/react-game.gif)
+![react game demo](./react-game.gif)
 
 
 ## Built With
