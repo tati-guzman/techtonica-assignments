@@ -9,7 +9,11 @@ const Landing = () => {
     return (
         <>
             <h1>Welcome to Tati's Terrific Trivia!</h1>
-            <details>Test your <em>Animal Knowledge</em> by answering 10 True/False Questions. Click the button to begin!</details>
+
+            <p>Test your <em>Animal Knowledge</em> by answering 10 True/False questions.</p>
+            
+            <p>Click the button to begin!</p>
+            
             <StartButton />
         </>
     )

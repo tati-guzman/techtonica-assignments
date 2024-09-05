@@ -4,8 +4,14 @@ import React, { useState } from 'react'
 import './App.jsx'
 
 const StartButton = () => {
+    
+    const onClick = () => {
+        console.log("The quiz should start");
+    }
+    
     return (
         <>
+            <button type="submit" onClick={onClick}>Ready to Rumble!</button>
         </>
     )
 }
