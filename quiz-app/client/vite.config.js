@@ -7,7 +7,7 @@ export default defineConfig({
   root: '.',
   server: {
     proxy: {
-      '/trivia': {
+      '/quiz': {
         target: 'http://localhost:5003',
         changeOrigin: true,
         secure: false

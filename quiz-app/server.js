@@ -20,16 +20,22 @@ app.use(bodyParser.urlencoded({extended: true}));
 const PORT = 5003;
 
 //GET request to fetch data from trivia
-app.get('/api', async (req, res) => {
-    const url = //PUT IN URL HERE
+app.get('/quiz', async (req, res) => {
+    const url = 'https://opentdb.com/api.php?amount=10&category=27&difficulty=easy&type=boolean'
+    
+    console.log("Made it to the server")
+    
     //Server will fetch the information from the URL
     fetch(url)
         //Response is parsed into json format
         .then((res) => res.json())
         //JSON data is then sent to front end
-        .then((data) => res.send({data}))
-        //If there is an error, the details will be logged to the console
-        .catch((err) => console.error({Details: err})); //Future implementation should also send a message to the user!!
+        .then((data) => res.send(data))
+        //If there is an error, the details will be logged to the console and an oops message will be sent to user
+        .catch((err) => {
+            console.error({Details: err});
+            res.send("Uh oh! Something went wrong getting new quiz questions!")
+        }); //DOUBLE CHECK IF THIS IS HOW TO SEND MESSAGE TO USER    
 })
 
 
