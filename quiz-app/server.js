@@ -24,7 +24,7 @@ app.get('/quiz', async (req, res) => {
     const url = 'https://opentdb.com/api.php?amount=10&category=27&difficulty=easy&type=boolean'
     
     console.log("Made it to the server")
-    
+
     //Server will fetch the information from the URL
     fetch(url)
         //Response is parsed into json format
@@ -35,7 +35,7 @@ app.get('/quiz', async (req, res) => {
         .catch((err) => {
             console.error({Details: err});
             res.send("Uh oh! Something went wrong getting new quiz questions!")
-        }); //DOUBLE CHECK IF THIS IS HOW TO SEND MESSAGE TO USER    
+        });
 })
 
 
