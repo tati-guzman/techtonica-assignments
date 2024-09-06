@@ -1,0 +1,53 @@
+body {
+    font-size: 1.5rem;
+    letter-spacing: 0.05rem;
+
+    background-color: #fdfbe6;
+    background-image: url("images/animalbackground.jpg");
+    background-size: cover;
+
+    text-align: center;
+    padding: 5rem 5rem 5rem 5rem;
+  }
+
+.container {
+    background-color: #013220;
+    color: white;
+    padding: 1rem 1rem 1rem 1rem;
+    margin: 0% auto;
+    width: 70%;
+    border-radius: 3rem;
+}
+
+button {
+    background-color: #f5b13d;
+    font-size: 1.25rem;
+    padding: 0.8rem;
+    border-radius: 0.8rem;
+    margin: 0.5rem;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+      margin: 0% auto;
+      width: auto;
+      padding: 0.5rem;
+    }
+    body {
+        padding: 1rem;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .container {
+        padding: 0.25rem;
+    }
+    body {
+        padding: 0.5rem;
+        font-size: 1rem;
+    }
+}
