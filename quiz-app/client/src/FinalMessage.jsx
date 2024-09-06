@@ -20,7 +20,7 @@ const FinalMessage = ({count}) => {
             <p>7-9: That local zoo internship might just be yours</p>
             <p>10: Are you Steve Irwin? 🐊 </p>
 
-            <button onClick={refreshPage}>Try Another Animal Quiz!</button>
+            <button onClick={refreshPage}>Try Again!</button>
         </>
     )
 }
