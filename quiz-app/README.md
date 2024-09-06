@@ -20,7 +20,7 @@ Clone this repository using the HTTPS URL
 git clone https://github.com/tati-guzman/techtonica-assignments.git
 ```
 
-Navigate into the weather app
+Navigate into the trivia app
 
 ```
 cd ../quiz-app/
