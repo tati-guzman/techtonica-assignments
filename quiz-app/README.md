@@ -1,4 +1,4 @@
-# Tati's Terrific Trivia
+# 🐯 Tati's Terrific Trivia 🐯
 
 This trivia app tests your animal knowledge! With 10 easy questions, answer True/False to find out if you're ready to be a zoologist. Using React and Vite for the front end and Express for the back end, this app connects to the Open Trivia Database to pull 10 Easy True/False Animal questions and present them to the user one by one.
 
@@ -68,15 +68,15 @@ Navigate to [http://localhost:5173](http://localhost:5173) to interact with the 
 
 Landing Page:
 
-NEEDS SCREENSHOT
+<img width="486" alt="Screenshot 2024-09-06 at 11 08 55 AM" src="https://github.com/user-attachments/assets/a1749a50-3232-4d49-9ced-d4a5a0fef838">
 
 Question Example:
 
-NEEDS SCREENSHOT
+<img width="522" alt="Screenshot 2024-09-06 at 11 09 04 AM" src="https://github.com/user-attachments/assets/f1dafe1b-32d1-4992-b3e4-037b3076cb42">
 
 Final Message:
 
-NEEDS SCREENSHOT
+<img width="721" alt="Screenshot 2024-09-06 at 11 09 28 AM" src="https://github.com/user-attachments/assets/7633fc13-8e1c-4372-b124-5f048c0fd1eb">
 
 ## Built With
 
