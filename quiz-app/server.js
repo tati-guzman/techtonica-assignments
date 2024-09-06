@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 //Set up the PORT for the server - 5003 is hard-coded here.
 const PORT = 5003;
 
-//GET request to fetch data from trivia
+//GET request to fetch data from trivia - 10 questions, animal category, level easy, true/false
 app.get('/quiz', async (req, res) => {
     const url = 'https://opentdb.com/api.php?amount=10&category=27&difficulty=easy&type=boolean'
     

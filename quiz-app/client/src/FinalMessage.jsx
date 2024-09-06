@@ -5,6 +5,7 @@ import './App.jsx'
 
 const FinalMessage = ({count}) => {
     
+    //To start another quiz, take users back to the landing page by re-loading the page.
     const refreshPage = () => {
         window.location.reload();
     }

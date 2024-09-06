@@ -2,62 +2,51 @@
 import React, { useState } from 'react'
 //Import info from App
 import './App.jsx'
+//Import HTML decoder to show apostrophes correctly
 import he from 'he'
 
 const Question = ({quiz, setCount, setIsQuizComplete, setIsQuizAvailable}) => {
     
-    //Actual Question statement: quiz[index].question
-
-    //Answer: quiz[index][correct_answer]
-
-    /*
-
-    -Need to have it loop through the questions
-    -At each index, display the question statement^
-    -Display true or false buttons (put them down in the return area and make their values be true or false)
-    -When the user hits one of the buttons, check to see if it matches the answer
-    -If it matches, show success message. If not, show failure message. Either way, show "Next" button
-    -> Also if it matches, update counter +1
-    -When user clicks next, loop to next index
-
-    */
-
+    //States to manage whether a user's answer was correct or incorrect - this will determine message
     const [correct, setCorrect] = useState(false)
-    const [answerDisabled, setAnswerDisabled] = useState(false);
     const [incorrect, setIncorrect] = useState(false);
+
+    //The answers will be disabled after an answer is submitted. If an answer is submitted, this state will also allow the "Next Question" button to stop being disabled.
+    const [answerDisabled, setAnswerDisabled] = useState(false);
+
+    //This state will track which question number the user is answering
     const [questionNumber, setQuestionNumber] = useState(0);
-    const [clickNext, setClickNext] = useState(false);
 
 
     const handleAnswer = (value) => {
-        console.info('value', value)
-
+        //Disable answer buttons. Enable "Next Question" button.
         setAnswerDisabled(true);
 
+        //If the submitted answer is right, show success message and increase counter
         if (value.target.value === quiz[questionNumber]["correct_answer"]) {
-            console.info("got into correct")
             setCorrect(true);
             setCount((prevCount) => prevCount + 1);
         } else {
+            //If the answer is wrong, show failure message
             setIncorrect(true);
         }
-
-        setClickNext(true);
     }
 
     const nextQuestion = () => {
+        //Reset all the states and display the next question
         setCorrect(false);
         setIncorrect(false);
-        setClickNext(false);
         setAnswerDisabled(false);
         setQuestionNumber((prevQuestion) => prevQuestion + 1);
 
+        //Check if the "next question" is actually the end of the quiz. If so, update states in App.
         if (questionNumber === (quiz.length - 1)) {
             setIsQuizAvailable(false);
             setIsQuizComplete(true);
         }
     }
 
+    //For debugging purposes, take a look at the current question and quiz data
     console.info("quiz", quiz)
     console.info("question number", questionNumber)
 
@@ -77,7 +66,7 @@ const Question = ({quiz, setCount, setIsQuizComplete, setIsQuizAvailable}) => {
             <p className="response" style={{ visibility: correct ? 'visible' : 'hidden'}}>Congrats you're right!</p>
             <p className="response" style={{ visibility: incorrect ? 'visible' : 'hidden'}}>Oops, that's incorrect!</p>
 
-            <button onClick={nextQuestion} disabled={!clickNext}>Next Question</button>
+            <button onClick={nextQuestion} disabled={!answerDisabled}>Next Question</button>
 
         </>
     )

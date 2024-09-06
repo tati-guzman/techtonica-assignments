@@ -6,7 +6,7 @@ import './App.css'
 import Landing from './Landing.jsx'
 import Question from './Question.jsx'
 import FinalMessage from './FinalMessage.jsx'
-// import SubmitAnswer from './SubmitAnswer.jsx'
+
 
 function App() {
  
@@ -16,15 +16,16 @@ function App() {
   //Landing Page Visibility is being handled by this state
   const [isLandingVisible, setIsLandingVisible] = useState(true);
 
-  //Quiz Question visibility is handled by this state
+  //Quiz Question visibility is being handled by this state
   const [isQuizAvailable, setIsQuizAvailable] = useState(false);
 
-  //Keeping count of correct answers
+  //Keeping count of correct answers - state is updated via child component (Question)
    const [count, setCount] = useState(0)
 
-   //Keeping track of quiz being done
+   //Keeping track of quiz being done - state is updated via child component (Question)
    const [isQuizComplete, setIsQuizComplete] = useState(false);
   
+  //Triggered by start button within Landing Component - this fetches the quiz data
   const onStart = () => {
     console.log("The quiz should start");
         
