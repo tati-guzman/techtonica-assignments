@@ -66,17 +66,20 @@ Navigate to [http://localhost:5173](http://localhost:5173) to interact with the 
 
 ### Demo
 
-Landing Page:
+#### Landing Page:
 
-<img width="486" alt="Screenshot 2024-09-06 at 11 08 55 AM" src="https://github.com/user-attachments/assets/a1749a50-3232-4d49-9ced-d4a5a0fef838">
+<img width="1334" alt="Screenshot 2024-09-06 at 12 28 39 PM" src="https://github.com/user-attachments/assets/d80565f3-9fad-444b-8be7-bf27dc9a52dc">
 
-Question Example:
 
-<img width="522" alt="Screenshot 2024-09-06 at 11 09 04 AM" src="https://github.com/user-attachments/assets/f1dafe1b-32d1-4992-b3e4-037b3076cb42">
+#### Question Example:
 
-Final Message:
+<img width="1236" alt="Screenshot 2024-09-06 at 12 28 57 PM" src="https://github.com/user-attachments/assets/4cbf4928-cb11-4648-903a-76ef71ae9615">
 
-<img width="721" alt="Screenshot 2024-09-06 at 11 09 28 AM" src="https://github.com/user-attachments/assets/7633fc13-8e1c-4372-b124-5f048c0fd1eb">
+
+#### Final Message:
+
+<img width="1264" alt="Screenshot 2024-09-06 at 12 29 12 PM" src="https://github.com/user-attachments/assets/c65ec555-f5f5-4159-85d8-c09786512cd4">
+
 
 ## Built With
 
