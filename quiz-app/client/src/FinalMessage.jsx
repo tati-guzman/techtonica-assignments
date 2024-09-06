@@ -13,7 +13,7 @@ const FinalMessage = ({count}) => {
         <>
             <h1>Congratulations on completing the quiz!</h1>
             
-            <h2>You answered ${count} questions correctly. Are you ready to be a zoologist?</h2>
+            <h2>You answered {count} questions correctly. Are you ready to be a zoologist?</h2>
             
             <p>0-3: Maybe just keep watching animal reels for now</p>
             <p>4-6: You're ready to work on Rover!</p>

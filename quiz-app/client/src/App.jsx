@@ -11,7 +11,7 @@ import FinalMessage from './FinalMessage.jsx'
 function App() {
  
 
-  const [quiz, setQuiz] = useState([])
+  const [quiz, setQuiz] = useState(null)
 
   //Landing Page Visibility is being handled by this state
   const [isLandingVisible, setIsLandingVisible] = useState(true);
@@ -44,7 +44,7 @@ function App() {
     <>
       {isLandingVisible && <Landing onStart={onStart}/>}
 
-      {isQuizAvailable && <Question quiz={quiz} setCount={setCount} setIsQuizComplete={setIsQuizComplete}/>}
+      {isQuizAvailable && <Question quiz={quiz} setCount={setCount} setIsQuizComplete={setIsQuizComplete} setIsQuizAvailable={setIsQuizAvailable}/>}
 
       {isQuizComplete && <FinalMessage count={count} />}
 
