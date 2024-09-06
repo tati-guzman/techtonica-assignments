@@ -3,11 +3,11 @@ import React from 'react'
 //Import info from App
 import './App.jsx'
 
-const Question = () => {
+const FinalMessage = () => {
     return (
         <>
         </>
     )
 }
 
-export default Question
+export default FinalMessage
