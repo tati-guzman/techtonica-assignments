@@ -44,7 +44,7 @@ Open a new window for your terminal and navigate into the client folder
 cd .../techtonica-assignments/quiz-app/client
 ```
 
-Install all relevant dependencies
+Install all relevant dependencies again
 
 ```
 npm install
