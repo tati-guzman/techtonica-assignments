@@ -1,11 +1,11 @@
 //Import React functionality from react package
-import React, { useState } from 'react'
+import React from 'react'
 //Import info from App
 import './App.jsx'
-//Import relevant components
-import StartButton from './StartButton.jsx'
 
-const Landing = () => {
+
+const Landing = ({onStart}) => {
+
     return (
         <>
             <h1>Welcome to Tati's Terrific Trivia!</h1>
@@ -13,8 +13,8 @@ const Landing = () => {
             <p>Test your <em>Animal Knowledge</em> by answering 10 True/False questions.</p>
             
             <p>Click the button to begin!</p>
-            
-            <StartButton />
+
+            <button onClick={onStart}>Ready to Rumble!</button>
         </>
     )
 }
