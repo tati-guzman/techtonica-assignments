@@ -42,14 +42,14 @@ function App() {
   }
 
   return (
-    <>
+    <div className="container">
       {isLandingVisible && <Landing onStart={onStart}/>}
 
       {isQuizAvailable && <Question quiz={quiz} setCount={setCount} setIsQuizComplete={setIsQuizComplete} setIsQuizAvailable={setIsQuizAvailable}/>}
 
       {isQuizComplete && <FinalMessage count={count} />}
 
-    </>
+    </div>
   )
 }
 
