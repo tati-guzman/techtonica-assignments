@@ -1,19 +1,51 @@
-const express = require('express');
-const cors = require('cors');
-require('dotenv').config();
-const path = require('path');
-const db = require('./db/db-connection.js');
+import express from 'express';
+import cors from 'cors';
+import dotenv from 'dotenv';
+// import db from './db/db-connection.js';
 
+dotenv.config();
 
+//Import Pool class from pg package to use for connection pooling
+import pkg from 'pg';
+const { Pool } = pkg;
+
+//Link to connection string for database using the secret .env path
+const db = new Pool({
+    connectionString: process.env.DB_URI
+});
+
+//Standard set-up operations for Express and Node
 const app = express();
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8011;
 app.use(cors());
 app.use(express.json());
 
 // creates an endpoint for the route "/""
 app.get('/', (req, res) => {
     res.json({ message: 'Hola, from My template ExpressJS with React-Vite' });
+    console.log("Made it to main page");
 });
+
+//Create GET route to show all events
+app.get('/events', async (req, res) => {
+
+    console.log("In the events page!");
+    
+    db.query('SELECT * FROM events', (err, results) => {
+        if (err) {
+            console.error(err);
+            return; 
+        }
+        console.log("GET Route worked! Woohoo!");
+        res.json(results.rows);
+    });
+});
+
+
+
+
+
+//FROM TEMPLATE:
 
 // create the get request for students in the endpoint '/api/students'
 app.get('/api/students', async (req, res) => {
