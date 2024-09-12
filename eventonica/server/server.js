@@ -93,27 +93,39 @@ app.delete('/events/:eventid', async (req, res) => {
 });
 
 
-//A put request - Update a student 
-app.put('/api/students/:studentId', async (req, res) =>{
-    //console.log(req.params);
-    //This will be the id that I want to find in the DB - the student to be updated
-    const studentId = req.params.studentId
-    const updatedStudent = { id: req.body.id, firstname: req.body.firstname, lastname: req.body.lastname, iscurrent: req.body.is_current}
-    console.log("In the server from the url - the student id", studentId);
-    console.log("In the server, from the react - the student to be edited", updatedStudent);
-    // UPDATE students SET lastname = "something" WHERE id="16";
-    const query = `UPDATE students SET firstname=$1, lastname=$2, is_current=$3 WHERE id=${studentId} RETURNING *`;
-    const values = [updatedStudent.firstname, updatedStudent.lastname, updatedStudent.iscurrent];
+//Create PUT Route to update a specific event via its id
+app.put('/events/:eventid', async (req, res) => {
+    console.log("We will update this event soon.");
+    
+    console.log(req.body);
+    console.log(req.params);
+
+    //Pull appropriate event ID from the request
+    const eventid = req.params.eventid;
+
     try {
-      const updated = await db.query(query, values);
-      console.log(updated.rows[0]);
-      res.send(updated.rows[0]);
-  
-    }catch(e){
-      console.log(e);
-      return res.status(400).json({e})
+        //Piece apart request details to only update what was sent in
+        const fields = Object.keys(req.body);
+        const values = Object.values(req.body);
+
+        //Make sure request is not empty
+        if (fields.length === 0) {
+            res.status(400).json({ error: "no fields to update" });
+            return;
+        }
+
+        //Create query statement
+        const queryInsert = fields.map((field, index) => `"${field}" = $${index + 1}`).join(", ");
+        const query = `UPDATE events SET ${queryInsert} WHERE eventid = ${eventid} RETURNING *`;
+
+        //Send query with attached values
+        const updatedEvent = await db.query(query, values);
+        console.log({ message: "Update was successful", eventDetails: updatedEvent.rows[0] });
+        res.send(updatedEvent.rows[0]);
+    } catch (error) {
+        res.status(500).json({ error: "Could not update event", details: error});
     }
-  })
+});
 
 //Print PORT location when active PORT is detected (server is running)
 app.listen(PORT, () => {
