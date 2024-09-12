@@ -13,7 +13,9 @@ Button {
   width: 150px;
   border-radius: 10px;
 }
-
+h4 {
+  padding-bottom: 20px;
+}
 /* Need to figure out how to keep the hover effect without making ALL buttons hover (with important) */
 Button:not(.disabled):hover {
   background-color: cyan;
