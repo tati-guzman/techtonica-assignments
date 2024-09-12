@@ -73,19 +73,25 @@ app.post('/events', async (req, res) => {
 });
 
 
-// delete request for students
-app.delete('/api/students/:studentId', async (req, res) => {
-    try {
-        const studentId = req.params.studentId;
-        await db.query('DELETE FROM students WHERE id=$1', [studentId]);
-        console.log("From the delete request-url", studentId);
-        res.status(200).end();
-    } catch (e) {
-        console.log(e);
-        return res.status(400).json({ e });
+//Create DELETE Route to delete entire events
+app.delete('/events/:eventid', async (req, res) => {
+    console.log("We are deleting this event soon.");
+    console.log(req.params);
+    //Pull appropriate event ID from the request
+    const eventid = req.params.eventid;
 
+    try {
+        //Create query statement
+        const deletionStatement = `DELETE FROM events WHERE eventid= ${eventid}`;
+        await db.query(deletionStatement);
+        console.log("Event has been deleted");
+        res.json({ message: `Successfully deleted event ${eventid}`});
+        res.status(200).end();
+    } catch (error) {
+        res.status(500).json({ error: "Could not delete event", details: error});
     }
 });
+
 
 //A put request - Update a student 
 app.put('/api/students/:studentId', async (req, res) =>{
