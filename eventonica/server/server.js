@@ -1,22 +1,8 @@
 import express from 'express';
 import cors from 'cors';
 
-//Line 5 should be used when creating db connection file - NEED TO UPDATE
-// import db from './db/db-connection.js';
-
-//Potentially only needed in db-connection file once that is used.
-import dotenv from 'dotenv';
-dotenv.config();
-
-//Import Pool class from pg package to use for connection pooling -> potentially only needed in db-connection once fixed.
-import pkg from 'pg';
-const { Pool } = pkg;
-
-//Link to connection string for database using the secret .env path (this chunk of code SHOULD be in db-connection but not working rn, FIX LATER)
-const db = new Pool({
-    connectionString: process.env.DB_URI
-});
-
+//Import database connection
+import db from './db/db-connection.js';
 
 //Standard set-up operations for Express and Node
 const app = express();
@@ -126,6 +112,23 @@ app.put('/events/:eventid', async (req, res) => {
         res.status(500).json({ error: "Could not update event", details: error});
     }
 });
+
+//Create GET Route to select all events in a certain category
+//Need to update request!
+app.get('/events/:category', async (req, res) => {
+    console.log("Fetching all events from this category");
+    
+    const category = req.params.category;
+
+    try {
+        const selectedEvents = db.query(`SELECT * FROM events WHERE category=${category}`);
+        res.json(selectedEvents.rows);
+    } catch (error) {
+        res.status(500).json({ error: "Could not get events", details: error });
+    }
+});
+
+
 
 //Print PORT location when active PORT is detected (server is running)
 app.listen(PORT, () => {
