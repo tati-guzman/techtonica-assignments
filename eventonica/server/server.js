@@ -32,7 +32,6 @@ app.get('/events', async (req, res) => {
     });
 });
 
-
 //Create POST Request to submit and create a new event
 app.post('/events', async (req, res) => {
     console.log("Making a new event...");
