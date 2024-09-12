@@ -24,9 +24,9 @@ const PORT = process.env.PORT || 8011;
 app.use(cors());
 app.use(express.json());
 
-//Creates an endpoint for the route "/""
+//Creates Welcome Message for Root Directory
 app.get('/', (req, res) => {
-    res.json({ message: 'Welcome to Eventonica!' });
+    res.json("Welcome to Eventonica!");
     console.log("Made it to main page");
 });
 
@@ -46,40 +46,32 @@ app.get('/events', async (req, res) => {
     });
 });
 
-//FROM TEMPLATE:
 
-// create the get request for students in the endpoint '/api/students'
-app.get('/api/students', async (req, res) => {
+//Create POST Request to submit and create a new event
+app.post('/events', async (req, res) => {
+    console.log("Making a new event...");
+        
     try {
-        const { rows: students } = await db.query('SELECT * FROM students');
-        res.send(students);
-    } catch (e) {
-        return res.status(400).json({ e });
+        //Print request into console
+        console.log(req.body)
+        
+        //Deconstruct the request into individual elements
+        const { title, category, description, location, date, time, favorite } = req.body;
+
+        //Create SQL query string
+        const query = 'INSERT INTO events (title, category, description, location, date, time, favorite) VALUES ($1, $2, $3, $4, $5, $6, $7)';
+
+        //Send data query with variables to database
+        await db.query(query, [title, category, description, location, date, time, favorite]);
+        
+        //Let user know that the event was created successfully
+        res.json({ message: 'Event created successfully'});
+        return;
+    } catch (error) {
+        res.status(500).json({ error: 'Error creating event', details: error });
     }
 });
 
-// create the POST request
-app.post('/api/students', async (req, res) => {
-    try {
-        const newStudent = {
-            firstname: req.body.firstname,
-            lastname: req.body.lastname,
-            iscurrent: req.body.iscurrent
-        };
-        //console.log([newStudent.firstname, newStudent.lastname, newStudent.iscurrent]);
-        const result = await db.query(
-            'INSERT INTO students(firstname, lastname, is_current) VALUES($1, $2, $3) RETURNING *',
-            [newStudent.firstname, newStudent.lastname, newStudent.iscurrent],
-        );
-        console.log(result.rows[0]);
-        res.json(result.rows[0]);
-
-    } catch (e) {
-        console.log(e);
-        return res.status(400).json({ e });
-    }
-
-});
 
 // delete request for students
 app.delete('/api/students/:studentId', async (req, res) => {
@@ -117,7 +109,7 @@ app.put('/api/students/:studentId', async (req, res) =>{
     }
   })
 
-// console.log that your server is up and running
+//Print PORT location when active PORT is detected (server is running)
 app.listen(PORT, () => {
-    console.log(`Hola, Server listening on ${PORT}`);
+    console.log(`Server listening on PORT: ${PORT}`);
 });
