@@ -1,18 +1,22 @@
 import express from 'express';
 import cors from 'cors';
-import dotenv from 'dotenv';
+
+//Line 5 should be used when creating db connection file - NEED TO UPDATE
 // import db from './db/db-connection.js';
 
+//Potentially only needed in db-connection file once that is used.
+import dotenv from 'dotenv';
 dotenv.config();
 
-//Import Pool class from pg package to use for connection pooling
+//Import Pool class from pg package to use for connection pooling -> potentially only needed in db-connection once fixed.
 import pkg from 'pg';
 const { Pool } = pkg;
 
-//Link to connection string for database using the secret .env path
+//Link to connection string for database using the secret .env path (this chunk of code SHOULD be in db-connection but not working rn, FIX LATER)
 const db = new Pool({
     connectionString: process.env.DB_URI
 });
+
 
 //Standard set-up operations for Express and Node
 const app = express();
@@ -20,9 +24,9 @@ const PORT = process.env.PORT || 8011;
 app.use(cors());
 app.use(express.json());
 
-// creates an endpoint for the route "/""
+//Creates an endpoint for the route "/""
 app.get('/', (req, res) => {
-    res.json({ message: 'Hola, from My template ExpressJS with React-Vite' });
+    res.json({ message: 'Welcome to Eventonica!' });
     console.log("Made it to main page");
 });
 
@@ -33,6 +37,7 @@ app.get('/events', async (req, res) => {
     
     db.query('SELECT * FROM events', (err, results) => {
         if (err) {
+            res.send({Error: err})
             console.error(err);
             return; 
         }
@@ -40,10 +45,6 @@ app.get('/events', async (req, res) => {
         res.json(results.rows);
     });
 });
-
-
-
-
 
 //FROM TEMPLATE:
 

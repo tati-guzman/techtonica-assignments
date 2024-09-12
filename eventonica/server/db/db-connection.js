@@ -10,7 +10,7 @@ const db = new Pool({
     connectionString: process.env.DATABASE_URI
   });
 
-//Create db instance of Pool class with secret configs
+//Create db instance of Pool class with secret configs - URI worked instead, DELETE LATER once DB connection secure
 // const db = new Pool({
 //     user: process.env.DB_USER,          
 //     host: process.env.DB_HOST,          
@@ -20,13 +20,12 @@ const db = new Pool({
 // });
 
 //Export db object for server to import and use  
-// module.exports = db;
 export default db;
+// module.exports = db; <-- Old syntax, doesn't work with updated ES Module
 
-//TO DELETE LATER:
+//TO DELETE LATER - Older syntax from template, throws err bc not ES Module:
 
 // const { Pool } = require('pg');
-
 // const db = new Pool({
 //     connectionString: process.env.DATABASE_URI
 //   });
