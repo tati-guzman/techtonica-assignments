@@ -18,3 +18,37 @@ Button {
 Button:not(.disabled):hover {
   background-color: cyan;
 }
+
+
+/* MEDIA QUERIES */
+
+/* mobile screens (will change for screens less than 425px) */
+@media screen and (max-width: 425px) {
+  #root {
+    background-color: lightgoldenrodyellow;
+    padding: 10px;
+    margin: 15px;
+  }
+  .word-btn {
+    background-color: lavender !important;
+  }
+  .submit-btn {
+    margin: 15px;
+    border-radius: 30px !important;
+    cursor: pointer;
+    transition: all 0.3s ease !important;
+  }
+  .submit-btn:hover{
+    background-color: seagreen !important;
+    color: white;
+    width: 200px;
+    transform: scale(1.1);
+  }
+  h3{
+    font-size: 20px;
+  }
+  h4 {
+    font-size: 20px;
+    padding-bottom: 20px;
+  }
+}
