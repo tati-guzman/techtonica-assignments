@@ -1,7 +1,7 @@
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import FixedNavBar from './components/Navbar'
-import ListStudents from './components/ListStudents'
+import EventList from './components/EventList'
 
 
 const App = () => {
@@ -9,7 +9,7 @@ const App = () => {
   return (
     <div className="App">
       <FixedNavBar />
-      <ListStudents />
+      <EventList />
 
     </div>
   )
