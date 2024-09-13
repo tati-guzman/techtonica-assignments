@@ -1,3 +1,4 @@
+//Import frameworks for app and middleware
 import express from 'express';
 import cors from 'cors';
 
@@ -62,6 +63,7 @@ app.post('/events', async (req, res) => {
 app.delete('/events/:eventid', async (req, res) => {
     console.log("We are deleting this event soon.");
     console.log(req.params);
+    
     //Pull appropriate event ID from the request
     const eventid = req.params.eventid;
 
