@@ -1,5 +1,6 @@
 import React from 'react'
 import './App.jsx'
+import './App.css'
 
 
 const Word = ({selected, setSelected, text, id, matched}) => {
@@ -26,10 +27,11 @@ const Word = ({selected, setSelected, text, id, matched}) => {
 
     //If the id is in the matched state, set color to the value indicated in the matched state object. Otherwise, check if the id is in the selected state. If it is selected, set the color to pink. If it is not selected, set to light sky blue.
     const color = id in matched ? matched[id] : selected.includes(id) ? "pink" : "lightskyblue"
+    
 
     return (
         <div>
-            <button style={{backgroundColor: color}} onClick={onClick} disabled={id in matched}>{text}</button>
+            <button className="button-word" style={{backgroundColor: color}} onClick={onClick} disabled={id in matched}>{text}</button>
         </div>
     )
 }

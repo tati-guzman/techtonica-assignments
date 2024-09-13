@@ -15,6 +15,6 @@ Button {
 }
 
 /* Need to figure out how to keep the hover effect without making ALL buttons hover (with important) */
-Button:not(.disabled):hover {
-  background-color: cyan;
+.button-word:hover:not([disabled]) {
+  background-color: cyan !important;
 }
