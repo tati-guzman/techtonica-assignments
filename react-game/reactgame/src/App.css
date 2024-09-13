@@ -16,11 +16,7 @@ Button {
 h4 {
   padding-bottom: 20px;
 }
-/* Need to figure out how to keep the hover effect without making ALL buttons hover (with important) */
-Button:not(.disabled):hover {
-  background-color: cyan;
-}
-
+ 
 
 /* MEDIA QUERIES */
 
@@ -72,4 +68,9 @@ Button:not(.disabled):hover {
     font-size: 20px;
     padding-bottom: 20px;
   }
+
 }
+
+/* creates hover effect on only available word choices */
+.word-btn:hover:not([disabled]) {
+  background-color: cyan !important;
