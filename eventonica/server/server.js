@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
 //Create GET route to show all events
 app.get('/events', async (req, res) => {
 
-    console.log("In the events page!");
+    // console.log("In the events page!");
     
     db.query('SELECT * FROM events', (err, results) => {
         if (err) {
@@ -28,7 +28,7 @@ app.get('/events', async (req, res) => {
             console.error(err);
             return; 
         }
-        console.log("GET Route worked! Woohoo!");
+        // console.log("GET Route worked! Woohoo!");
         res.json(results.rows);
     });
 });

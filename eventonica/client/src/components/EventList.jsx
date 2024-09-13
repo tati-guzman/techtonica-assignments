@@ -5,16 +5,11 @@ import Event from './Event.jsx';
 
 const EventList = () => {
 
-    // this is my original state with an array of students 
-    // const [students, setStudents] = useState([]);
-
+    //State to track events received from database
     const [events, setEvents] = useState([]);
 
-    //this is the state needed for the UpdateRequest
-    // const [editingStudent, setEditingStudent] = useState(null)
-
+    //If Events change, re-load all of the events by fetching all rows from events table
     const loadEvents = () => {
-        // A function to fetch the list of students that will be load anytime that list change
         fetch("/events")
             .then((response) => response.json())
             .then((list) => {
@@ -23,9 +18,27 @@ const EventList = () => {
             });
     }
 
+    //If the events change at all, run the loadEvents function to re-fetch all current events
     useEffect(() => {
         loadEvents();
     }, [events]);
+
+    //Track event being edited via state
+    const [editEvent, setEditEvent] = useState(null)
+
+    // //Update Event Function
+    // const onUpdate = (toUpdateStudent) => {
+    //     //console.log(toUpdateStudent);
+    //     setEditingStudent(toUpdateStudent);
+    // }
+
+     //Update Event Function
+     const startUpdate = (eventToUpdate) => {
+        
+        //console.log(toUpdateStudent);
+        // setEditEvent(eventToUpdate);
+        // console.log(editEvent);
+    }
 
     // const onSaveStudent = (newStudent) => {
     //     //console.log(newStudent, "From the parent - List of Students");
@@ -53,12 +66,7 @@ const EventList = () => {
     //     })
     // }
 
-    //A function to handle the Update functionality
-    // const onUpdate = (toUpdateStudent) => {
-    //     //console.log(toUpdateStudent);
-    //     setEditingStudent(toUpdateStudent);
-
-    // }
+    
 
     
 
@@ -69,7 +77,7 @@ const EventList = () => {
                     <ul>
                         {events.map((event) => {
                             // return <li key={event.id}> <Event event={event} toDelete={onDelete} toUpdate={onUpdate} /></li>
-                            return <li key={event.id}> <Event event={event} /></li>
+                            return <li key={event.id}> <Event event={event} toUpdate={startUpdate}/></li>
                         })}
                     </ul>
             </div>
