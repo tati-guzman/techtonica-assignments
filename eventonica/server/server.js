@@ -113,14 +113,15 @@ app.put('/events/:eventid', async (req, res) => {
 });
 
 //Create GET Route to select all events in a certain category
-//Need to update request!
-app.get('/events/:category', async (req, res) => {
+app.get('/events/search/category', async (req, res) => {
     console.log("Fetching all events from this category");
-    
-    const category = req.params.category;
+
+    const category = req.body.category;
+    console.log(category);
 
     try {
-        const selectedEvents = db.query(`SELECT * FROM events WHERE category=${category}`);
+        const queryStatement = 'SELECT * FROM events WHERE category=$1';
+        const selectedEvents = await db.query(queryStatement, [category]);
         res.json(selectedEvents.rows);
     } catch (error) {
         res.status(500).json({ error: "Could not get events", details: error });
