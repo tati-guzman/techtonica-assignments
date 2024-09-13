@@ -128,7 +128,21 @@ app.get('/events/search/category', async (req, res) => {
     }
 });
 
+//Create GET Route to select event by eventid
+app.get('/events/search/:eventid', async (req, res) => {
+    console.log("Fetching your selected event");
 
+    const eventid = req.params.eventid;
+    console.log(eventid);
+
+    try {
+        const queryStatement = `SELECT * FROM events WHERE eventid=${eventid}`;
+        const specificEvent = await db.query(queryStatement);
+        res.json(specificEvent.rows);
+    } catch (error) {
+        res.status(500).json({ error: "Could not get event", details: error });
+    }
+});
 
 //Print PORT location when active PORT is detected (server is running)
 app.listen(PORT, () => {
