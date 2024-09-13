@@ -13,8 +13,63 @@ Button {
   width: 150px;
   border-radius: 10px;
 }
-
+h4 {
+  padding-bottom: 20px;
+}
 /* Need to figure out how to keep the hover effect without making ALL buttons hover (with important) */
 Button:not(.disabled):hover {
   background-color: cyan;
+}
+
+
+/* MEDIA QUERIES */
+
+/* mobile screens (will change for screens less than 425px) */
+@media screen and (max-width: 552px) {
+  #root {
+    background-color: #dae5a6;
+    padding: 10px;
+    margin: 15px 15px;
+  }
+  body{ 
+    background-color: #978094 !important;
+  }
+  .word-btn {
+    background-color: aliceblue !important;
+  }
+  .submit-btn {
+    margin: 15px;
+  }
+  h3{
+    font-size: 20px;
+  }
+  h4 {
+    font-size: 20px;
+    padding-bottom: 20px;
+  }
+}
+
+/* tablet screen */
+@media screen and (min-width: 527px) and (max-width: 768px) {
+  #root {
+    background-color: lavender;
+    padding: 10px;
+    margin: 15px 20px;
+  }
+  body{
+    background-color: lightskyblue !important;
+  }
+  .word-btn {
+    background-color: pink !important;
+  }
+  .submit-btn {
+    margin: 15px;
+  }
+  h3{
+    font-size: 15px;
+  }
+  h4 {
+    font-size: 20px;
+    padding-bottom: 20px;
+  }
 }
