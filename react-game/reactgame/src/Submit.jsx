@@ -82,7 +82,7 @@ const Submit = ({setCount, setSelected, setMatched, selected}) => {
     }
 
     return (
-        <button style={style} onClick={handleSubmit} disabled={selected.length < 4}>Submit Guess</button>
+        <button className="submit-btn" style={style} onClick={handleSubmit} disabled={selected.length < 4}>Submit Guess</button>
     )
 }
 

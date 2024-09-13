@@ -31,7 +31,7 @@ const Word = ({selected, setSelected, text, id, matched}) => {
 
     return (
         <div>
-            <button className="button-word" style={{backgroundColor: color}} onClick={onClick} disabled={id in matched}>{text}</button>
+            <button className="word-btn" style={{backgroundColor: color}} onClick={onClick} disabled={id in matched}>{text}</button>
         </div>
     )
 }
