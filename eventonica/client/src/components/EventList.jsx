@@ -2,6 +2,7 @@ import React, { useState, useEffect, useReducer } from 'react'
 // import * as ioicons from 'react-icons/io5'
 import MyForm from './Form.jsx';
 import Event from './Event.jsx';
+import EventForm from './Form1.jsx';
 
 const EventList = () => {
 
@@ -83,6 +84,8 @@ const EventList = () => {
             </div>
 {/* 
             <MyForm key={editingStudent ? editingStudent.id : null} onSaveStudent={onSaveStudent} editingStudent={editingStudent} onUpdateStudent={updateStudent} /> */}
+
+            <EventForm editEvent={editEvent} />
         </div>
     );
 }
