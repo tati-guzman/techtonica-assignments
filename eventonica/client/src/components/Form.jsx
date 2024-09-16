@@ -1,122 +1,152 @@
+//Import necessary functionalities
 import React, { useState, useEffect } from 'react'
-import { Button, Form } from "react-bootstrap"
+import { Button, Form } from 'react-bootstrap'
 
-const MyForm = ({ onSaveStudent, editingStudent, onUpdateStudent }) => {
+const EventForm = ({ dispatch, selectedEvent, setSelectedEvent, onUpdate }) => {
+     
+    const [title, setTitle] = useState('');
+    const [category, setCategory] = useState('Miscellaneous');
+    const [description, setDescription] = useState('');
+    const [location, setLocation] = useState('');
+    const [date, setDate] = useState('');
+    // const [time, setTime] = useState('');
 
-    // This is the original State with not initial student 
-    const [student, setStudent] = useState(editingStudent || {
-        firstname: "",
-        lastname: "",
-        is_current: false
-    });
-
-    //create functions that handle the event of the user typing into the form
-    const handleNameChange = (event) => {
-        const firstname = event.target.value;
-        setStudent((student) => ({ ...student, firstname }));
-
+    const formattedDate = (date) => {
+        const dateInfo = new Date(date);
+        return dateInfo.toISOString().split('T')[0];
     };
 
-    const handleLastnameChange = (event) => {
-        const lastname = event.target.value;
-        setStudent((student) => ({ ...student, lastname }));
-    };
+    useEffect(() => {
+        if (selectedEvent) {
+            setTitle(selectedEvent.title);
+            setCategory(selectedEvent.category);
+            setDescription(selectedEvent.description);
+            setLocation(selectedEvent.location);
+            setDate(formattedDate(selectedEvent.date));
+        }
+    }, [selectedEvent]);
 
-    const handleCheckChange = (event) => {
-        const is_current = event.target.checked;
-        //console.log(iscurrent);
-        setStudent((student) => ({ ...student, is_current }));
-    };
+    //Functionality for the submit button to either update or create the event
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const event = { title, category, description, location, date };
 
-    const clearForm = () => {
-        setStudent({ firstname: "", lastname: "", is_current: false })
+        
+        try {
+            if (selectedEvent) {
+                const updatedEvent = { ...selectedEvent, ...event }
+                await onUpdate(updatedEvent);
+            } else {
+                const response = await fetch('/events', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(event)
+                });
+
+                if (!response.ok) {
+                    throw new Error("Failed to create event");
+                }
+
+                const newEvent = await response.json();
+                dispatch({ type: 'ADD_EVENT', payload: newEvent });
+            }
+        } catch (error) {
+                console.error({ message: "Unable to create event", details: error });
+            } finally {
+                clearForm();
+            }
     }
 
-    //A function to handle the post request
-    const postStudent = (newStudent) => {
-        return fetch("http://localhost:8080/api/students", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(newStudent),
-        })
-            .then((response) => {
-                return response.json();
-            })
-            .then((data) => {
-                //console.log("From the post ", data);
-                //I'm sending data to the List of Students (the parent) for updating the list
-                onSaveStudent(data);
-                //this line just for cleaning the form
-                clearForm();
-            });
-    };
+    const clearForm = () => {
+        //Reset the states to original
+        setTitle('');
+        setCategory('Miscellaneous');
+        setDescription('');
+        setLocation('');
+        setDate('');
 
-    //A function to handle the post request
-    const putStudent = (toEditStudent) => {
-        return fetch(`http://localhost:8080/api/students/${toEditStudent.id}`, {
-            method: "PUT",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(toEditStudent),
-        })
-            .then((response) => {
-                return response.json();
-            })
-            .then((data) => {
-                onUpdateStudent(data);
-                //this line just for cleaning the form
-                clearForm();
-            });
-    };
-
-
-    //A function to handle the submit in both cases - Post and Put request!
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (student.id) {
-            putStudent(student);
-        } else {
-            postStudent(student);
+        if(selectedEvent) {
+            setSelectedEvent(null);
         }
     };
 
     return (
-        <Form className='form-students' onSubmit={handleSubmit}>
-            <Form.Group>
-                <Form.Label>First Name</Form.Label>
-                <input
-                    type="text"
-                    id="add-user-name"
-                    placeholder="First Name"
-                    required
-                    value={student.firstname}
-                    onChange={handleNameChange}
-                />
-            </Form.Group>
-            <Form.Group>
-                <Form.Label>Last Name</Form.Label>
-                <input
-                    type="text"
-                    id="add-user-lastname"
-                    placeholder="Last Name"
-                    required
-                    value={student.lastname}
-                    onChange={handleLastnameChange}
-                />
-            </Form.Group>
-            <Form.Check
-                type={'checkbox'}
-                id={`isCurrent`}
-                checked={student.is_current}
-                onChange={handleCheckChange}
-                label={`Are they in the current program?`}
+        <Form className='event-form' onSubmit={handleSubmit}>
+            <h2>Edit or Add Events:</h2>
+            
+            <Form.Label htmlFor="event-name">Event Name</Form.Label>
+            <input 
+                id="event-name"
+                name="title"
+                type="text"
+                placeholder="Event Name"
+                required
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
             />
-            <Form.Group>
-            <Button type="submit" variant="outline-success">{student.id ? "Edit Student" : "Add Student"}</Button>
-            {student.id ? <Button type="button" variant="outline-warning" onClick={clearForm}>Cancel</Button> : null}
-            </Form.Group>
+
+            <Form.Label htmlFor="category">Category</Form.Label> 
+                <select id="category" name="category" value={category} onChange={(e) => setCategory(e.target.value)} required>
+                    <option disabled value=""></option>
+                    <option value="Networking">Networking</option>
+                    <option value="Application Events">Application Events</option>
+                    <option value="Mock Interviews">Mock Interviews</option>
+                    <option value="Study Group">Study Group</option>
+                    <option value="Cohort Milestone">Cohort Milestone</option>
+                    <option value="Social/Celebration">Social/Celebration</option>
+                    <option value="Volunteers">Volunteers</option>
+                    <option value="Miscellaneous">Miscellaneous</option>
+                </select>
+            
+
+            <Form.Label htmlFor="description">Event Description</Form.Label>
+            <input 
+                id="description"
+                name="description"
+                type="text"
+                placeholder="Event Description"
+                required
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+            />
+
+            <Form.Label htmlFor="location">Event Location</Form.Label>
+            <input 
+                id="location"
+                name="location"
+                type="text"
+                placeholder="Event Location"
+                required
+                value={location}
+                onChange={(e) => setLocation(e.target.value)}
+            />
+
+            <Form.Label htmlFor="date">Date</Form.Label>
+            <input 
+                id="date"
+                name="date"
+                type="date"
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+            />
+
+            {/* <Form.Label htmlFor="time">Time</Form.Label>
+            <input 
+                id="time"
+                name="time"
+                type="time"
+                value={time}
+                onChange={(e) => setTime(e.target.value)}
+            />  */}
+
+            <Button type="submit" variant="outline-success">
+                {selectedEvent ? "Update Event" : "Create Event"}
+            </Button>
+
+            <Button type="button" variant="outline-warning" onClick={clearForm}>Cancel Changes</Button>
+            
         </Form>
-    );
-};
+    )
+}
 
-
-export default MyForm
+export default EventForm

@@ -1,7 +1,7 @@
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import FixedNavBar from './components/Navbar'
-import EventList from './components/EventList'
+import FixedNavBar from './components/Navbar.jsx'
+import EventList from './components/EventList.jsx'
 
 
 const App = () => {

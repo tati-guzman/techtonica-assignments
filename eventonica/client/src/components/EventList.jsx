@@ -1,91 +1,86 @@
 import React, { useState, useEffect, useReducer } from 'react'
-// import * as ioicons from 'react-icons/io5'
-import MyForm from './Form.jsx';
+import EventForm from './Form.jsx';
 import Event from './Event.jsx';
-import EventForm from './Form1.jsx';
+import Search from './Search.jsx';
 
 const EventList = () => {
 
-    //State to track events received from database
-    const [events, setEvents] = useState([]);
+    const initialState = { events: [] };
 
-    //If Events change, re-load all of the events by fetching all rows from events table
-    const loadEvents = () => {
-        fetch("/events")
-            .then((response) => response.json())
-            .then((list) => {
-                console.log(list);
-                setEvents(list);
-            });
+    function reducer(state, action) {
+        switch (action.type) {
+            case 'SET_EVENTS':
+                return { ...state, events: action.payload };
+            case 'ADD_EVENT':
+                return { ...state, events: [...state.events, action.payload] };
+            case 'DELETE_EVENT':
+                return { ...state, events: state.events.filter(event => event.eventid !== action.payload) };
+            case 'UPDATE_EVENT':
+                return { ...state, events: state.events.map(event => event.eventid === action.payload.eventid ? action.payload : event) };
+            default:
+                return state;
+        }
     }
 
-    //If the events change at all, run the loadEvents function to re-fetch all current events
+    const [state, dispatch] = useReducer(reducer, initialState);
+    const [searchQuery, setSearchQuery] = useState('');
+    const [selectedEvent, setSelectedEvent] = useState(null);
+
     useEffect(() => {
+        const loadEvents = async () => {
+            try {
+                const response = await fetch('/events');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch events');
+                }
+                const data = await response.json();
+                dispatch({ type: 'SET_EVENTS', payload: data });
+            } catch (error) {
+                console.error({ message: "Error loading event list", details: error });
+            }
+        };
+
         loadEvents();
-    }, [events]);
+    }, []);
 
-    //Track event being edited via state
-    const [editEvent, setEditEvent] = useState(null)
-
-    // //Update Event Function
-    // const onUpdate = (toUpdateStudent) => {
-    //     //console.log(toUpdateStudent);
-    //     setEditingStudent(toUpdateStudent);
-    // }
-
-     //Update Event Function
-     const startUpdate = (eventToUpdate) => {
-        
-        //console.log(toUpdateStudent);
-        // setEditEvent(eventToUpdate);
-        // console.log(editEvent);
-    }
-
-    // const onSaveStudent = (newStudent) => {
-    //     //console.log(newStudent, "From the parent - List of Students");
-    //     setStudents((students) => [...students, newStudent]);
-    // }
-
-
-    // //A function to control the update in the parent (student component)
-    // const updateStudent = (savedStudent) => {
-    //     // console.log("Line 29 savedStudent", savedStudent);
-    //     // This function should update the whole list of students - 
-    //     loadStudents();
-    // }
-
-    // //A function to handle the Delete funtionality
-    // const onDelete = (student) => {
-    //     //console.log(student, "delete method")
-    //     return fetch(`http://localhost:8080/api/students/${student.id}`, {
-    //         method: "DELETE"
-    //     }).then((response) => {
-    //         //console.log(response);
-    //         if (response.ok) {
-    //             loadStudents();
-    //         }
-    //     })
-    // }
-
+    const filteredEvents = state.events.filter(event =>
+        (event.title?.toLowerCase() || '').includes(searchQuery.toLowerCase()) ||
+        (event.category?.toLowerCase() || '').includes(searchQuery.toLowerCase())
+    );
     
+    const handleUpdate = async (updatedEvent) => {
+        try {
+            const response = await fetch(`/events/${updatedEvent.eventid}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(updatedEvent)
+            });
 
-    
+            if (!response.ok) {
+                throw new Error('Failed to update event');
+            }
+
+            const data = await response.json();
+            dispatch({ type: 'UPDATE_EVENT', payload: data });
+            setSelectedEvent(null);
+        } catch (error) {
+            console.error({ message: "Error updating this event", details: error });
+        }
+    };
 
     return (
         <div className="mybody">
+            
             <div className="list-events">
                 <h2>Techtonica Events</h2>
-                    <ul>
-                        {events.map((event) => {
-                            // return <li key={event.id}> <Event event={event} toDelete={onDelete} toUpdate={onUpdate} /></li>
-                            return <li key={event.id}> <Event event={event} toUpdate={startUpdate}/></li>
-                        })}
-                    </ul>
+                {filteredEvents.map((event) => (
+                        <Event event={event} setSelectedEvent={setSelectedEvent} dispatch={dispatch}/>
+                ))}
             </div>
-{/* 
-            <MyForm key={editingStudent ? editingStudent.id : null} onSaveStudent={onSaveStudent} editingStudent={editingStudent} onUpdateStudent={updateStudent} /> */}
 
-            <EventForm editEvent={editEvent} />
+            <EventForm dispatch={dispatch} selectedEvent={selectedEvent} setSelectedEvent={setSelectedEvent} onUpdate={handleUpdate} />
+
+            <Search searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
         </div>
     );
 }

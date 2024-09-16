@@ -69,8 +69,8 @@ app.delete('/events/:eventid', async (req, res) => {
 
     try {
         //Create query statement
-        const deletionStatement = `DELETE FROM events WHERE eventid= ${eventid}`;
-        await db.query(deletionStatement);
+        const deletionStatement = 'DELETE FROM events WHERE eventid= $1';
+        await db.query(deletionStatement, [eventid]);
         console.log("Event has been deleted");
         res.json({ message: `Successfully deleted event ${eventid}`});
         res.status(200).end();
@@ -90,25 +90,25 @@ app.put('/events/:eventid', async (req, res) => {
     //Pull appropriate event ID from the request
     const eventid = req.params.eventid;
 
+    //Piece apart request details to only update what was sent in
+    const fields = Object.keys(req.body);
+    const values = Object.values(req.body);
+
+    //Make sure request is not empty
+    if (fields.length === 0) {
+        res.status(400).json({ error: "No fields to update" });
+        return;
+    }
+
+    //Create query statement
+    const queryInsert = fields.map((field, index) => `"${field}" = $${index + 1}`).join(", ");
+    const query = `UPDATE events SET ${queryInsert} WHERE eventid = $${fields.length + 1} RETURNING *`;
+
     try {
-        //Piece apart request details to only update what was sent in
-        const fields = Object.keys(req.body);
-        const values = Object.values(req.body);
-
-        //Make sure request is not empty
-        if (fields.length === 0) {
-            res.status(400).json({ error: "no fields to update" });
-            return;
-        }
-
-        //Create query statement
-        const queryInsert = fields.map((field, index) => `"${field}" = $${index + 1}`).join(", ");
-        const query = `UPDATE events SET ${queryInsert} WHERE eventid = ${eventid} RETURNING *`;
-
         //Send query with attached values
-        const updatedEvent = await db.query(query, values);
+        const updatedEvent = await db.query(query, [...values, eventid]);
         console.log({ message: "Update was successful", eventDetails: updatedEvent.rows[0] });
-        res.send(updatedEvent.rows[0]);
+        res.json(updatedEvent.rows[0]);
     } catch (error) {
         res.status(500).json({ error: "Could not update event", details: error});
     }
@@ -118,7 +118,7 @@ app.put('/events/:eventid', async (req, res) => {
 app.get('/events/search/category', async (req, res) => {
     console.log("Fetching all events from this category");
 
-    const category = req.body.category;
+    const category = req.query.category;
     console.log(category);
 
     try {
@@ -138,8 +138,8 @@ app.get('/events/search/:eventid', async (req, res) => {
     console.log(eventid);
 
     try {
-        const queryStatement = `SELECT * FROM events WHERE eventid=${eventid}`;
-        const specificEvent = await db.query(queryStatement);
+        const queryStatement = 'SELECT * FROM events WHERE eventid=$1';
+        const specificEvent = await db.query(queryStatement, [eventid]);
         res.json(specificEvent.rows);
     } catch (error) {
         res.status(500).json({ error: "Could not get event", details: error });
