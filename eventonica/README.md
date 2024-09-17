@@ -54,7 +54,8 @@ Navigate to [http://localhost:5173](http://localhost:5173) to interact with the 
 
 ### Demo
 
-**INSERT SCREENSHOT OR GIF**
+<img width="1903" alt="Screenshot 2024-09-16 at 9 51 59 PM" src="https://github.com/user-attachments/assets/18d5a0b7-a242-4e4d-a1d8-85c0b53fe028">
+
 
 ## Built With
 
