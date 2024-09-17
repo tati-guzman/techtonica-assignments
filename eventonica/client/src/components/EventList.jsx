@@ -41,7 +41,6 @@ const EventList = () => {
                 }
                 const data = await response.json();
                 dispatch({ type: 'SET_EVENTS', payload: data });
-                //ISSUE: Potentially need an update HERE to make sure new events are displayed properly! Unless we just need to re-load the page??
             } catch (error) {
                 console.error({ message: "Error loading event list", details: error });
             }
