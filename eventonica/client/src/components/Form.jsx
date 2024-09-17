@@ -3,7 +3,8 @@ import React, { useState, useEffect } from 'react'
 import { Button, Form } from 'react-bootstrap'
 
 const EventForm = ({ dispatch, selectedEvent, setSelectedEvent, onUpdate }) => {
-     
+    
+    //Set useStates to track different form inputs
     const [title, setTitle] = useState('');
     const [category, setCategory] = useState('Miscellaneous');
     const [description, setDescription] = useState('');
@@ -11,11 +12,13 @@ const EventForm = ({ dispatch, selectedEvent, setSelectedEvent, onUpdate }) => {
     const [date, setDate] = useState('');
     // const [time, setTime] = useState('');
 
+    //Convert date input to written out string for display
     const formattedDate = (date) => {
         const dateInfo = new Date(date);
         return dateInfo.toISOString().split('T')[0];
     };
 
+    //Update chosen event with new inputted changes
     useEffect(() => {
         if (selectedEvent) {
             setTitle(selectedEvent.title);
@@ -29,6 +32,8 @@ const EventForm = ({ dispatch, selectedEvent, setSelectedEvent, onUpdate }) => {
     //Functionality for the submit button to either update or create the event
     const handleSubmit = async (e) => {
         e.preventDefault();
+        
+        //Note: Add time to deconstructed variable in the future
         const event = { title, category, description, location, date };
 
         
@@ -49,12 +54,13 @@ const EventForm = ({ dispatch, selectedEvent, setSelectedEvent, onUpdate }) => {
 
                 const newEvent = await response.json();
                 dispatch({ type: 'ADD_EVENT', payload: newEvent });
+                //ISSUE: Potentially missing something here to help display all the new data after submission (without needing to reload)
             }
         } catch (error) {
                 console.error({ message: "Unable to create event", details: error });
-            } finally {
-                clearForm();
-            }
+        } finally {
+            clearForm();
+        }
     }
 
     const clearForm = () => {

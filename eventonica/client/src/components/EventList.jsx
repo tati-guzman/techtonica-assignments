@@ -7,6 +7,7 @@ const EventList = () => {
 
     const initialState = { events: [] };
 
+    //Use useReducer hook to perform appropriate updates based on targeted functionality
     function reducer(state, action) {
         switch (action.type) {
             case 'SET_EVENTS':
@@ -23,9 +24,14 @@ const EventList = () => {
     }
 
     const [state, dispatch] = useReducer(reducer, initialState);
+    
+    //Create state to track the information being typed in as a search query
     const [searchQuery, setSearchQuery] = useState('');
+
+    //Create state to track the targeted state being updated
     const [selectedEvent, setSelectedEvent] = useState(null);
 
+    //If there is a change on the page, re-fetch all current events from events table
     useEffect(() => {
         const loadEvents = async () => {
             try {
@@ -35,6 +41,7 @@ const EventList = () => {
                 }
                 const data = await response.json();
                 dispatch({ type: 'SET_EVENTS', payload: data });
+                //ISSUE: Potentially need an update HERE to make sure new events are displayed properly! Unless we just need to re-load the page??
             } catch (error) {
                 console.error({ message: "Error loading event list", details: error });
             }
@@ -43,11 +50,13 @@ const EventList = () => {
         loadEvents();
     }, []);
 
+    //Make searches case-insensitive and specific to the title or category
     const filteredEvents = state.events.filter(event =>
         (event.title?.toLowerCase() || '').includes(searchQuery.toLowerCase()) ||
         (event.category?.toLowerCase() || '').includes(searchQuery.toLowerCase())
     );
     
+    //Function to send PUT request to update event information
     const handleUpdate = async (updatedEvent) => {
         try {
             const response = await fetch(`/events/${updatedEvent.eventid}`, {
@@ -62,6 +71,8 @@ const EventList = () => {
 
             const data = await response.json();
             dispatch({ type: 'UPDATE_EVENT', payload: data });
+            
+            //Reset Selected Event state after updates
             setSelectedEvent(null);
         } catch (error) {
             console.error({ message: "Error updating this event", details: error });

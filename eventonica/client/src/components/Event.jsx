@@ -5,12 +5,14 @@ import * as ioicons from 'react-icons/io5'
 
 const Event = ({ event, dispatch, setSelectedEvent }) => {
     
+    //Reformat date information to be shown written out (e.g. September 16th, 2024)
     const correctDate = event.date ? new Date(event.date).toLocaleDateString('en-US', {
         year: 'numeric',
         month: 'long',
         day: 'numeric'
-    }) : 'TBD';
+    }) : 'TBD'; //If no date is provided, set as "TBD"
 
+    //Function to delete events after clicking delete button for specific events
     const handleDelete = async () => {
         try {
             await fetch(`/events/${event.eventid}`, {
