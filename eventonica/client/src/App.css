@@ -1,6 +1,6 @@
 .App {
   min-height: 100vh;
-  background-color: rgb(238, 232, 232);
+  background-color: #99d3e3;
   margin: 5px;
 }
 
@@ -14,10 +14,6 @@ a.navbar-brand {
   margin-inline-start: -5em;
 }
 
-.nav-link {
-  color: white !important;
-  margin-left: 5em;
-}
 
 .list-events {
   text-align: center;
@@ -44,7 +40,7 @@ input[type=text] {
   width: 100%;
   font-size: 15px;
   border-radius: 2px;
-  border: 3px solid #98d0f1
+  border: 3px solid #006681;
 }
 
 button.btn.btn-primary {

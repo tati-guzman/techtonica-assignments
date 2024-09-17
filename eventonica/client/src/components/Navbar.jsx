@@ -7,7 +7,7 @@ const FixedNavBar = () => {
 
   return (
     <>
-      <Navbar bg="dark" variant="dark" sticky="top">
+      <Navbar bg="light" sticky="top">
         <Container>
           <Navbar.Brand href="/">
             <img

@@ -139,11 +139,11 @@ const EventForm = ({ dispatch, selectedEvent, setSelectedEvent, onUpdate }) => {
                 onChange={(e) => setTime(e.target.value)}
             />  */}
 
-            <Button type="submit" variant="outline-success">
+            <Button type="submit" variant="success">
                 {selectedEvent ? "Update Event" : "Create Event"}
             </Button>
 
-            <Button type="button" variant="outline-warning" onClick={clearForm}>Cancel Changes</Button>
+            <Button type="button" variant="secondary" onClick={clearForm}>Cancel Changes</Button>
             
         </Form>
     )
