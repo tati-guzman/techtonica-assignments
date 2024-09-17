@@ -12,3 +12,5 @@ describe("app", () => {
     })
 })
 
+//This test passes but returns an error parsing the URL to fetch all event data. Need to fix in the future and add tests to check that as well!
+
