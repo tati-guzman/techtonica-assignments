@@ -47,14 +47,14 @@ const EventForm = ({ dispatch, selectedEvent, setSelectedEvent, onUpdate }) => {
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(event)
                 });
+                
 
                 if (!response.ok) {
                     throw new Error("Failed to create event");
                 }
 
-                const newEvent = await response.json();
-                dispatch({ type: 'ADD_EVENT', payload: newEvent });
-                //ISSUE: Potentially missing something here to help display all the new data after submission (without needing to reload)
+                const parsedResponse = await response.json();
+                dispatch({ type: 'ADD_EVENT', payload: parsedResponse.event });
             }
         } catch (error) {
                 console.error({ message: "Unable to create event", details: error });

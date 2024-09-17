@@ -45,13 +45,19 @@ app.post('/events', async (req, res) => {
         const { title, category, description, location, date, time, favorite } = req.body;
 
         //Create SQL query string
-        const query = 'INSERT INTO events (title, category, description, location, date, time, favorite) VALUES ($1, $2, $3, $4, $5, $6, $7)';
+        const query = 'INSERT INTO events (title, category, description, location, date, time, favorite) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *';
 
         //Send data query with variables to database
-        await db.query(query, [title, category, description, location, date, time, favorite]);
+        const resp = await db.query(query, [title, category, description, location, date, time, favorite]);
+        
+        //If for some reason, it tries to send back an empty row or doesn't create the event, handle the error!
+        if (!resp.rows && resp.rows.length < 1) {
+            res.status(500).json({ error: 'Error creating event. Failed to get newly created event.'});
+        }
+        const event = resp.rows[0];
         
         //Let user know that the event was created successfully
-        res.json({ message: 'Event created successfully'});
+        res.json({ message: 'Event created successfully', event});
         return;
     } catch (error) {
         res.status(500).json({ error: 'Error creating event', details: error });
