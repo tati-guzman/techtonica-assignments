@@ -1,67 +1,84 @@
-# Your First Express and React App with Vite
- ⚡ Create a working full stack app with React and Express in minutes by running your client using Vite, your server using Express, and dumping your db in the template ⚡
+# Eventonica
 
-## Step by Step instructions - To use this project as your start point  🚀  
-### To create the whole project
+Eventonica is full-stack web app that uses React and Vite for the front end and Express for the back end. It is connected to a local database to store event data. Users are able to manage Techtonica events with features such as create, update, delete, and search. Each event has a "Category" feature to allow for better organization and classification. The Search bar will query events with matching characters in the event title or category. With this app, Techtonica's Event Manager will be able to keep important details such as location, date, time, and descriptions organized and efficiently stored in a local database.
 
+## Installation
 
-1. Go to your source directory in your terminal and run the command `git clone https://github.com/Yosolita1978/Template2023React-Vite.git NAMENEWDIRECTORY`
+Follow these steps to run the Eventonica app locally:
 
-2. To clean the owner git out of the main directory, run the command `rm -rf .git`
+Open your terminal
 
-3. Then while still within the main directory in your terminal, run the command `git init` to start your own git track 
-
-![You will something like this in your terminal](https://user-images.githubusercontent.com/102179075/227304861-7ad633d7-5ec0-463a-8554-9e8b4c8caaad.png?raw=true)
-
-4. Go to the server folder in the project (`cd server`) and run the command `npm install`
-
-5. Inside your server folder, create an .env file with `touch .env`
-
-⚠️ All these instructions should be inside your server folder ⚠️
-
-6. There are two ways to restore the DB dump file the project already contains: 
-
-A- If you have postgres set up postgres with an User:  
- * just run the command `psql -U postgres -f db.sql`. Make sure that you have your Postgres password on hand. The psql console will ask for your password. 
-
-B- If your initial configuration of postgres doesn't require a User:
-* just run the command `psql -f db.sql`
-
-7. Inside your server folder, open the file `.env.example` and copy the correct option for your configuation found there to your new .env file. 
-
-Here is what your `.env` might look like:
+Change directory to where you want to store Eventonica
 
 ```
-DB_URI="postgresql://localhost/techtonica"
-``` 
-For this template, the name of your db should be `techtonica`.
+~/ cd new/Directory/on/your/machine
+```
 
-⚠️ If you don't see a `techtonica` db, you can create one. From the terminal, navigate to the psql command line with `psql` and type `create database techtonica;` - don't forget the semicolon!! ⚠️
+Clone this repository using the HTTPS URL
 
-![You will something like this in your terminal](https://raw.githubusercontent.com/Yosolita1978/screenshoots/a4674c79f61b39547b068044c5e5f2bd8510a4b8/2023/H1/Screen%20Shot%202023-03-22%20at%2011.03.12%20PM.png)
+```
+git clone https://github.com/tati-guzman/techtonica-assignments.git
+```
 
-8. Go to the client folder in the project (`cd .. and cd client`) and run the command `npm install`
+Navigate into the eventonica client directory
 
-🔎 The `npm install` command installs the required dependencies defined in the package.json files and generates a node_modules folder with the installed modules.
+```
+cd ./eventonica/client/
+```
 
-⚡ Note: Using Vite we can avoid all the package deprecation warnings ⚡
+Install all relevant dependencies
 
-9. If you want to run both servers using concurrently (which is already a npm dependency on the server) you can keep the script in the package.json in the server that reads `"dev": " concurrently 'npm start' 'cd .. && cd client && npm run dev' "`. If you run the command `npm run dev` from within your server, both the client and backend servers will start.
+```
+npm install
+```
 
-10. Go to localhost:5173 and you should see something like this  💪
+Navigate into the eventonica server directory
 
-![You will something like this in your terminal.](https://raw.githubusercontent.com/Yosolita1978/screenshoots/2f6afdd2318809714071b7625776c195903758ca/2023/H1/Screen%20Shot%202023-03-22%20at%2010.40.36%20PM.png)
+```
+cd ../eventonica/server/
+```
 
-⚡ **Notes** ⚡  
-* React requires **Node >= 14.0.0** & **npm >= 5.6**
-* This template is using icons from `react-icons/io5` and `react-bootstrap` in the frontend. You can see all the frontend dependencies in the package.json on the `client` folder
-* Please note that your backend server will run from `port 8080`, and your frontend React server will run from `port 5173` (the default Vite port).
+Install all relevant dependencies
 
-* Confused about why use Vite? 🤔 → Check out the [Create a new React app with Vite](https://scrimba.com/articles/create-react-app-with-vite/)
+```
+npm install
+```
 
-⚙️ Links that you could need:
+Create a PostgreSQL Database and update the connection details in a .env file 
+```
+DB_URI="postgresql://localhost/your_database_name"
+```
 
-* The instructions for [pg](https://node-postgres.com/apis/pool)  
-* Setup [postgres correctly](https://github.com/Techtonica/curriculum/blob/main/databases/installing-postgresql.md)
+Start the app concurrently
 
+```
+npm run dev
+```
+
+Navigate to [http://localhost:5173](http://localhost:5173) to interact with the front end of the app.
+
+### Demo
+
+<img width="1903" alt="Screenshot 2024-09-16 at 9 51 59 PM" src="https://github.com/user-attachments/assets/18d5a0b7-a242-4e4d-a1d8-85c0b53fe028">
+
+
+## Built With
+
+* [Visual Studio Code](https://code.visualstudio.com/) - Source code editor
+* [JavaScript](https://www.javascript.com/) - Primary language used
+* [HTML](https://html.com/) - Used to design web layout
+* [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+* [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* [Express.js](https://expressjs.com/) as a web framework for Node.js
+
+## Future Features
+
+- [ ] README: More information on how to create a PostgreSQL Database or db_dump file
+- [ ] Event time will be included in form and displayed appropriately
+- [ ] Favorite: User will be able to favorite and un-favorite events
+- [ ] Updated Design: "Create Event" and "Update Event" form will only render if needed and Search Bar will be located in the Nav Bar
+
+## Acknowledgements
+
+* Techtonica & the H2 2024 Cohort
 

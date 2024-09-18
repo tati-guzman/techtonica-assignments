@@ -1,15 +1,15 @@
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import MyNavBar from './components/Navbar'
-import ListStudents from './components/ListStudents'
+import FixedNavBar from './components/Navbar.jsx'
+import EventList from './components/EventList.jsx'
 
 
-function App() {
+const App = () => {
 
   return (
     <div className="App">
-      <MyNavBar />
-      <ListStudents />
+      <FixedNavBar />
+      <EventList />
 
     </div>
   )
