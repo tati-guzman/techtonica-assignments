@@ -1,0 +1,1 @@
+import IndividualCard from './IndividualCard.jsx';

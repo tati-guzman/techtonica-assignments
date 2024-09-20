@@ -12,30 +12,30 @@ app.use(cors());
 app.use(express.json());
 
 //Create Welcome Message for Root Directory
-//GET Request for '/'
+//GET Request for '/tracker'
 
 //Create GET Request for Sightings Table including nickname from Individuals Table (JOIN)
-//'/sightings'
+//'/tracker/sightings'
 
 //Create GET Request for Individuals Table (all information from table)
-//'/individuals'
+//'/tracker/individuals'
 
 //Create DELETE Request to remove a specified individual from Individuals Table
-//'/individuals/:animal_id'
+//'/tracker/individuals/:animal_id'
 
 //Create POST Request to create a new individual in the Individuals Table
-//'/individuals/:animal_id'
+//'/tracker/individuals/:animal_id'
 //Reminder to RETURNING * to send back all rows to display in table
 
 //Create PUT Request to update individual in the Individuals Table
-//'/individuals/:animal_id'
+//'/tracker/individuals/:animal_id'
 //Reminder to RETURNING * to show all rows in display
 
 //Create POST Request to create new species record in Species Table
-//'/species'
+//'/tracker/species'
 
 //Create POST Request to create new sighting record in Sightings Table
-//'/sightings'
+//'/tracker/sightings'
 
 //Print PORT location when active PORT is detected (server is running properly)
 app.listen(PORT, () => {

@@ -6,8 +6,8 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      '/UPDATETHISWITHROUTES': {
-        target: 'http://localhost:7171',
+      '/tracker': {
+        target: 'http://localhost:8080',
         changeOrigin: true,
         secure: false
       }
