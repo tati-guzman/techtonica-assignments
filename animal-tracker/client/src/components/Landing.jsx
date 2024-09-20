@@ -24,9 +24,11 @@ const Landing = () => {
     
     return (
         <>
-           {/* WELCOME MESSAGE  */}
+           {/* WELCOME MESSAGE - Change header level? Wrap in its own div for styling? */}
+           <h3>Welcome to our Animal Tracker! Here at the TG Wildlife Research Center, we value all the data we can receive about the endangered animals we are working to protect.</h3>
 
-           {/* ERROR FORM MESSAGE */}
+           {/* ERROR FORM MESSAGE - wrap in its own div? Separate into two elements: h4 and p? */}
+           <h4>Your account classifies you as a: <em>Scientist</em>. Please use the appropriate forms to log your data. If you notice an error on the forms or our data tables, please fill out a ticket.</h4>
 
            {/* HEALTHY SIGHTING BUTTON: filter through fetched sightings for healthy = true */}
            {/* ALL SIGHTINGS BUTTON: onClick -> set showHealth to false */}
