@@ -1,29 +1,24 @@
 //Import necessary styling 
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
-// import Logo from '../assets/AnimalTrackerLogo.png'; UPDATE WITH REAL LOGO
-import Logo from '../assets/BlueTechtonicaWord.png';
 
 const TopNavBar = ({ setComponent }) => {
 
     return (
         <>
-            <Navbar bg="light" sticky="top">
+            <Navbar bg="light" sticky="top" className="d-flex justify-content-between">
                 <Container>
-                {/* Add information for onClick */}
-                    <Navbar.Brand href="/"> 
-                        {/* ADD REAL LOGO AND UPDATE ALT */}
-                        <img
-                            src={Logo}
-                            height="30"
-                            className="d-lg-inline-block"
-                            alt="The word Techtonica written in block letters in two shades of blue"
-                        />
+                    {/* Brand redirects users to homepage, which in this case will also set component to landing */}
+                    <Navbar.Brand href="/" onClick={() => setComponent("landing")}>
+                        Animal Tracker 🔎
                     </Navbar.Brand>
 
-                    {/* BUTTON: Individuals Info onClick={() => setComponent("individuals")} */}
-                    {/* BUTTON: Add Species onClick={() => setComponent("species")} */}
-                    {/* BUTTON: Add Sighting onClick={() => setComponent("sighting")} */}
+                    {/* The different buttons will determine which component is shown */}
+                    <Nav className="mx-auto">
+                        <Button onClick={() => setComponent("individuals")}>Individuals Info</Button>
+                        <Button onClick={() => setComponent("species")}>Add Species</Button>
+                        <Button onClick={() => setComponent("sightings")}>Add Sighting</Button>
+                    </Nav>
           
                     <Navbar.Collapse className="justify-content-end">
                         <Navbar.Text>Welcome, Super Scientist!</Navbar.Text>

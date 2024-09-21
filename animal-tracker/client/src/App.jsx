@@ -18,13 +18,20 @@ function App() {
   const [component, setComponent] = useState("landing");
   
   //Function to control displayed component
-  /*
-  function chooseComponent {
-    switch statement:
-      if XXXX is clicked:
-        return <ComponentName />
+  const chooseComponent = (component) => {
+    switch (component) {
+      case "landing":
+        return <Landing />;
+      case "individuals":
+        return <Individuals />;
+      case "species":
+        return <Species />;
+      case "sightings":
+        return <Sightings />;
+      default:
+        return <Landing />;
     }
-  */
+  }
   
   return (
     <div className="App">
@@ -33,7 +40,7 @@ function App() {
 
       {/* Displayed component is decided based on function - triggered by NavBar buttons */}
       <div className="wrapper">
-        {chooseComponent}
+        {chooseComponent(component)}
       </div>
       
     </div>
