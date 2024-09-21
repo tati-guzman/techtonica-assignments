@@ -19,9 +19,31 @@ const Landing = () => {
 
     //onClick function for Healthy Sightings Button -> toggle between healthy sightings and all sightings by simply switching it to the opposite state
     const toggleHealthy = () => {
-      setShowHealth(!showHealth);
+      setShowHealth((prevStatus) => !prevStatus);
     }
     
+    //Fetch function to set info for sightings table
+    const loadSightings = async () => {
+        try {
+            const response = await fetch('/tracker/sightings');
+
+            if (!response.ok) {
+                throw new Error("Failed to fetch sightings");
+            }
+
+            const sightingsTableInfo = await response.json();
+            setSightings(sightingsTableInfo);
+        } catch (error) {
+            console.error({ message: "Error loading sightings", details: error });
+            alert("We are having trouble loading the sightings. Please try again.");
+        }
+    }
+
+    //Fetch the sightings info when you load into the page
+    useEffect(() => {
+        loadSightings();
+    }, []);
+
     return (
         <>
            {/* WELCOME MESSAGE - Change header level? Wrap in its own div for styling? */}
@@ -30,19 +52,15 @@ const Landing = () => {
            {/* ERROR FORM MESSAGE - wrap in its own div? Separate into two elements: h4 and p? */}
            <h4>Your account classifies you as a: <em>Scientist</em>. Please use the appropriate forms to log your data. If you notice an error on the forms or our data tables, please fill out a ticket.</h4>
 
-           {/* HEALTHY SIGHTING BUTTON: filter through fetched sightings for healthy = true */}
-           {/* ALL SIGHTINGS BUTTON: onClick -> set showHealth to false */}
-
+           {/* Button to toggle between Healthy and All Sightings */}
            <Button onClick={toggleHealthy}>
-            {showHealth ?
-            "All Sightings" :
-            "Healthy Sightings Only"}
+            {showHealth ? "All Sightings" : "Healthy Sightings Only"}
            </Button>
 
            {/* Map out the fetched sightings that need to be shown into <SightingsCard /> */}
-           {showHealth ?
-           healthySightings.map((sighting) => <SightingsCard sighting={sighting} />) :
-           sightings.map((sighting) => <SightingsCard sighting={sighting} />)
+           {showHealth
+           ? healthySightings.map((sighting) => <SightingsCard key={sighting.sighting_id} sighting={sighting} />)
+           : sightings.map((sighting) => <SightingsCard key={sighting.sighting_id} sighting={sighting} />)
            }
         </>
     )
