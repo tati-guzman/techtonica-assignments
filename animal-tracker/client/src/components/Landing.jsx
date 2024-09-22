@@ -1,6 +1,6 @@
 //Import necessary functionalities
 import React, { useState, useMemo, useEffect } from 'react';
-import Button from 'react-bootstrap/Button';
+import { Button, Row, Col } from 'react-bootstrap';
 import SightingsCard from './SightingsCard.jsx';
 
 const Landing = () => {
@@ -45,22 +45,35 @@ const Landing = () => {
 
     return (
         <>
-           {/* WELCOME MESSAGE - Change header level? Wrap in its own div for styling? */}
-           <h3>Welcome to our Animal Tracker! Here at the TG Wildlife Research Center, we value all the data we can receive about the endangered animals we are working to protect.</h3>
+            <Row className="mb-4">
+                <Col>
+                    <div className="message">
+                        <h4>Welcome to our Animal Tracker! Here at the TG Wildlife Research Center, we value all the data we can receive about the endangered animals we are working to protect.</h4>
+                    </div>
+                </Col>
+                
+                <Col>
+                    <div className="message">
+                        <h4>Your account classifies you as a: <em>Scientist</em>. Please use the appropriate forms to log your data. If you notice an error on the forms or our data tables, please fill out a ticket.</h4>
+                    </div>
+                </Col>
+            </Row>
 
-           {/* ERROR FORM MESSAGE - wrap in its own div? Separate into two elements: h4 and p? */}
-           <h4>Your account classifies you as a: <em>Scientist</em>. Please use the appropriate forms to log your data. If you notice an error on the forms or our data tables, please fill out a ticket.</h4>
-
-           {/* Button to toggle between Healthy and All Sightings */}
-           <Button onClick={toggleHealthy}>
-            {showHealth ? "All Sightings" : "Healthy Sightings Only"}
-           </Button>
-
-           {/* Map out the fetched sightings that need to be shown into <SightingsCard /> */}
-           {showHealth
-           ? healthySightings.map((sighting, index) => <SightingsCard key={index} sighting={sighting} />)
-           : sightings.map((sighting, index) => <SightingsCard key={index} sighting={sighting} />)
-           }
+            <div className="landing-wrapper">
+                {/* Button to toggle between Healthy and All Sightings */}
+                <h3>Sightings:</h3> 
+                <Button onClick={toggleHealthy}>
+                    {showHealth ? "All Sightings" : "Healthy Sightings Only"}
+                </Button>
+                
+                {/* Map out the fetched sightings that need to be shown into <SightingsCard /> */}
+                <div className="list">
+                    {showHealth
+                    ? healthySightings.map((sighting, index) => <SightingsCard key={index} sighting={sighting} />)
+                    : sightings.map((sighting, index) => <SightingsCard key={index} sighting={sighting} />)
+                    }
+                </div>
+            </div>
         </>
     )
 }
