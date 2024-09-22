@@ -42,7 +42,7 @@ app.get('/tracker/individuals', async (req, res) => {
 
 //Create DELETE Request to remove a specified individual from Individuals Table
 //'/tracker/individuals/:animal_id'
-app.delete('tracker/individuals/:animal_id', async (req, res) => {
+app.delete('/tracker/individuals/:animal_id', async (req, res) => {
     console.log("We will be deleting this individual soon.");
     console.log(req.params);
 
@@ -64,7 +64,7 @@ app.delete('tracker/individuals/:animal_id', async (req, res) => {
 //Create POST Request to create a new individual in the Individuals Table
 //'/tracker/individuals/:animal_id'
 //Reminder to RETURNING * to send back all rows to display in table
-app.post('tracker/individuals/:animal_id', async (req, res) => {
+app.post('/tracker/individuals/:animal_id', async (req, res) => {
     console.log("Creating a new individual now!");
 
     try {
@@ -130,7 +130,7 @@ app.put('/tracker/individuals/:animal_id', async (req, res) => {
 
 //Create POST Request to create new species record in Species Table
 //'/tracker/species'
-app.post('tracker/individuals/species', async (req, res) => {
+app.post('/tracker/species', async (req, res) => {
     console.log("Creating new species record!");
 
     try {
@@ -163,7 +163,7 @@ app.post('tracker/individuals/species', async (req, res) => {
 
 //Create POST Request to create new sighting record in Sightings Table
 //'/tracker/sightings'
-app.post('tracker/individuals/sightings', async (req, res) => {
+app.post('/tracker/sightings', async (req, res) => {
     console.log("Creating new sighting!");
 
     try {

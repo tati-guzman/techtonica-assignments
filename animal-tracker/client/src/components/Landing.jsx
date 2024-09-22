@@ -59,8 +59,8 @@ const Landing = () => {
 
            {/* Map out the fetched sightings that need to be shown into <SightingsCard /> */}
            {showHealth
-           ? healthySightings.map((sighting) => <SightingsCard key={sighting.sighting_id} sighting={sighting} />)
-           : sightings.map((sighting) => <SightingsCard key={sighting.sighting_id} sighting={sighting} />)
+           ? healthySightings.map((sighting, index) => <SightingsCard key={index} sighting={sighting} />)
+           : sightings.map((sighting, index) => <SightingsCard key={index} sighting={sighting} />)
            }
         </>
     )
