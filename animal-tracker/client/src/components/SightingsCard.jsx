@@ -6,7 +6,7 @@ const SightingsCard = (sighting) => {
     
     //Convert date information and record stamp maybe
     //NOTE: DO THIS IF NEED OTHERWISE DELETE COMMENT
-    console.log(sighting);
+    // console.log(sighting);
 
     return (
         <Card>

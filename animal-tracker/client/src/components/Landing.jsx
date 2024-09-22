@@ -27,7 +27,7 @@ const Landing = () => {
         try {
             const response = await fetch('/tracker/sightings');
 
-            if (!response.ok) {
+            if (response && !response.ok) {
                 throw new Error("Failed to fetch sightings");
             }
 
@@ -35,7 +35,6 @@ const Landing = () => {
             setSightings(sightingsTableInfo);
         } catch (error) {
             console.error({ message: "Error loading sightings", details: error });
-            alert("We are having trouble loading the sightings. Please try again.");
         }
     }
 
