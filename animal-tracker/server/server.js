@@ -72,13 +72,13 @@ app.post('/tracker/individuals/:animal_id', async (req, res) => {
         console.log(req.body);
 
         //Deconstruct the request into individual elements
-        const { animal_id, nickname, common_name, scientist_name } = req.body;
+        const { animalID, nickname, commonName, scientistName } = req.body;
 
         //Create SQL query string
         const queryStatement = 'INSERT INTO individuals (animal_id, nickname, common_name, scientist_name) VALUES ($1, $2, $3, $4) RETURNING *';
 
         //Send query with all relevant variables
-        const response = await db.query(queryStatement, [animal_id, nickname, common_name, scientist_name]);
+        const response = await db.query(queryStatement, [animalID, nickname, commonName, scientistName]);
 
         //Error handling if it gets stuck at this point
         if (!response.rows && response.rows.length < 1) {
@@ -100,12 +100,13 @@ app.post('/tracker/individuals/:animal_id', async (req, res) => {
 //Reminder to RETURNING * to show all rows in display
 app.put('/tracker/individuals/:animal_id', async (req, res) => {
     console.log("We will update this individual's info soon.");
-
+    console.log(req.params);
     //Pull appropriate animal ID from request
     const animalID = req.params.animal_id;
-
+    console.log(req.body);
     //Piece apart request details to only update what was sent in
-    const fields = Object.keys(req.body);
+    const fields = ['animal_id', 'nickname', 'common_name', 'scientist_name']
+    console.log(fields);
     const values = Object.values(req.body);
 
     //Make sure request is not empty

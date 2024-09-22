@@ -33,9 +33,9 @@ const IndividualCard = ({ individual, setSelectedIndividual, setAllIndividuals }
                 <Card.Title>{individual.animal_id}: {individual.nickname}</Card.Title>
 
                 <Card.Text>
-                    <p>Species: {individual.common_name}</p>
-                    <p>Primary Scientist: {individual.scientist_name}</p>
-                    <p>Record Creation Timestamp: {individual.created_at}</p>
+                    Species: {individual.common_name}<br />
+                    Primary Scientist: {individual.scientist_name}<br />
+                    Record Creation Timestamp: {individual.created_at}
                 </Card.Text>
 
                 <Button onClick={() => {setSelectedIndividual(individual)}}>Update Info</Button>

@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 
-const IndividualsForm = ({ selectedIndividual, setSelectedIndividual, setAllIndividuals}) => {
+const IndividualsForm = ({ selectedIndividual, setSelectedIndividual, setAllIndividuals, allIndividuals}) => {
 
     //Set useStates to track different form inputs
     const [animalID, setAnimalID] = useState("");
@@ -38,8 +38,10 @@ const IndividualsForm = ({ selectedIndividual, setSelectedIndividual, setAllIndi
                     throw new Error("Failed to update individual info");
                 }
 
-                const parsedResponse = await response.json();
-                setAllIndividuals(parsedResponse);
+                const updatedIndividual = await response.json();
+                setAllIndividuals(prev =>
+                    prev.map(individual => 
+                        individual.animal_id === updatedIndividual.animal_id ? updatedIndividual : individual));
             } else {
                 const response = await fetch(`/tracker/individuals/${animalID}`, {
                     method: 'POST',
@@ -51,8 +53,8 @@ const IndividualsForm = ({ selectedIndividual, setSelectedIndividual, setAllIndi
                     throw new Error("Failed to create new individual");
                 }
 
-                const parsedResponse = await response.json();
-                setAllIndividuals(parsedResponse);
+                const newIndividual = await response.json();
+                setAllIndividuals(prev => [...prev, newIndividual]);
             }
         } catch (error) {
             console.error({ message: "Unable to submit information", details: error });

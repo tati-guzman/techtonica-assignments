@@ -37,8 +37,8 @@ const Individuals = () => {
         <>
             <div>
                 <h2>All Tracked Individuals</h2>
-                {allIndividuals.map((individual) => (
-                    <IndividualCard key={individual.animal_id} individual={individual} setSelectedIndividual={setSelectedIndividual} setAllIndividuals={setAllIndividuals} />
+                {allIndividuals.map((individual, index) => (
+                    <IndividualCard key={index} individual={individual} setSelectedIndividual={setSelectedIndividual} setAllIndividuals={setAllIndividuals} allIndividuals={allIndividuals} />
                 ))}
             </div>
             
