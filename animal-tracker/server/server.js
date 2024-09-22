@@ -88,7 +88,7 @@ app.post('/tracker/individuals/:animal_id', async (req, res) => {
         const newIndividual = response.rows[0];
 
         //Let user know that the individual was created successfully
-        res.json({ message: 'Individual added successfully', newIndividual });
+        res.json(newIndividual);
         return;
     } catch (error) {
         res.status(500).json({ error: "Error creating new individual.", details: error });
