@@ -72,3 +72,8 @@ button.btn.btn-primary {
   margin-right: 2em;
 } */
 
+.brandtext {
+    font-family: "Rock Salt", cursive;
+    font-weight: 400;
+    font-style: normal;
+}

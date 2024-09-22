@@ -8,7 +8,7 @@ const TopNavBar = ({ setComponent }) => {
     return (
         <Navbar bg="light" sticky="top" className="d-flex justify-content-between">
             <Container>
-                <Navbar.Brand href="/" onClick={() => setComponent("landing")}>
+                <Navbar.Brand className="brandtext" href="/" onClick={() => setComponent("landing")}>
                     Animal Tracker 🔎
                 </Navbar.Brand>
 
