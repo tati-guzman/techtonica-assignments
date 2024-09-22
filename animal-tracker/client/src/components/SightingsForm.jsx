@@ -6,7 +6,7 @@ const SightingsForm = () => {
 
     //State to hold all form data in one object
     const [sightingsFormData, setSightingsFormData] = useState({
-        "date_time": null,
+        "date_time": "",
         "animal_id": "",
         "location": "",
         "healthy": null,
@@ -47,7 +47,7 @@ const SightingsForm = () => {
     //Function to clear form after submission or canceling changes
     const clearForm = () => {
         setSightingsFormData({
-            "date_time": null,
+            "date_time": "",
             "animal_id": "",
             "location": "",
             "healthy": null,
@@ -58,62 +58,78 @@ const SightingsForm = () => {
     //State to track Modal Visibility
     const [showModal, setShowModal] = useState(false);
 
-//INPUT FORM QUESTIONS!!!
     return (
         <div>
             <Form onSubmit={handleSubmit}>
-                <Form.Label htmlFor=""></Form.Label>
+                <Form.Label htmlFor="datetime">When was the sighting?</Form.Label>
                 <input
-                    id=""
-                    name=""
-                    type=""
-                    placeholder=""
+                    id="datetime"
+                    name="date_time"
+                    type="datetime-local"
                     required
-                    value={}
+                    value={sightingsFormData["date_time"]}
                     onChange={handleChange}
                 />
 
-                <Form.Label htmlFor=""></Form.Label>
+                <Form.Label htmlFor="animal-id">Individual Spotted: </Form.Label>
                 <input
-                    id=""
-                    name=""
-                    type=""
-                    placeholder=""
+                    id="animal-id"
+                    name="animal_id"
+                    type="text"
+                    placeholder="Please enter the individual's ID number"
                     required
-                    value={}
+                    value={sightingsFormData["animal_id"]}
                     onChange={handleChange}
                 />
 
-                <Form.Label htmlFor=""></Form.Label>
+                <Form.Label htmlFor="location">Where was the sighting?</Form.Label>
                 <input
-                    id=""
-                    name=""
-                    type=""
-                    placeholder=""
+                    id="location"
+                    name="location"
+                    type="text"
+                    placeholder="Any location information is accepted!"
                     required
-                    value={}
+                    value={sightingsFormData["location"]}
                     onChange={handleChange}
                 />
 
-                <Form.Label htmlFor=""></Form.Label>
-                <input
-                    id=""
-                    name=""
-                    type=""
-                    placeholder=""
-                    required
-                    value={}
-                    onChange={handleChange}
+                <Form.Label>Health Status: </Form.Label>
+                <Form.Check
+                    id="healthy"
+                    name="healthy"
+                    type="radio"
+                    label="Healthy"
+                    value="true"
+                    checked={sightingsFormData.healthy === true}
+                    onChange={() => setSightingsFormData(prevFormData => ({ ...prevFormData, healthy: true }))}
+                />
+                <Form.Check
+                    id="not-healthy"
+                    name="healthy"
+                    type="radio"
+                    label="Not Healthy"
+                    value="false"
+                    checked={sightingsFormData.healthy === false}
+                    onChange={() => setSightingsFormData(prevFormData => ({ ...prevFormData, healthy: false }))}
+                />
+                <Form.Check
+                    id="health-unknown"
+                    name="healthy"
+                    type="radio"
+                    label="Unknown"
+                    value=""
+                    checked={sightingsFormData.healthy === null}
+                    onChange={() => setSightingsFormData(prevFormData => ({ ...prevFormData, healthy: null }))}
                 />
 
-                <Form.Label htmlFor=""></Form.Label>
+                <Form.Label htmlFor="email">Email of Sighter: </Form.Label>
                 <input
-                    id=""
-                    name=""
-                    type=""
-                    placeholder=""
+                    id="email"
+                    name="sighter_email"
+                    type="email"
+                    placeholder="sighter@email.com"
                     required
-                    value={}
+                    value={sightingsFormData["sighter_email"]}
                     onChange={handleChange}
                 />
 

@@ -16,7 +16,7 @@ const SightingsCard = (sighting) => {
                 <Card.Text>
                     <p>Date & Time: {sighting.date_time}</p>
                     <p>Location: {sighting.location}</p>
-                    <p>Health Status: {sighting.healthy ? "Healthy" : "Not Healthy"}</p>
+                    <p>Health Status: {sighting.healthy ? "Healthy" : sighting.healthy === false ? "Not Healthy" : "Unknown"}</p>
                     <p>Sighter's Email: {sighting.sighter_email}</p>
                     <p>Record Creation Timestamp: {sighting.created_at}</p>
                 </Card.Text>
