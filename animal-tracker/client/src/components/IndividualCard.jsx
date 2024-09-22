@@ -4,8 +4,14 @@ import { Card, Button } from 'react-bootstrap';
 
 const IndividualCard = ({ individual, setSelectedIndividual, setAllIndividuals }) => {
 
-    //Convert date information and record stamp maybe
-    //NOTE: DO THIS IF NEED OTHERWISE DELETE COMMENT
+    const correctDate = individual.created_at ? new Date(individual.created_at).toLocaleString('en-US', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false
+    }) : 'TBD';
 
     //Function to delete the record of the card that had the button pushed
     const handleDelete = async () => {
@@ -35,10 +41,10 @@ const IndividualCard = ({ individual, setSelectedIndividual, setAllIndividuals }
                 <Card.Text>
                     Species: {individual.common_name}<br />
                     Primary Scientist: {individual.scientist_name}<br />
-                    Record Creation Timestamp: {individual.created_at}
+                    Record Creation Timestamp: {correctDate}
                 </Card.Text>
 
-                <Button onClick={() => {setSelectedIndividual(individual)}}>Update Info</Button>
+                <Button className="me-2" onClick={() => {setSelectedIndividual(individual)}}>Update Info</Button>
                 <Button onClick={handleDelete}>Delete Individual</Button>
             </Card.Body>
         </Card>

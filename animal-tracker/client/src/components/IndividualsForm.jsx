@@ -78,50 +78,59 @@ const IndividualsForm = ({ selectedIndividual, setSelectedIndividual, setAllIndi
     }
 
     return (
-        <Form onSubmit={handleSubmit}>
-            <Form.Label htmlFor="animal-id">Animal ID: </Form.Label>
-            <input
-                id="animal-id"
-                name="animal_id"
-                type="text"
-                placeholder="Enter Animal ID"
-                required
-                value={animalID}
-                onChange={(e) => setAnimalID(e.target.value)}
-            />
+        <Form className="form" onSubmit={handleSubmit}>
+            <div className="mb-3">
+                <Form.Label htmlFor="animal-id">Animal ID:</Form.Label>
+                <input
+                    id="animal-id"
+                    name="animal_id"
+                    type="text"
+                    placeholder="Enter Animal ID"
+                    required
+                    value={animalID}
+                    onChange={(e) => setAnimalID(e.target.value)}
+                />
+            </div>
 
-            <Form.Label htmlFor="nickname">Individual's Nickname: </Form.Label>
-            <input
-                id="nickname"
-                name="nickname"
-                type="text"
-                placeholder="Enter Nickname (if chosen)"
-                value={nickname}
-                onChange={(e) => setNickname(e.target.value)}
-            />
-
-            <Form.Label htmlFor="common-name">Common Name: </Form.Label>
-            <input
-                id="common-name"
-                name="common_name"
-                type="text"
-                placeholder="Enter Common Name"
-                required
-                value={commonName}
-                onChange={(e) => setCommonName(e.target.value)}
-            />
-
-            <Form.Label htmlFor="scientist">Primary Scientist: </Form.Label>
-            <input
-                id="scientist"
-                name="scientist_name"
-                type="text"
-                placeholder="Enter Primary Scientist (if assigned)"
-                value={scientist}
-                onChange={(e) => setScientist(e.target.value)}
-            />
+            <div className="mb-3">
+                <Form.Label htmlFor="nickname">Individual's Nickname:</Form.Label>
+                <input
+                    id="nickname"
+                    name="nickname"
+                    type="text"
+                    placeholder="Enter Nickname (if chosen)"
+                    value={nickname}
+                    onChange={(e) => setNickname(e.target.value)}
+                />
+            </div>
             
-            <Button type="submit">
+
+            <div className="mb-3">
+                <Form.Label htmlFor="common-name">Common Name:</Form.Label>
+                <input
+                    id="common-name"
+                    name="common_name"
+                    type="text"
+                    placeholder="Enter Common Name"
+                    required
+                    value={commonName}
+                    onChange={(e) => setCommonName(e.target.value)}
+                />
+            </div>
+
+            <div className="mb-3">
+                <Form.Label htmlFor="scientist">Primary Scientist:</Form.Label>
+                <input
+                    id="scientist"
+                    name="scientist_name"
+                    type="text"
+                    placeholder="Enter Primary Scientist (if assigned)"
+                    value={scientist}
+                    onChange={(e) => setScientist(e.target.value)}
+                />
+            </div>
+
+            <Button className="me-2" type="submit">
                 {selectedIndividual ? "Update Individual" : "Create Individual"}
             </Button>
             

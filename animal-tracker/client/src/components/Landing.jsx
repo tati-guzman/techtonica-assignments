@@ -59,7 +59,7 @@ const Landing = () => {
                 </Col>
             </Row>
 
-            <div className="landing-wrapper">
+            <div className="list-wrapper">
                 {/* Button to toggle between Healthy and All Sightings */}
                 <h3>Sightings:</h3> 
                 <Button onClick={toggleHealthy}>
