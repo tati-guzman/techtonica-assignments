@@ -9,7 +9,7 @@ const SpeciesForm = () => {
         "common_name": "",
         "scientific_name": "",
         "amount_living": "",
-        "status_code": "",
+        "status_code": ""
     })
 
     //Function to update form state when data is inputted
@@ -38,7 +38,19 @@ const SpeciesForm = () => {
         } catch (error) {
             console.error({ message: "Error submitting new species", details: error })
             alert("We're sorry, there was an error submitting new species. Please try again or submit a ticket.");
+        } finally {
+            clearForm();
         }
+    }
+
+    //Function to clear form after submission or canceling changes
+    const clearForm = () => {
+        setSpeciesFormData({
+            "common_name": "",
+            "scientific_name": "",
+            "amount_living": "",
+            "status_code": ""
+        })
     }
 
     //State to show/hide the modal
