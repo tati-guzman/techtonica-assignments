@@ -9,8 +9,8 @@ import React, { useState } from 'react';
 import TopNavBar from './components/TopNavBar.jsx';
 import Landing from './components/Landing.jsx';
 import Individuals from './components/Individuals.jsx';
-import Species from './components/Species.jsx';
-import Sightings from './components/SightingsForm.jsx';
+import SpeciesForm from './components/SpeciesForm.jsx';
+import SightingsForm from './components/SightingsForm.jsx';
 
 function App() {
 
@@ -25,9 +25,9 @@ function App() {
       case "individuals":
         return <Individuals />;
       case "species":
-        return <Species />;
+        return <SpeciesForm />;
       case "sightings":
-        return <Sightings />;
+        return <SightingsForm />;
       default:
         return <Landing />;
     }
