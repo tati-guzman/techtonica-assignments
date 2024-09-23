@@ -72,7 +72,7 @@ Navigate to [http://localhost:5173](http://localhost:5173) to interact with the 
 
 ### Demo
 
-!(client/src/assets/Animal_Tracker_Screenshot.png)
+<img src='client/src/assets/Animal_Tracker_Screenshot.png'>
 
 ## Built With
 
