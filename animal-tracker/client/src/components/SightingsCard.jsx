@@ -4,9 +4,14 @@ import Card from 'react-bootstrap/Card';
 
 const SightingsCard = (sighting) => {
     
-    //Convert date information and record stamp maybe
-    //NOTE: DO THIS IF NEED OTHERWISE DELETE COMMENT
-    // console.log(sighting);
+    const correctDate = sighting.sighting.created_at ? new Date(sighting.sighting.created_at).toLocaleString('en-US', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false
+    }) : 'TBD';
 
     return (
         <Card>
@@ -19,7 +24,7 @@ const SightingsCard = (sighting) => {
                     Location: {sighting.sighting.location}<br />
                     Health Status: {sighting.sighting.healthy ? "Healthy" : sighting.sighting.healthy === false ? "Not Healthy" : "Unknown"}<br />
                     Sighter's Email: {sighting.sighting.sighter_email}<br />
-                    Record Creation Timestamp: {sighting.sighting.created_at}
+                    Record Creation Timestamp: {correctDate}
                 </Card.Text>
            </Card.Body>
         </Card>

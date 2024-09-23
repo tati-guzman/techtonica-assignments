@@ -35,15 +35,15 @@ const Individuals = () => {
 
     return (
         <>
-            <div>
-                <h2>All Tracked Individuals</h2>
+            <div className="list-wrapper">
+                <h2 className="text-center">All Tracked Individuals</h2>
                 {allIndividuals.map((individual, index) => (
                     <IndividualCard key={index} individual={individual} setSelectedIndividual={setSelectedIndividual} setAllIndividuals={setAllIndividuals} allIndividuals={allIndividuals} />
                 ))}
             </div>
             
             <div>
-                <h2>Individuals Form</h2>
+                <h2 className="text-center">Individuals Form</h2>
                 <IndividualsForm selectedIndividual={selectedIndividual} setSelectedIndividual={setSelectedIndividual} setAllIndividuals={setAllIndividuals}/>
             </div>
         </>
