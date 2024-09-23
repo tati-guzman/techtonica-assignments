@@ -1,9 +1,13 @@
 //Import frameworks for app and middleware
-import express from 'express';
-import cors from 'cors';
+// import express from 'express';
+// import cors from 'cors';
 
-//Import database connection
-import db from './db/db-connection.js';
+// //Import database connection
+// import db from './db/db-connection.js';
+
+const express = require('express')
+const cors = require('cors')
+const db = require('./db/db-connection.js')
 
 //Standard set-up operations for Express and Node
 const app = express();
@@ -36,6 +40,7 @@ app.get('/tracker/individuals', async (req, res) => {
         const allIndividuals = await db.query('SELECT * FROM individuals');
         res.json(allIndividuals.rows);
     } catch (error) {
+        console.info('error', error)
         res.status(500).json({ error: "Could not get all individual information", details: error });
     }
 });
@@ -80,6 +85,7 @@ app.post('/tracker/individuals/:animal_id', async (req, res) => {
         //Send query with all relevant variables
         const response = await db.query(queryStatement, [animalID, nickname, commonName, scientistName]);
 
+        console.info('response from db', response)
         //Error handling if it gets stuck at this point
         if (!response.rows && response.rows.length < 1) {
             res.status(500).json({ error: "Error creating new individual. Failed to retrieve any data."});
@@ -199,3 +205,5 @@ app.post('/tracker/sightings', async (req, res) => {
 app.listen(PORT, () => {
     console.log(`Welcome to Animal Tracker! Server is listening on PORT: ${PORT}`);
 });
+
+module.exports = app;

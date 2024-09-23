@@ -1,9 +1,11 @@
 //Import Pool class from pg package to use for connection pooling
-import pkg from 'pg';
+// import pkg from 'pg';
+const pkg = require('pg')
 const { Pool } = pkg;
 
 //Import functionality to connect with .env file
-import dotenv from 'dotenv';
+// import dotenv from 'dotenv';
+const dotenv = require('dotenv')
 dotenv.config();
 
 //Creates the connection
@@ -12,4 +14,6 @@ const db = new Pool({
   });
 
 //Export db object for server to import and use  
-export default db;
+// export default db;
+
+module.exports = db;
