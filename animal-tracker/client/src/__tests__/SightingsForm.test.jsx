@@ -3,7 +3,7 @@ import { render, screen, fireEvent } from '@testing-library/react'
 import { expect, test, vi } from 'vitest';
 
 //Import components
-import SightingsForm from './SightingsForm.jsx';
+import SightingsForm from '../components/SightingsForm.jsx';
 
 //TEST ONE: Does the "Clear Form" button clear the fields?
 test("clears fields correctly", () => {
