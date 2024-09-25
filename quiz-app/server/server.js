@@ -38,7 +38,15 @@ app.get('/quiz', async (req, res) => {
         });
 })
 
+//GET Request to fetch all users and scores for drop down and for leader board 
 
+//GET Request to pull user score if the user existed
+
+//PUT Request to update a user score if it's better
+
+//POST Request to update user list with new user and their score! (only when they finish)
+
+//DELETE Request to delete a user (not used but needs to be in there)
 
 
 //When the server is activated, its PORT will be printed to the console as confirmation that it started

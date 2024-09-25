@@ -1,7 +1,7 @@
 //Import React functionality from react package
 import React from 'react'
 //Import info from App
-import './App.jsx'
+import '../App.jsx'
 
 const FinalMessage = ({count}) => {
     
