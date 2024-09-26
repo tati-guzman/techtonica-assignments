@@ -1,7 +1,5 @@
 //Import React functionality from react package
 import React, { useState } from 'react'
-//Import info from App
-import './App.jsx'
 //Import HTML decoder to show apostrophes correctly
 import he from 'he'
 
