@@ -3,9 +3,9 @@ import { useState } from 'react'
 //Import CSS Stylesheet
 import './App.css'
 //Import all components
-import Landing from './Landing.jsx'
-import Question from './Question.jsx'
-import FinalMessage from './FinalMessage.jsx'
+import Landing from './components/Landing.jsx'
+import Question from './components/Question.jsx'
+import FinalMessage from './components/FinalMessage.jsx'
 
 
 function App() {
@@ -24,6 +24,12 @@ function App() {
 
    //Keeping track of quiz being done - state is updated via child component (Question)
    const [isQuizComplete, setIsQuizComplete] = useState(false);
+
+   //Keeps track of all player info from table
+   const [playerInfo, setPlayerInfo] = useState([]);
+
+   //Track current player
+   const [currentPlayer, setCurrentPlayer] = useState("");
   
   //Triggered by start button within Landing Component - this fetches the quiz data
   const onStart = () => {
@@ -43,7 +49,7 @@ function App() {
 
   return (
     <div className="container">
-      {isLandingVisible && <Landing onStart={onStart}/>}
+      {isLandingVisible && <Landing onStart={onStart} setPlayerInfo={setPlayerInfo} playerInfo={playerInfo} setCurrentPlayer={setCurrentPlayer} />}
 
       {isQuizAvailable && <Question quiz={quiz} setCount={setCount} setIsQuizComplete={setIsQuizComplete} setIsQuizAvailable={setIsQuizAvailable}/>}
 
