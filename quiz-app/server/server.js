@@ -2,10 +2,6 @@
 import express from 'express';
 //Cors is middleware required to make sure front end and back end can communicate
 import cors from 'cors';
-//Body Parser is a library used to extract info from HTTP requests
-import bodyParser from 'body-parser';
-//Node fetch will help to make requests
-import fetch from 'node-fetch';
 //Import database connection
 import db from './db/db-connection.js';
 
@@ -13,12 +9,9 @@ import db from './db/db-connection.js';
 //Run applicable configs to set up file properly
 const app = express();
 app.use(cors());
+app.use(express.json());
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
-
-
-//Set up the PORT for the server - 5003 is hard-coded here.
+//Set up the PORT for the server
 const PORT = process.env.PORT || 5003;
 
 //GET request to fetch data from trivia - 10 questions, animal category, level easy, true/false
