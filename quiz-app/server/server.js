@@ -46,7 +46,7 @@ app.get('/players', async (req, res) => {
 
 //PUT Request to update a user score if it's better
 //'/players/:username'
-app.get('/players/:id', async (req, res) => {
+app.put('/players/:id', async (req, res) => {
     console.log("We will update this player's score soon.");
     console.log(req.params);
 
@@ -69,7 +69,7 @@ app.get('/players/:id', async (req, res) => {
 
 //POST Request to update user list with new user and their score! (only when they finish)
 //'/players/new_user'
-app.post('players/newUser', async (req, res) => {
+app.post('/players/new-user', async (req, res) => {
     console.log("Creating new player!");
 
     try {
@@ -100,7 +100,7 @@ app.post('players/newUser', async (req, res) => {
 
 //DELETE Request to delete a user (not used but needs to be in there)
 //'/players/:id'
-app.delete('players/:id', async (req, res) => {
+app.delete('/players/:id', async (req, res) => {
     console.log("We will be deleting this player soon");
     console.log(req.params);
 
