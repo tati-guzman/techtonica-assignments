@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import UserSelection from './UserSelection.jsx';
 
 
-const Landing = ({onStart, setPlayerInfo, playerInfo, setCurrentPlayer}) => {
+const Landing = ({onStart, setPlayerInfo, playerInfo, setCurrentPlayer, addingNewUser, setAddingNewUser}) => {
 
     //State to manage seeing user selection or not
     const [userSelectionVisible, setUserSelectionVisible] = useState(false);
@@ -37,9 +37,9 @@ const Landing = ({onStart, setPlayerInfo, playerInfo, setCurrentPlayer}) => {
 
             <button onClick={onStart}>Ready to Rumble!</button>
 
-            <button className="circular" onClick={selectUser}>Want a chance to make it to the leader board? Sign in first!</button>
+            <button onClick={selectUser}>Want a chance to make it to the leader board? Sign in first!</button>
 
-            {userSelectionVisible && <UserSelection playerInfo={playerInfo} setPlayerInfo={setPlayerInfo} onStart={onStart} setCurrentPlayer={setCurrentPlayer} />}
+            {userSelectionVisible && <UserSelection playerInfo={playerInfo} onStart={onStart} setCurrentPlayer={setCurrentPlayer} addingNewUser={addingNewUser} setAddingNewUser={setAddingNewUser}/>}
         </>
     )
 }

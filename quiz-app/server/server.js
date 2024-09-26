@@ -44,6 +44,17 @@ app.get('/players', async (req, res) => {
     }
 });
 
+//GET Request to fetch all users and scores for drop down and for leader board 
+//'/players'
+app.get('/players/leader-board', async (req, res) => {
+    try {
+        const allPlayerInfo = await db.query('SELECT * FROM players ORDER BY score DESC');
+        res.json(allPlayerInfo.rows);
+    } catch (error) {
+        res.status(500).json({ error: "Could not get all player info", details: error });
+    }
+});
+
 //PUT Request to update a user score if it's better
 //'/players/:username'
 app.put('/players/:id', async (req, res) => {
@@ -54,7 +65,7 @@ app.put('/players/:id', async (req, res) => {
     const playerID = req.params.id;
     console.log(req.body);
     //Pull new score from request
-    const newScore = req.body.score;
+    const newScore = req.body.count;
 
     const query = 'UPDATE players SET "score" = $1 WHERE id = $2 RETURNING *'
 
@@ -77,10 +88,10 @@ app.post('/players/new-user', async (req, res) => {
         console.log(req.body);
 
         //Deconstruct the request into individual elements
-        const { username, score } = req.body;
+        const { currentPlayer: username, count: score } = req.body;
 
         //Create query string
-        const queryInsert = 'INSERT INTO players (username, score) VALUES ($1, $2)';
+        const queryInsert = 'INSERT INTO players (username, score) VALUES ($1, $2) RETURNING *';
 
         const newPlayer = await db.query(queryInsert, [username, score]);
 
@@ -111,8 +122,7 @@ app.delete('/players/:id', async (req, res) => {
         const deletionStatement = 'DELETE FROM players WHERE id = $1';
         await db.query(deletionStatement, [id]);
         console.log("Player has been deleted!");
-        res.json({ message: "successfully deleted player!" });
-        res.status(200).end();
+        res.status(200).json({ message: "successfully deleted player!" });
     } catch (error) {
         res.status(500).json({ error: "Could not delete player", details: error });
     }

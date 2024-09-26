@@ -1,16 +1,13 @@
 //Import React functionality from react package
 import React, { useState } from 'react';
 
-const UserSelection = ({ playerInfo, onStart, setCurrentPlayer }) => {
+const UserSelection = ({ playerInfo, onStart, setCurrentPlayer, addingNewUser, setAddingNewUser }) => {
     
     //State to track the username picked from the drop down (including if it's "Add New User")
     const [selectedUsername, setSelectedUsername] = useState("");
 
     //State to track the new user name that is being submitted
     const [newUsername, setNewUsername] = useState("");
-
-    //State to track whether or not there will be a new submission -> logic to show added input field
-    const [addingNewUser, setAddingNewUser] = useState(false);
 
     //Function to update states accordingly based on what the user clicks from the drop down
     const handleChosenUsername = (event) => {
@@ -45,7 +42,7 @@ const UserSelection = ({ playerInfo, onStart, setCurrentPlayer }) => {
             <form onSubmit={handleSubmit}>
                 <label htmlFor="username">Choose Your Username:</label>
                 <select id="username" value={selectedUsername} onChange={handleChosenUsername}>
-                    {playerInfo.map((player, index) => <option key={index} value={player.id}>{player.username}</option>)}
+                    {playerInfo.map((player, index) => <option key={index} value={player.username}>{player.username}</option>)}
                     <option key={playerInfo.length} value="new user option">Add New User</option>
                 </select>
 
