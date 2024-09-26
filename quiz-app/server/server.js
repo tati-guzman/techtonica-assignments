@@ -48,7 +48,7 @@ app.get('/players', async (req, res) => {
 //'/players'
 app.get('/players/leader-board', async (req, res) => {
     try {
-        const allPlayerInfo = await db.query('SELECT * FROM players ORDER BY score DESC');
+        const allPlayerInfo = await db.query('SELECT * FROM players ORDER BY score DESC LIMIT 10');
         res.json(allPlayerInfo.rows);
     } catch (error) {
         res.status(500).json({ error: "Could not get all player info", details: error });
