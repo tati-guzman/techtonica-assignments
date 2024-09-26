@@ -3,7 +3,7 @@ body {
     letter-spacing: 0.05rem;
 
     background-color: #fdfbe6;
-    background-image: url("images/animalbackground.jpg");
+    background-image: url("assets/animalbackground.jpg");
     background-size: cover;
 
     text-align: center;
