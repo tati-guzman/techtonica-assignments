@@ -25,6 +25,7 @@ app.get('/contacts', async (req, res) => {
 
 //GET Route to pull all reminders
 //'/reminders/'
+//To be used once reminders functionality is implemented!
 app.get('/reminders', async (req, res) => {
     try {
         const allReminders = await db.query('SELECT * FROM reminders');
@@ -36,13 +37,42 @@ app.get('/reminders', async (req, res) => {
 
 //POST Route to create a new contact
 //'/contacts/'
-// app.post('/contacts', async (req, res) => {
-//     try {
+app.post('/contacts', async (req, res) => {
+    console.log("Creating new contact!")
+    
+    try {
+        //Print request into the console
+        console.log(req.body);
 
-//     } catch (error) {
-//         res.status(500).json({ error: "Could not create new contact", details: error });
-//     }
-// });
+        //Deconstruct the request into individual elements
+        const { name, phone, email, birthday_notes, recent } = req.body;
+
+        //Create SQL query string
+        const contactsQuery = 'INSERT INTO contacts (name, phone, email, birthday_notes) VALUES ($1, $2, $3, $4) RETURNING user_id';
+
+        //Send query to create new contact
+        const response = await db.query(contactsQuery, [name, phone, email, birthday_notes]);
+        console.log('Response:', response);
+
+        //Error handling if it gets stuck creating a new contact
+        if (!response.rows && response.rows.length < 1) {
+            res.status(500).json({ error: "Error creating new contact. Failed to retrieve user ID" });
+        }
+
+        const newContact = response.rows[0].user_id;
+
+        const createRecentStatus = await db.query('INSERT INTO recents (user_id, recent) VALUES ($1, $2)', [newContact, recent]);
+
+        //Error handling if it gets stuck adding recent status
+        if (createRecentStatus.rowCount === 0) {
+            res.status(500).json({ error: "Error creating recent status." });
+        }
+
+        res.status(200).json({ message: "New contact created", user_id: newContact });        
+    } catch (error) {
+        res.status(500).json({ error: "Could not create new contact", details: error });
+    }
+});
 
 //POST Route to create new reminders
 //'/reminders/'
