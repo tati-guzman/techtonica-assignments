@@ -24,6 +24,34 @@ const ContactsList = ({ setComponent, setContactList, contactList }) => {
         }
     }
 
+    //Function to open contact form with details to update
+    const handleUpdate = (contact.user_id) => {
+
+    }
+
+    //Function to delete contact
+    const deleteContact = (contact.user_id) => {
+        try {
+            const response = await fetch(`/contacts/${contact.user_id}`, {
+                method: 'DELETE'
+            });
+
+            if(!response.ok) {
+                throw new Error("Failed to delete contact!");
+            }
+
+            //Filter out of display once deleted
+            setContactList(prevList => prevList.filter((individual) => individual.user_id != contact.user_id));
+        } catch (error) {
+            console.error({ message: "error deleting individual", details: error });
+            <p>Looks like this one is latching on! We are having trouble deleting this contact. Please try again.</p>
+        }
+    }
+
+    //Function to open details of selected individual
+    const openDetails = () => {
+
+    }
 
     return (
         <>
@@ -34,12 +62,9 @@ const ContactsList = ({ setComponent, setContactList, contactList }) => {
                     return (
                         <div key={index} className="individual">
                             <h3>{contact.name}</h3>
-                            {/* <button onClick={handleUpdate}>Update</button>
-                            <button onClick={deleteContact}>Delete</button>
-                            <button onClick={openDetails}>Details</button> */}
-                            <button>Update</button>
-                            <button>Delete</button>
-                            <button>Details</button>
+                            <button onClick={handleUpdate}>Update</button>
+                            <button onClick={() => deleteContact(contact.user_id)}>Delete</button>
+                            <button onClick={openDetails}>Details</button>
                         </div> 
                     )
                 })}
