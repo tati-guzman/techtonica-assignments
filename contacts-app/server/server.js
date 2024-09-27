@@ -133,7 +133,30 @@ app.put('/contacts/recent/:user_id', async (req, res) => {
 });
 
 //DELETE Route to delete a contact
-//'/contacts/'
+//'/contacts/:user_id'
+app.delete('/contacts/:user_id', async (req, res) => {
+    console.log("Oh no! We'll be deleting this contact soon. Hope they weren't rude or anything.");
+    console.log(req.params);
+
+    //Pull contact id from params
+    const user_id = req.params.user_id;
+
+    try {
+        const deleteContactInfo = 'DELETE FROM contacts WHERE user_id = $1';
+        await db.query(deleteContactInfo, [user_id]);
+        console.log("Individual has been deleted from CONTACTS");
+
+        const deleteRecentStatus = 'DELETE FROM recents WHERE user_id = $1';
+        await db.query(deleteRecentStatus, [user_id]);
+        console.log("Recent status for recently deleted contact has also been removed");
+
+        res.json({ message: "Successfully deleted contact from all tables"});
+        res.status(200).end();
+    } catch (error) {
+        res.status(500).json({ error: "could not delete contact", details: error });
+    }
+
+})
 
 //Print PORT location when active PORT is detected (server is running properly)
 app.listen(PORT, () => {
