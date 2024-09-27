@@ -3,16 +3,23 @@ import React from 'react';
 
 const ViewContact = ({ setSelectedIndividual, selectedIndividual, setComponent }) => {
     
-    console.log(selectedIndividual)
-    //contacts.user_id, name, phone, email, birthday_notes, recent
+    //console.log(selectedIndividual)
+    //user_id, name, phone, email, birthday_notes, recent
     
     const changePage = (event) => {
-        if (event.target.value === "home") {
-            setSelectedIndividual(null);
-            setComponent('landing');
-        } else if (event.target.value === "list") {
-            setSelectedIndividual(null);
-            setComponent('list')
+        
+        switch (event.target.value) {
+            case "home":
+                setSelectedIndividual(null);
+                setComponent('landing');
+                break;
+            case "list":
+                setSelectedIndividual(null);
+                setComponent('list');
+                break;
+            case "update":
+                setComponent('form');
+                break;
         }
     }
 
@@ -28,6 +35,7 @@ const ViewContact = ({ setSelectedIndividual, selectedIndividual, setComponent }
 
             <button value="home" onClick={changePage}>Back to Home</button>
             <button value="list" onClick={changePage}>Back to List</button>
+            <button value="update" onClick={changePage}>Update</button>
         </>
     )
 }
