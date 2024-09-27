@@ -109,6 +109,28 @@ app.put('/contacts/:user_id', async (req, res) => {
 
 //PUT Route to update recent status
 //'/contacts/recent/:user_id
+app.put('/contacts/recent/:user_id', async (req, res) => {
+    console.log("Status updating! Hope it's good news.");
+    console.log(req.params)
+
+    //Pull user ID from params
+    const user_id = req.params.user_id;
+    console.info(req.body);
+    const recentStatus = req.body.recent;
+    console.log("recent status:", recentStatus)
+
+    //Create query statement
+    const query = 'UPDATE recents SET recent = $1 WHERE user_id = $2 RETURNING *';
+
+    try {
+        //Send query
+        const updatedStatus = await db.query(query, [req.body.recent, user_id]);
+        console.log({ message: "Update was successful", details: updatedStatus.rows[0]});
+        res.status(200).json({ message: "Update was successful", details: updatedStatus.rows[0]});
+    } catch (error) {
+        res.status(500).json({ error: "Could not update status", details: error });
+    }
+});
 
 //DELETE Route to delete a contact
 //'/contacts/'
