@@ -1,6 +1,6 @@
-# Contacts App
+# Celebrity Contacts App
 
-*** INSERT DESCRIPTION OF APP ***
+This contacts app is a simple app that allows users to input contact information such as name, phone number, email address, and birthday notes. It also has a feature to track whether or not users have been in contact recently with the person in the app. When downloaded, it will auto-populate with fake celebrity information that users can update to their real friends and family. The app contains a contact form to update contacts or create new ones.
 
 ## Installation
 
@@ -86,7 +86,8 @@ Navigate to [http://localhost:5173](http://localhost:5173) to interact with the 
 
 ## Future Features
 
-- [ ] *** ADD FUTURE FEATURES ***
+- [ ]Improved styling
+- [ ] Smoother functionality switching between components (clean up code to reduce calls to database if not needed) 
 
 ## Acknowledgements
 
