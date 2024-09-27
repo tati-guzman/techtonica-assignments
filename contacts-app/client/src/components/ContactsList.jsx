@@ -1,7 +1,7 @@
 //Import necessary functionalities
 import React, { useEffect } from 'react';
 
-const ContactsList = ({ setComponent, setContactList, contactList }) => {
+const ContactsList = ({ setComponent, setContactList, contactList, setSelectedIndividual }) => {
 
     //Fetch all contacts when going into this component
     useEffect(() => {
@@ -25,14 +25,15 @@ const ContactsList = ({ setComponent, setContactList, contactList }) => {
     }
 
     //Function to open contact form with details to update
-    const handleUpdate = (contact.user_id) => {
-
+    const handleUpdate = (contact) => {
+        setSelectedIndividual(contact);
+        setComponent('form');
     }
 
     //Function to delete contact
-    const deleteContact = (contact.user_id) => {
+    const deleteContact = async (contact) => {
         try {
-            const response = await fetch(`/contacts/${contact.user_id}`, {
+            const response = await fetch(`/contacts/${contact}`, {
                 method: 'DELETE'
             });
 
@@ -41,16 +42,17 @@ const ContactsList = ({ setComponent, setContactList, contactList }) => {
             }
 
             //Filter out of display once deleted
-            setContactList(prevList => prevList.filter((individual) => individual.user_id != contact.user_id));
-        } catch (error) {
+            setContactList(prevList => prevList.filter((individual) => individual.user_id !== contact.user_id));
+        } catch(error) {
             console.error({ message: "error deleting individual", details: error });
-            <p>Looks like this one is latching on! We are having trouble deleting this contact. Please try again.</p>
+            // <p>Looks like this one is latching on! We are having trouble deleting this contact. Please try again.</p>
         }
     }
 
     //Function to open details of selected individual
-    const openDetails = () => {
-
+    const openDetails = (contact) => {
+        setSelectedIndividual(contact);
+        setComponent('details');
     }
 
     return (
@@ -62,9 +64,9 @@ const ContactsList = ({ setComponent, setContactList, contactList }) => {
                     return (
                         <div key={index} className="individual">
                             <h3>{contact.name}</h3>
-                            <button onClick={handleUpdate}>Update</button>
-                            <button onClick={() => deleteContact(contact.user_id)}>Delete</button>
-                            <button onClick={openDetails}>Details</button>
+                            <button onClick={() => handleUpdate(contact)}>Update</button>
+                            <button onClick={() => deleteContact(contact)}>Delete</button>
+                            <button onClick={() => openDetails(contact)}>Details</button>
                         </div> 
                     )
                 })}

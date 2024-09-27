@@ -16,16 +16,19 @@ const App = () => {
     //State to hold contact list
     const [contactList, setContactList] = useState([]);
 
+    //State to hold contact to update
+    const [selectedIndividual, setSelectedIndividual] = useState(null);
+
     const chooseComponent = (component) => {
         switch (component) {
             case 'landing':
                 return <Landing setComponent={setComponent} />;
             case 'list':
-                return <ContactsList setComponent={setComponent} setContactList={setContactList} contactList={contactList} />;
+                return <ContactsList setComponent={setComponent} setContactList={setContactList} contactList={contactList} setSelectedIndividual={setSelectedIndividual} />;
             case 'details':
-                return <ViewContact setComponent={setComponent} />;
+                return <ViewContact setComponent={setComponent} selectedIndividual={selectedIndividual} setSelectedIndividual={setSelectedIndividual} />;
             case 'form':
-                return <ContactForm setComponent={setComponent} />;
+                return <ContactForm setComponent={setComponent} selectedIndividual={selectedIndividual} setSelectedIndividual={setSelectedIndividual} />;
             default:
                 return <Landing setComponent={setComponent} />;
         }
