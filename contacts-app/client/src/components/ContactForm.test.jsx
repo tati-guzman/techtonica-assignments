@@ -1,16 +1,19 @@
+//Import all testing dependencies needed
 import '@testing-library/jest-dom';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { vi } from 'vitest';
 import ContactForm from './ContactForm.jsx';
 
 describe('ContactForm', () => {
+    //Create mock environment for states
     const setSelectedIndividual = vi.fn();
     const setComponent = vi.fn();
 
+    //Reset all mock environments before each test is run
     beforeEach(() => {
         vi.clearAllMocks();
     });
-
+    
     test('renders the form with all inputs', () => {
         render(<ContactForm selectedIndividual={null} setSelectedIndividual={setSelectedIndividual} setComponent={setComponent} />);
         
