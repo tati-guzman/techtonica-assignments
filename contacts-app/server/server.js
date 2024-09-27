@@ -74,20 +74,41 @@ app.post('/contacts', async (req, res) => {
     }
 });
 
-//POST Route to create new reminders
-//'/reminders/'
-
-//POST Route to create new recent status
-//'/recents/'
-
 //PUT Route to update existing contact
 //'/contacts/:user_id'
+app.put('/contacts/:user_id', async (req, res) => {
+    console.log("We will update this contact soon.");
+    console.log(req.params);
 
-//PUT Route to update reminders
-//'/contacts/:reminder_id'
+    //Pull user ID from params
+    const user_id = req.params.user_id;
+    console.log(req.body);
+
+    //Create arrays with fields and values
+    const fields = Object.keys(req.body);
+    const values = Object.values(req.body);
+
+    //Make sure request is not empty
+    if (fields.length === 0) {
+        res.status(400).json({ error: "No fields to update" });
+    }
+
+    //Create query statement
+    const queryInsert = fields.map((field, index) => `"${field}" = $${index + 1}`).join(", ");
+    const query = `UPDATE contacts SET ${queryInsert} WHERE user_id=${user_id} RETURNING *`;
+
+    try {
+        //Send query
+        const updatedContact = await db.query (query, [...values]);
+        console.log({ message: "Update was successful", details: updatedContact.rows[0]});
+        res.status(200).json({ message: "Update was successful", details: updatedContact.rows[0]});
+    } catch (error) {
+        res.status(500).json({ error: "Could not update contact", details: error });
+    }
+});
 
 //PUT Route to update recent status
-//'/contacts/:user_id'
+//'/contacts/recent/:user_id
 
 //DELETE Route to delete a contact
 //'/contacts/'
