@@ -72,7 +72,8 @@ Navigate to [http://localhost:5173](http://localhost:5173) to interact with the 
 
 ### Demo
 
-*** ADD DEMO DETAILS ***
+<img width="504" alt="Screenshot 2024-09-27 at 2 22 59 PM" src="https://github.com/user-attachments/assets/485fa472-d67b-483d-8b4f-657b6b6bf72e">
+
 
 ## Built With
 
@@ -86,7 +87,7 @@ Navigate to [http://localhost:5173](http://localhost:5173) to interact with the 
 
 ## Future Features
 
-- [ ]Improved styling
+- [ ] Improved styling
 - [ ] Smoother functionality switching between components (clean up code to reduce calls to database if not needed) 
 
 ## Acknowledgements
