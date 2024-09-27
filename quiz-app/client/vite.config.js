@@ -8,7 +8,12 @@ export default defineConfig({
   server: {
     proxy: {
       '/quiz': {
-        target: 'http://localhost:5003',
+        target: 'http://localhost:7878',
+        changeOrigin: true,
+        secure: false
+      },
+      '/players': {
+        target: 'http://localhost:7878',
         changeOrigin: true,
         secure: false
       }
