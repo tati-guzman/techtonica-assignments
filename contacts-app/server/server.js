@@ -23,9 +23,26 @@ app.get('/contacts', async (req, res) => {
     }
 });
 
+//GET Route to pull all reminders
+//'/reminders/'
+app.get('/reminders', async (req, res) => {
+    try {
+        const allReminders = await db.query('SELECT * FROM reminders');
+        res.json(allReminders.rows);
+    } catch (error) {
+        res.status(500).json({ error: "Could not fetch all reminders", details: error });
+    }
+});
+
 //POST Route to create a new contact
 //'/contacts/'
+// app.post('/contacts', async (req, res) => {
+//     try {
 
+//     } catch (error) {
+//         res.status(500).json({ error: "Could not create new contact", details: error });
+//     }
+// });
 
 //POST Route to create new reminders
 //'/reminders/'
