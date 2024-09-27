@@ -6,7 +6,7 @@ import React, { useState } from 'react';
 import Landing from './components/Landing.jsx';
 import ContactsList from './components/ContactsList.jsx';
 import ViewContact from './components/ViewContact.jsx';
-// import ContactForm from './components/ContactForm.jsx';
+import ContactForm from './components/ContactForm.jsx';
 
 const App = () => {
     

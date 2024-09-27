@@ -33,7 +33,7 @@ const ContactsList = ({ setComponent, setContactList, contactList, setSelectedIn
     //Function to delete contact
     const deleteContact = async (contact) => {
         try {
-            const response = await fetch(`/contacts/${contact}`, {
+            const response = await fetch(`/contacts/${contact.user_id}`, {
                 method: 'DELETE'
             });
 
