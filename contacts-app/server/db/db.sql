@@ -55,6 +55,37 @@ ALTER SEQUENCE public.contacts_user_id_seq OWNED BY public.contacts.user_id;
 
 
 --
+-- Name: recents; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.recents (
+    id integer NOT NULL,
+    user_id integer,
+    recent boolean
+);
+
+
+--
+-- Name: recents_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.recents_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: recents_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.recents_id_seq OWNED BY public.recents.id;
+
+
+--
 -- Name: reminders; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -93,6 +124,13 @@ ALTER TABLE ONLY public.contacts ALTER COLUMN user_id SET DEFAULT nextval('publi
 
 
 --
+-- Name: recents id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.recents ALTER COLUMN id SET DEFAULT nextval('public.recents_id_seq'::regclass);
+
+
+--
 -- Name: reminders reminder_id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -107,6 +145,17 @@ COPY public.contacts (user_id, name, phone, email, birthday_notes) FROM stdin;
 1	Harry Styles	+44 207 8764 2485	1D4ever@gmail.com	02/01/1994
 2	Nick Jonas	(310) 453-0293	burninup@aol.com	09/16/1992
 3	Taylor Swift	615-000-1313	taytay13@gmail.com	1989!!
+\.
+
+
+--
+-- Data for Name: recents; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY public.recents (id, user_id, recent) FROM stdin;
+1	1	t
+2	2	f
+3	3	t
 \.
 
 
@@ -129,6 +178,13 @@ SELECT pg_catalog.setval('public.contacts_user_id_seq', 3, true);
 
 
 --
+-- Name: recents_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('public.recents_id_seq', 3, true);
+
+
+--
 -- Name: reminders_reminder_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -141,6 +197,14 @@ SELECT pg_catalog.setval('public.reminders_reminder_id_seq', 3, true);
 
 ALTER TABLE ONLY public.contacts
     ADD CONSTRAINT contacts_pkey PRIMARY KEY (user_id);
+
+
+--
+-- Name: recents recents_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.recents
+    ADD CONSTRAINT recents_pkey PRIMARY KEY (id);
 
 
 --
