@@ -1,6 +1,6 @@
 # 🐯 Tati's Terrific Trivia 🐯
 
-This trivia app tests your animal knowledge! With 10 easy questions, answer True/False to find out if you're ready to be a zoologist. Using React and Vite for the front end and Express for the back end, this app connects to the Open Trivia Database to pull 10 Easy True/False Animal questions and present them to the user one by one.
+This trivia app tests your animal knowledge! With 10 easy questions, answer True/False to find out if you're ready to be a zoologist. Using React and Vite for the front end and Postgres, Node, and Express for the back end, this app connects to the Open Trivia Database to pull 10 Easy True/False Animal questions and present them to the user one by one. Users are able to save their user name for a chance to be on the leader board of Top 10 Players! If they've played before, users can update their score as well.
 
 ## Installation
 
@@ -30,6 +30,24 @@ Install all relevant dependencies
 
 ```
 npm install
+```
+
+Restore DB Dump File
+
+```
+psql -f db.sql
+```
+
+Create a .env file
+
+```
+touch .env
+```
+
+Add in relevant configuration
+
+```
+DB_URI="postgresql://localhost/<nameofdatabase>
 ```
 
 Start the server - it should run on PORT 5003
