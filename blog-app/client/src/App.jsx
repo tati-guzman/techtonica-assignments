@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 
 //Import all components for use in display
 import NavBar from './components/NavBar.jsx';
-import HomePage from './components/HomePage.jsx';
+// import HomePage from './components/HomePage.jsx';
 // import PostList from './components/PostList.jsx';
 // import IndividualPost from './components/IndividualPost.jsx';
 // import Form from './components/Form.jsx';
@@ -35,7 +35,7 @@ const App = () => {
         <div className="app">
             <NavBar setComponent={setComponent} />
 
-            {chooseComponent(component)}
+            {/* {chooseComponent(component)} */}
         </div>
     )
 }
