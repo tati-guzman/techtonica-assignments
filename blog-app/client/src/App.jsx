@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 
 //Import all components for use in display
 import NavBar from './components/NavBar.jsx';
-// import HomePage from './components/HomePage.jsx';
+import HomePage from './components/HomePage.jsx';
 // import PostList from './components/PostList.jsx';
 // import IndividualPost from './components/IndividualPost.jsx';
 // import Form from './components/Form.jsx';
@@ -19,7 +19,7 @@ const App = () => {
     const chooseComponent = (component) => {
         switch (component) {
             case 'homepage':
-                return <HomePage setComponent={setComponent} />;
+                return <HomePage />;
             case 'list':
                 return <PostList setComponent={setComponent} blogPosts={blogPosts} setBlogPosts={setBlogPosts} />;
             case 'full post':
@@ -27,7 +27,7 @@ const App = () => {
             case 'form':
                 return <Form />;
             default:
-                return <HomePage setComponent={setComponent} />;
+                return <HomePage />;
         }
     }
 
@@ -35,7 +35,7 @@ const App = () => {
         <div className="app">
             <NavBar setComponent={setComponent} />
 
-            {/* {chooseComponent(component)} */}
+            {chooseComponent(component)}
         </div>
     )
 }
