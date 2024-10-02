@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 //Import all components for use in display
 import NavBar from './components/NavBar.jsx';
 import HomePage from './components/HomePage.jsx';
-// import PostList from './components/PostList.jsx';
+import PostList from './components/PostList.jsx';
 // import IndividualPost from './components/IndividualPost.jsx';
 // import Form from './components/Form.jsx';
 
@@ -16,14 +16,17 @@ const App = () => {
     //State to hold blog post list
     const [blogPosts, setBlogPosts] = useState([]);
 
+    //State to hold specific individual posts
+    const [selectedPost, setSelectedPost] = useState(null);
+
     const chooseComponent = (component) => {
         switch (component) {
             case 'homepage':
                 return <HomePage />;
             case 'list':
-                return <PostList setComponent={setComponent} blogPosts={blogPosts} setBlogPosts={setBlogPosts} />;
+                return <PostList setComponent={setComponent} blogPosts={blogPosts} setBlogPosts={setBlogPosts} setSelectedPost={setSelectedPost} />;
             case 'full post':
-                return <IndividualPost setComponent={setComponent} />;
+                return <IndividualPost setComponent={setComponent} selectedPost={selectedPost} />;
             case 'form':
                 return <Form />;
             default:
