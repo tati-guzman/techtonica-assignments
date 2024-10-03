@@ -82,6 +82,7 @@ Navigate to [http://localhost:5173](http://localhost:5173) to interact with the 
 * [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 * [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 * [Express.js](https://expressjs.com/) as a web framework for Node.js
+    *[Multer middleware](https://expressjs.com/en/resources/middleware/multer.html) was used to upload files into the database correctly
 * [PostgreSQL](https://www.postgresql.org/docs/current/datatype-datetime.html) - Used for database design and implementation
 
 ## Future Features
@@ -92,3 +93,4 @@ Navigate to [http://localhost:5173](http://localhost:5173) to interact with the 
 ## Acknowledgements
 
 * Techtonica & the H2 2024 Cohort
+* This magnificent [Medium Article](https://medium.com/@drshawnhart/handling-image-uploads-in-a-react-form-18e96548d496) written by Shawn Hart
