@@ -1,6 +1,7 @@
 //Import necessary functionalities
 import React from 'react';
-// import puppyPic from '../assets/puppy_alligator.jpg';
+
+//Import pictures from assets folder
 import puppyPic2 from '../assets/Puppy2.jpg';
 import sunnyDaisy from '../assets/sunnyDaisy.jpg';
 import DaisyStairs from '../assets/DaisyStairs2.jpg';
