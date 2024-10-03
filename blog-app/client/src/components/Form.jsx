@@ -1,5 +1,6 @@
 //Import necessary functionality
 import React, { useState } from 'react';
+import UserMessage from './UserMessage.jsx';
 
 const Form = () => {
 
@@ -10,6 +11,12 @@ const Form = () => {
 
     //State to manage submission status
     const [submitStatus, setSubmitStatus] = useState(null);
+
+    //State to manage modal visibility
+    const [modalOpen, setModalOpen] = useState(false);
+
+    //State to track the message that will be shown to the user after submission
+    const [message, setMessage] = useState("");
 
     //Track changes for title input
     const handleTitleChange = (event) => {
@@ -46,17 +53,21 @@ const Form = () => {
             //Error handling for request
             if(!response.ok) {
                 setSubmitStatus(false);
+                setMessage("We've failed to save the submission. Please check that title and content are filled out. If you've submitted an image, please ensure that it is in JPEG format.");
                 throw new Error("Failed to save submission");
             } else {
+                {complete ? setMessage('Check out the "All Posts" page to find your submission!') : null}
                 clearForm();
                 setSubmitStatus(true);
             }
 
         } catch (error) {
+            setSubmitStatus(false);
+            setMessage("We've failed to save the submission. Please check that title and content are filled out. If you've submitted an image, please ensure that it is in JPEG format.");
             console.error({ message: "Error sending post data", details: error });
-        } // } finally {
-        //     return <UserMessage submitStatus={submitStatus} />;
-        // }
+        } finally {
+            setModalOpen(true);
+         }
     }
 
     //Clears form for Cancel button
@@ -100,11 +111,13 @@ const Form = () => {
                 /><br></br>
 
                 <button type="submit">Submit</button>
-                <button type="button" onClick={(e) => {handleSubmit(e, false)}}>Save Draft</button>
+                <button type="submit" onClick={(e) => {handleSubmit(e, false)}}>Save Draft</button>
 
             </form>
 
             <button onClick={clearForm}>Cancel</button>
+
+            {modalOpen && <UserMessage submitStatus={submitStatus} isOpen={modalOpen} onClose={() => setModalOpen(false)} message={message} />}
         </>
     )
 }
