@@ -6,7 +6,7 @@ import React, { useState } from 'react';
 import NavBar from './components/NavBar.jsx';
 import HomePage from './components/HomePage.jsx';
 import PostList from './components/PostList.jsx';
-// import IndividualPost from './components/IndividualPost.jsx';
+import IndividualPost from './components/IndividualPost.jsx';
 // import Form from './components/Form.jsx';
 
 const App = () => {
@@ -26,7 +26,7 @@ const App = () => {
             case 'list':
                 return <PostList setComponent={setComponent} blogPosts={blogPosts} setBlogPosts={setBlogPosts} setSelectedPost={setSelectedPost} />;
             case 'full post':
-                return <IndividualPost setComponent={setComponent} selectedPost={selectedPost} />;
+                return <IndividualPost selectedPost={selectedPost} />;
             case 'form':
                 return <Form />;
             default:

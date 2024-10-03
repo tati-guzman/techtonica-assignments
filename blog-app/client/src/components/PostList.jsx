@@ -31,6 +31,7 @@ const PostList = ({ setComponent, blogPosts, setBlogPosts, setSelectedPost }) =>
         setComponent('full post');
     }
 
+    //Using this for debugging
     if (blogPosts) {
         console.log(blogPosts);
     } 
