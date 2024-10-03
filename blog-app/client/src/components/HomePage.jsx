@@ -10,7 +10,7 @@ const HomePage = () => {
     return (
         <>
             <div className="quote">
-                <h1>"placeholder quote about dog training and dogs..."</h1>
+                <h1>"A dog will teach you unconditional love. If you can have that in your life, things won't be too bad." - Robert Wagner</h1>
             </div>
 
             <div className="photos">
