@@ -1,4 +1,4 @@
-# The Daisy Diaries
+# The Daisy Diaries 🌼🐾
 
 The Daisy Diaries is a blog app that allows users to add blog posts with titles, written content, and one image. Created to fulfill Techtonica's Week 12 Blog Project, it uses Express, Node, and Postgres for the back-end, and React and Vite for the front-end. When downloaded, it will auto-populate with the first three posts about Daisy the Dog. NPM's Sentiment Package is used to create sentiment scores for each post and provide a border color based on the sentiment color.
 
