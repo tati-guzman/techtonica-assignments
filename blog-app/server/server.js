@@ -33,7 +33,7 @@ app.get('/blog', async (req, res) => {
 
     try {
         //Only select posts marked complete to avoid showing drafts
-        const queryStatement = 'SELECT * FROM posts WHERE complete = true';
+        const queryStatement = 'SELECT * FROM posts WHERE complete = true ORDER BY post_id DESC';
 
         const completedPosts = await db.query(queryStatement);
         if (completedPosts.rows.length > 0) {
@@ -79,8 +79,6 @@ app.post('/blog', upload.single('image'), async (req, res) => {
         res.status(500).json({ error: "Could not create post", details: error });
     }
 });
-
-//GET Route to pull data from AI API
 
 //Print PORT location when active PORT is detected (server is running properly)
 app.listen(PORT, () => {
