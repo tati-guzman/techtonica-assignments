@@ -14,12 +14,20 @@ const IndividualPost = ({ selectedPost }) => {
     // const imageSrc = selectedPost.image ? `data:image/jpeg;base64,${Buffer.from(selectedPost.image).toString('base64')}` : null;
 
     return (
-        <>
+        <div className="individual">
+            
             <h1>{selectedPost.title}</h1>
+            
             <h4>{correctDate}</h4>
+            
             {selectedPost.image && <img className="post-pic" src={`data:image/jpeg;base64,${selectedPost.image}`}/>}
-            <p>{selectedPost.content}</p>
-        </>
+            
+            <div className="content">
+                {selectedPost.content.split('\n').map((line, index) => (
+                    <p key={index}>{line}</p>
+                ))}
+            </div>
+        </div>
     )
 }
 

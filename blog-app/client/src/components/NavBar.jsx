@@ -8,13 +8,13 @@ const NavBar = ({ setComponent }) => {
     return (
         <nav>
             
-            <h1>The Daisy Diaries</h1>
+            <h1 onClick={() => setComponent('homepage')}>The Daisy Diaries 🐾</h1>
             
             {/* Future Task: Create onChange function to filter posts by title and show that individual post */}
             <input 
                 name="search"
                 type="text"
-                placeholder="Search for Posts by Title"
+                placeholder="🔍 Search for Posts by Title"
             />
 
             <button onClick={() => setComponent('list')}>View All Posts</button>

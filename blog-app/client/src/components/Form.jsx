@@ -79,7 +79,7 @@ const Form = () => {
 
     return (
         <>
-            <h1>Create a Post</h1>
+            <h1 className="form-header">Create a Post</h1>
 
             <form onSubmit={(e) => {handleSubmit(e, true)}}>
                 <label htmlFor="title">Post Title:</label>
@@ -112,10 +112,10 @@ const Form = () => {
 
                 <button type="submit">Submit</button>
                 <button type="submit" onClick={(e) => {handleSubmit(e, false)}}>Save Draft</button>
+                <button onClick={clearForm}>Cancel</button>
 
             </form>
 
-            <button onClick={clearForm}>Cancel</button>
 
             {modalOpen && <UserMessage submitStatus={submitStatus} isOpen={modalOpen} onClose={() => setModalOpen(false)} message={message} />}
         </>

@@ -50,7 +50,7 @@ const PostList = ({ setComponent, blogPosts, setBlogPosts, setSelectedPost }) =>
                     <div key={index} className="list-post">
                         <h3>{post.title}</h3>
                         <p>{correctDate}</p>
-                        <button onClick={() => openPost(post)}>Read Full Post</button>
+                        <button className="list-button" onClick={() => openPost(post)}>Read Full Post</button>
                     </div>
                 )
             })}
