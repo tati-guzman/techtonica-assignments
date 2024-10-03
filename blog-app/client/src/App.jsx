@@ -7,7 +7,7 @@ import NavBar from './components/NavBar.jsx';
 import HomePage from './components/HomePage.jsx';
 import PostList from './components/PostList.jsx';
 import IndividualPost from './components/IndividualPost.jsx';
-// import Form from './components/Form.jsx';
+import Form from './components/Form.jsx';
 
 const App = () => {
     //State to hold displayed component
