@@ -72,11 +72,11 @@ Navigate to [http://localhost:5173](http://localhost:5173) to interact with the 
 
 ### Initial Wire Frame
 
-*** ADD IN SCREENSHOT OF WIREFRAME ***
+<img width="1497" alt="Screenshot 2024-10-03 at 4 51 11 AM" src="https://github.com/user-attachments/assets/4be33fd1-6000-456a-a12a-a856374f225d">
 
 ### Demo
 
-*** ADD IN DEMO SCREENSHOT OR GIF ***
+![Screenshot 2024-10-03 at 4 55 56 AM](https://github.com/user-attachments/assets/d94759e6-a340-4fac-bded-84eb5e5e1084)
 
 ## Built With
 
@@ -119,6 +119,7 @@ Navigate to [http://localhost:5173](http://localhost:5173) to interact with the 
 - [ ] Commenting capabilities 
 - [ ] Increased use of the npm sentiment package to monitor comments
 - [ ] More input fields for images and increased capability to style via user preference
+- [ ] Functionality on the search bar to pull up different posts via title name
 
 ## Acknowledgements
 
