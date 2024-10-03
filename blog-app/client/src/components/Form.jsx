@@ -5,11 +5,11 @@ const Form = () => {
 
     //Individual states for each form input
     const [title, setTitle] = useState("");
-    // const [image, setImage] = useState(null);
+    const [image, setImage] = useState(null);
     const [content, setContent] = useState("");
 
     //State to manage submission status
-    const [submitStatus, setSubmitStatus] = useState(null)
+    const [submitStatus, setSubmitStatus] = useState(null);
 
     //Track changes for title input
     const handleTitleChange = (event) => {
@@ -26,18 +26,21 @@ const Form = () => {
         //Prevent page from re-loading
         event.preventDefault();
         
+        //Use FormData to include both content with special characters and image uploads
+        const formData = new FormData();
+        formData.append('title', title);
+        if (image) {
+            formData.append('image', image)
+        }
+        formData.append('content', content);
+        formData.append('complete', complete);
+
         try {
-            //POST Request to save blog post submission
+            //POST Request to save blog post submission - no headers needed with image upload
             const response = await fetch('/blog', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    title: title,
-                    // image: image,
-                    content: content,
-                    complete: complete
-                })
-            })
+                body: formData
+            });
 
 
             //Error handling for request
@@ -46,7 +49,6 @@ const Form = () => {
                 throw new Error("Failed to save submission");
             } else {
                 clearForm();
-                // setComplete(null);
                 setSubmitStatus(true);
             }
 
@@ -60,7 +62,7 @@ const Form = () => {
     //Clears form for Cancel button
     const clearForm = () => {
         setTitle("");
-        // setImage(null);
+        setImage(null);
         setContent("");
     }
 
@@ -79,7 +81,14 @@ const Form = () => {
                     required
                 /><br></br>
 
-                {/* <label htmlFor="image">Please attach an image, if applicable.</label> */}
+                <label htmlFor="image">Please attach an image, if applicable.</label>
+                <input
+                    id="image"
+                    name="image"
+                    type="file"
+                    accept="image/jpeg"
+                    onChange={(e) => setImage(e.target.files[0])}
+                />
 
                 <label htmlFor="content">Post Content:</label><br></br>
                 <textarea 

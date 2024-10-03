@@ -10,11 +10,14 @@ const IndividualPost = ({ selectedPost }) => {
         day: 'numeric',
     }) : '';
 
+    //Convert image from BYTEA to Base64 to render correctly
+    // const imageSrc = selectedPost.image ? `data:image/jpeg;base64,${Buffer.from(selectedPost.image).toString('base64')}` : null;
+
     return (
         <>
             <h1>{selectedPost.title}</h1>
             <h4>{correctDate}</h4>
-            {selectedPost.image ? <img className="post-pic" src={selectedPost.image}/> : null}
+            {selectedPost.image && <img className="post-pic" src={`data:image/jpeg;base64,${selectedPost.image}`}/>}
             <p>{selectedPost.content}</p>
         </>
     )

@@ -1,6 +1,7 @@
 //Import frameworks for app and middleware
 import express from 'express';
 import cors from 'cors';
+import multer from 'multer';
 
 // //Import database connection
 import db from './db/db-connection.js';
@@ -10,6 +11,20 @@ const app = express();
 const PORT = process.env.PORT || 8020;
 app.use(cors());
 app.use(express.json());
+
+//Set up operations for multer storage
+const storage = multer.memoryStorage();
+const upload = multer({ 
+    storage,
+    fileFilter: (req, file, cb) => {
+        //Check the type of image uploaded to only allow for jpegs
+        if (file.mimetype === 'image/jpeg') {
+            cb(null, true);
+        } else {
+            cb(new Error('File is not a JPEG image.'), false);
+        }
+    }
+});
 
 //GET Route to pull all COMPLETED blog posts
 //'/blog/'
@@ -21,7 +36,18 @@ app.get('/blog', async (req, res) => {
         const queryStatement = 'SELECT * FROM posts WHERE complete = true';
 
         const completedPosts = await db.query(queryStatement);
-        res.json(completedPosts.rows);
+        if (completedPosts.rows.length > 0) {
+            const postList = completedPosts.rows;
+            const adjustedList = postList.map((post) => {
+                if (post.image) {
+                    post.image = post.image.toString('base64');
+                }
+                return post;
+            });
+            res.json(adjustedList);
+        } else {
+            res.status(404).json({ message: 'No completed posts found.' });
+        }
     } catch (error) {
         res.status(500).json({ error: 'Could not pull posts', details: error });
     }
@@ -29,13 +55,14 @@ app.get('/blog', async (req, res) => {
 
 //POST Route to create a new blog post
 //'/blog/'
-app.post('/blog', async (req, res) => {
+app.post('/blog', upload.single('image'), async (req, res) => {
     console.log("Creating your new post now!");
+
+    //Deconstruct request body
+    const { title, content, complete } = req.body;
+    const image = req.file ? req.file.buffer : null;
     
     try {
-        //Deconstruct request body
-        const {title, image, content, complete } = req.body;
-
         //Create SQL query string
         const query = 'INSERT INTO posts (title, image, content, complete) VALUES ($1, $2, $3, $4) RETURNING post_id'
         
