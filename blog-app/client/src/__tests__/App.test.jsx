@@ -1,7 +1,12 @@
 //Import all testing dependencies needed
 import '@testing-library/jest-dom';
-// import { render, screen, fireEvent } from '@testing-library/react';
-// import { vi } from 'vitest';
+import { render } from '@testing-library/react';
 
 //Import component being tested
-import App from '../components/App.jsx';
+import App from '../App.jsx';
+
+describe ('App', () => {
+    test ('App renders without crashing', () => {
+        render(<App />);
+    })
+})
