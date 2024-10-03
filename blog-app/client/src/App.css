@@ -224,3 +224,46 @@ form button:hover {
     background-color: pink;
 }
 
+/* Media Queries */
+
+@media (max-width: 768px) {
+    .quote {
+        font-size: 2em;
+    }
+    .home-photo {
+        width: 18rem;
+        height: 18rem;
+    }
+    .post-pic {
+        height: 300px;
+    }
+    .individual{
+        font-size: 1rem;
+    }
+    .content {
+        text-indent: 60px;
+    }
+}
+
+@media (max-width: 480px) {
+    .quote {
+        font-size: 1.5em;
+    }
+    .home-photo {
+        width: 12rem;
+        height: 12rem;
+    }
+    .post-pic {
+        height: 200px;
+    }
+    .individual{
+        font-size: 0.75rem;
+    }
+    .content {
+        text-indent: 40px;
+    }
+    nav input {
+        visibility: hidden;
+    }
+}
+
