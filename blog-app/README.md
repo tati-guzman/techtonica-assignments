@@ -70,21 +70,46 @@ npm run dev
 
 Navigate to [http://localhost:5173](http://localhost:5173) to interact with the front end of the app.
 
+### Initial Wire Frame
+
+*** ADD IN SCREENSHOT OF WIREFRAME ***
+
 ### Demo
 
 *** ADD IN DEMO SCREENSHOT OR GIF ***
 
 ## Built With
 
-* [Visual Studio Code](https://code.visualstudio.com/) - Source code editor
-* [JavaScript](https://www.javascript.com/) - Primary language used
-* [HTML](https://html.com/) - Used to design web layout
-* [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-* [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-* [Express.js](https://expressjs.com/) as a web framework for Node.js
-    *[Multer middleware](https://expressjs.com/en/resources/middleware/multer.html) was used to upload files into the database correctly
-* [PostgreSQL](https://www.postgresql.org/docs/current/datatype-datetime.html) - Used for database design and implementation
-* [npm sentiment](https://www.npmjs.com/package/sentiment) - used for Sentiment Analysis of posts
+![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
+
+[Visual Studio Code](https://code.visualstudio.com/) - Source code editor
+
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+
+[JavaScript](https://www.javascript.com/) - Primary language used
+
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+
+[HTML](https://html.com/) - Used to design web layout
+
+
+![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
+
+[@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+[@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
+
+[Express.js](https://expressjs.com/) as a web framework for Node.js
+[Multer middleware](https://expressjs.com/en/resources/middleware/multer.html) was used to upload files into the database correctly
+
+![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
+
+[PostgreSQL](https://www.postgresql.org/docs/current/datatype-datetime.html) - Used for database design and implementation
+
+![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white)
+
+[npm sentiment](https://www.npmjs.com/package/sentiment) - used for Sentiment Analysis of posts
 
 ## Future Features
 
