@@ -1,6 +1,6 @@
 # The Daisy Diaries
 
-The Daisy Diaries is a blog app that allows users to add blog posts with titles, written content, and one image. Created to fulfill Techtonica's Week 12 Blog Project, it uses Express, Node, and Postgres for the back-end, and React and Vite for the front-end. When downloaded, it will auto-populate with the first three posts about Daisy the Dog. 
+The Daisy Diaries is a blog app that allows users to add blog posts with titles, written content, and one image. Created to fulfill Techtonica's Week 12 Blog Project, it uses Express, Node, and Postgres for the back-end, and React and Vite for the front-end. When downloaded, it will auto-populate with the first three posts about Daisy the Dog. NPM's Sentiment Package is used to create sentiment scores for each post and provide a border color based on the sentiment color.
 
 ## Installation
 
@@ -84,13 +84,18 @@ Navigate to [http://localhost:5173](http://localhost:5173) to interact with the 
 * [Express.js](https://expressjs.com/) as a web framework for Node.js
     *[Multer middleware](https://expressjs.com/en/resources/middleware/multer.html) was used to upload files into the database correctly
 * [PostgreSQL](https://www.postgresql.org/docs/current/datatype-datetime.html) - Used for database design and implementation
+* [npm sentiment](https://www.npmjs.com/package/sentiment) - used for Sentiment Analysis of posts
 
 ## Future Features
 
 - [ ] Log-in for different users to be credited as authors on their posts
 - [ ] Update feature to allow for blog posts to be edited after initial posting
+- [ ] Delete or archive feature to remove posts no longer needed
+- [ ] Commenting capabilities 
+- [ ] Increased use of the npm sentiment package to monitor comments
+- [ ] More input fields for images and increased capability to style via user preference
 
 ## Acknowledgements
 
 * Techtonica & the H2 2024 Cohort
-* This magnificent [Medium Article](https://medium.com/@drshawnhart/handling-image-uploads-in-a-react-form-18e96548d496) written by Shawn Hart
+* This magnificent [Medium Article](https://medium.com/@drshawnhart/handling-image-uploads-in-a-react-form-18e96548d496) written by Shawn Hart regarding image uploads in React
